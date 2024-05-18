@@ -15,8 +15,8 @@
 		08DBEF1A2BF86BD7007834A3 /* Boast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DBEF192BF86BD7007834A3 /* Boast.swift */; };
 		08DBEF1C2BF86CF1007834A3 /* Award.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DBEF1B2BF86CF1007834A3 /* Award.swift */; };
 		08DBEF1E2BF87781007834A3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DBEF1D2BF87781007834A3 /* Constants.swift */; };
-		BD8665FB2BF89B070039F460 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8665FA2BF89B070039F460 /* Font.swift */; };
 		BD8665FF2BF89DAB0039F460 /* DNFont.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD8665FE2BF89DAB0039F460 /* DNFont.xcassets */; };
+		BDD8FED92BF8CAA300A1E25F /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD8FED82BF8CAA300A1E25F /* Font.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,9 +29,9 @@
 		08DBEF192BF86BD7007834A3 /* Boast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Boast.swift; sourceTree = "<group>"; };
 		08DBEF1B2BF86CF1007834A3 /* Award.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Award.swift; sourceTree = "<group>"; };
 		08DBEF1D2BF87781007834A3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		BD8665FA2BF89B070039F460 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Font.swift; path = DeulLangNalLang/Sources/Helper/Extensions/DNDesignSystem/Font.swift; sourceTree = SOURCE_ROOT; };
 		BD8665FE2BF89DAB0039F460 /* DNFont.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DNFont.xcassets; sourceTree = "<group>"; };
 		BD8666002BF89F850039F460 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		BDD8FED82BF8CAA300A1E25F /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Font.swift; path = DeulLangNalLang/Sources/Helper/Extensions/DNDesignSystem/Font.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,7 +138,7 @@
 		08DBEF132BF85983007834A3 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				BD8665FD2BF89CA10039F460 /* DNDesignSystem */,
+				BDD8FEDA2BF8CD9600A1E25F /* DNDesignSystem */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -151,10 +151,10 @@
 			path = Application;
 			sourceTree = "<group>";
 		};
-		BD8665FD2BF89CA10039F460 /* DNDesignSystem */ = {
+		BDD8FEDA2BF8CD9600A1E25F /* DNDesignSystem */ = {
 			isa = PBXGroup;
 			children = (
-				BD8665FA2BF89B070039F460 /* Font.swift */,
+				BDD8FED82BF8CAA300A1E25F /* Font.swift */,
 			);
 			path = DNDesignSystem;
 			sourceTree = "<group>";
@@ -232,7 +232,7 @@
 			files = (
 				080072372BF6E7E2007B2956 /* ContentView.swift in Sources */,
 				08DBEF1C2BF86CF1007834A3 /* Award.swift in Sources */,
-				BD8665FB2BF89B070039F460 /* Font.swift in Sources */,
+				BDD8FED92BF8CAA300A1E25F /* Font.swift in Sources */,
 				08DBEF1A2BF86BD7007834A3 /* Boast.swift in Sources */,
 				080072352BF6E7E2007B2956 /* DeulLangNalLangApp.swift in Sources */,
 				08DBEF162BF8699E007834A3 /* User.swift in Sources */,
