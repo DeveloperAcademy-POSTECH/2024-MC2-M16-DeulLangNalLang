@@ -15,6 +15,8 @@
 		08DBEF1A2BF86BD7007834A3 /* Boast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DBEF192BF86BD7007834A3 /* Boast.swift */; };
 		08DBEF1C2BF86CF1007834A3 /* Award.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DBEF1B2BF86CF1007834A3 /* Award.swift */; };
 		08DBEF1E2BF87781007834A3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DBEF1D2BF87781007834A3 /* Constants.swift */; };
+		BD8665FB2BF89B070039F460 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8665FA2BF89B070039F460 /* Font.swift */; };
+		BD8665FF2BF89DAB0039F460 /* DNFont.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD8665FE2BF89DAB0039F460 /* DNFont.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,9 @@
 		08DBEF192BF86BD7007834A3 /* Boast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Boast.swift; sourceTree = "<group>"; };
 		08DBEF1B2BF86CF1007834A3 /* Award.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Award.swift; sourceTree = "<group>"; };
 		08DBEF1D2BF87781007834A3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		BD8665FA2BF89B070039F460 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Font.swift; path = DeulLangNalLang/Sources/Helper/Extensions/DNDesignSystem/Font.swift; sourceTree = SOURCE_ROOT; };
+		BD8665FE2BF89DAB0039F460 /* DNFont.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DNFont.xcassets; sourceTree = "<group>"; };
+		BD8666002BF89F850039F460 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +64,7 @@
 		080072332BF6E7E2007B2956 /* DeulLangNalLang */ = {
 			isa = PBXGroup;
 			children = (
+				BD8666002BF89F850039F460 /* Info.plist */,
 				08DBEF102BF8563A007834A3 /* Resources */,
 				08DBEF0F2BF855D6007834A3 /* Sources */,
 				0800723A2BF6E7E3007B2956 /* Preview Content */,
@@ -115,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				080072382BF6E7E3007B2956 /* Assets.xcassets */,
+				BD8665FE2BF89DAB0039F460 /* DNFont.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -131,6 +138,7 @@
 		08DBEF132BF85983007834A3 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				BD8665FD2BF89CA10039F460 /* DNDesignSystem */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -141,6 +149,14 @@
 				080072342BF6E7E2007B2956 /* DeulLangNalLangApp.swift */,
 			);
 			path = Application;
+			sourceTree = "<group>";
+		};
+		BD8665FD2BF89CA10039F460 /* DNDesignSystem */ = {
+			isa = PBXGroup;
+			children = (
+				BD8665FA2BF89B070039F460 /* Font.swift */,
+			);
+			path = DNDesignSystem;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,6 +217,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD8665FF2BF89DAB0039F460 /* DNFont.xcassets in Resources */,
 				0800723C2BF6E7E3007B2956 /* Preview Assets.xcassets in Resources */,
 				080072392BF6E7E3007B2956 /* Assets.xcassets in Resources */,
 			);
@@ -215,6 +232,7 @@
 			files = (
 				080072372BF6E7E2007B2956 /* ContentView.swift in Sources */,
 				08DBEF1C2BF86CF1007834A3 /* Award.swift in Sources */,
+				BD8665FB2BF89B070039F460 /* Font.swift in Sources */,
 				08DBEF1A2BF86BD7007834A3 /* Boast.swift in Sources */,
 				080072352BF6E7E2007B2956 /* DeulLangNalLangApp.swift in Sources */,
 				08DBEF162BF8699E007834A3 /* User.swift in Sources */,
@@ -355,6 +373,7 @@
 				DEVELOPMENT_TEAM = 2Q4V2LFG28;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DeulLangNalLang/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -385,6 +404,7 @@
 				DEVELOPMENT_TEAM = 2Q4V2LFG28;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DeulLangNalLang/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
