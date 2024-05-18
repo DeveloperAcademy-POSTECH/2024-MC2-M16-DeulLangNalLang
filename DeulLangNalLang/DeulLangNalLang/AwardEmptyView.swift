@@ -23,8 +23,7 @@ struct AwardEmptyView: View {
             Text("자랑을하고 상장을 모아보세요!")
             
             Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: { Text("\(Image(systemName: "arrowtriangle.right.fill"))자랑하러 가기")
-            }).frame()
-            
+            })
         }
     }
 }
