@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var isDetailViewShown = false
     var body: some View {
         VStack {
             NavigationStack{
