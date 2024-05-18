@@ -9,12 +9,16 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-                .padding(.bottom, 1)
-            Text("상장 도서관 메인")
+        NavigationStack{
+            VStack {
+                Image(systemName: "globe")
+                    .imageScale(.large)
+                    .foregroundStyle(.tint)
+                    .padding(.bottom, 1)
+                NavigationLink(destination: AwardDetailView()){
+                    Text("상장 박물관 메인")
+                }
+            }
         }
     }
 }
