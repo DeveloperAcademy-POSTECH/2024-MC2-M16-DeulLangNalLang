@@ -19,7 +19,7 @@ extension Font {
     static let title3Emphasized: Font = .custom("AppleSDGothicNeo-Bold", size: 19)
     
     // Headline
-    static let headline: Font = .custom("AppleSDGothicNeo-Bold", size: 17)
+    static let headlineEmphasized: Font = .custom("AppleSDGothicNeo-Bold", size: 17)
     
     // Body
     static let bodyRegular: Font = .custom("AppleSDGothicNeo-Regular", size: 16.5)
