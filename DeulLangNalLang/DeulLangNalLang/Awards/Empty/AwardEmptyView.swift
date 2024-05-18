@@ -11,12 +11,8 @@ struct AwardEmptyView: View {
     var body: some View {
         
         VStack{
-            HStack{
-                Text("나는 류산")
-                Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-                    Image(systemName: "chevron.down")
-                })
-            }
+            UserSwichView()
+            
             Text("상장이 아직 모이지 \n 않았어요를레이호")
             Image (systemName: "photo.artframe")
                 .font(.system(size: 300))
