@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0769FC4B2BF882B900AF4E85 /* AwardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0769FC4A2BF882B900AF4E85 /* AwardDetailView.swift */; };
 		080072352BF6E7E2007B2956 /* DeulLangNalLangApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080072342BF6E7E2007B2956 /* DeulLangNalLangApp.swift */; };
 		080072372BF6E7E2007B2956 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080072362BF6E7E2007B2956 /* ContentView.swift */; };
 		080072392BF6E7E3007B2956 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 080072382BF6E7E3007B2956 /* Assets.xcassets */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0769FC4A2BF882B900AF4E85 /* AwardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardDetailView.swift; sourceTree = "<group>"; };
 		080072312BF6E7E2007B2956 /* DeulLangNalLang.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeulLangNalLang.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		080072342BF6E7E2007B2956 /* DeulLangNalLangApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeulLangNalLangApp.swift; sourceTree = "<group>"; };
 		080072362BF6E7E2007B2956 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -70,6 +72,8 @@
 				BD8666002BF89F850039F460 /* Info.plist */,
 				08DBEF102BF8563A007834A3 /* Resources */,
 				08DBEF0F2BF855D6007834A3 /* Sources */,
+				080072362BF6E7E2007B2956 /* ContentView.swift */,
+				0769FC4A2BF882B900AF4E85 /* AwardDetailView.swift */,
 				0800723A2BF6E7E3007B2956 /* Preview Content */,
 			);
 			path = DeulLangNalLang;
@@ -234,6 +238,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0769FC4B2BF882B900AF4E85 /* AwardDetailView.swift in Sources */,
 				080072372BF6E7E2007B2956 /* ContentView.swift in Sources */,
 				08DBEF222BF893B9007834A3 /* DNColor.swift in Sources */,
 				08DBEF1C2BF86CF1007834A3 /* Award.swift in Sources */,
