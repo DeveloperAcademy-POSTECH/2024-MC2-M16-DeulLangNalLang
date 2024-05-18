@@ -25,6 +25,9 @@ struct AwardDetailView: View {
                         .padding(20)
                     Spacer()
                 }
+                
+                Image("선인장")
+                
                 VStack(spacing: 0){
                     Spacer()
                     HStack(spacing: 0){
