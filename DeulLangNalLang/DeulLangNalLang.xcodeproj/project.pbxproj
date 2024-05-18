@@ -51,9 +51,9 @@
 		080072332BF6E7E2007B2956 /* DeulLangNalLang */ = {
 			isa = PBXGroup;
 			children = (
-				080072342BF6E7E2007B2956 /* DeulLangNalLangApp.swift */,
+				08DBEF102BF8563A007834A3 /* Resources */,
+				08DBEF0F2BF855D6007834A3 /* Sources */,
 				080072362BF6E7E2007B2956 /* ContentView.swift */,
-				080072382BF6E7E3007B2956 /* Assets.xcassets */,
 				0800723A2BF6E7E3007B2956 /* Preview Content */,
 			);
 			path = DeulLangNalLang;
@@ -65,6 +65,70 @@
 				0800723B2BF6E7E3007B2956 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		08DBEF0C2BF797CD007834A3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		08DBEF0D2BF797F0007834A3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		08DBEF0E2BF797FB007834A3 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		08DBEF0F2BF855D6007834A3 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				08DBEF142BF859A3007834A3 /* Application */,
+				08DBEF112BF85690007834A3 /* Helper */,
+				08DBEF0C2BF797CD007834A3 /* View */,
+				08DBEF0D2BF797F0007834A3 /* Model */,
+				08DBEF0E2BF797FB007834A3 /* Data */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		08DBEF102BF8563A007834A3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				080072382BF6E7E3007B2956 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		08DBEF112BF85690007834A3 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				08DBEF132BF85983007834A3 /* Extensions */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		08DBEF132BF85983007834A3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		08DBEF142BF859A3007834A3 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				080072342BF6E7E2007B2956 /* DeulLangNalLangApp.swift */,
+			);
+			path = Application;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,6 +344,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -309,6 +374,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
