@@ -12,6 +12,13 @@
 		080072372BF6E7E2007B2956 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080072362BF6E7E2007B2956 /* ContentView.swift */; };
 		080072392BF6E7E3007B2956 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 080072382BF6E7E3007B2956 /* Assets.xcassets */; };
 		0800723C2BF6E7E3007B2956 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0800723B2BF6E7E3007B2956 /* Preview Assets.xcassets */; };
+		08DBEF162BF8699E007834A3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DBEF152BF8699E007834A3 /* User.swift */; };
+		08DBEF1A2BF86BD7007834A3 /* Boast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DBEF192BF86BD7007834A3 /* Boast.swift */; };
+		08DBEF1C2BF86CF1007834A3 /* Award.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DBEF1B2BF86CF1007834A3 /* Award.swift */; };
+		08DBEF1E2BF87781007834A3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DBEF1D2BF87781007834A3 /* Constants.swift */; };
+		BD8665FF2BF89DAB0039F460 /* DNFont.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD8665FE2BF89DAB0039F460 /* DNFont.xcassets */; };
+		BDD8FED92BF8CAA300A1E25F /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD8FED82BF8CAA300A1E25F /* Font.swift */; };
+		08DBEF222BF893B9007834A3 /* DNColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DBEF212BF893B9007834A3 /* DNColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +28,15 @@
 		080072362BF6E7E2007B2956 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		080072382BF6E7E3007B2956 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0800723B2BF6E7E3007B2956 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		08DBEF152BF8699E007834A3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		08DBEF192BF86BD7007834A3 /* Boast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Boast.swift; sourceTree = "<group>"; };
+		08DBEF1B2BF86CF1007834A3 /* Award.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Award.swift; sourceTree = "<group>"; };
+		08DBEF1D2BF87781007834A3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		BD8665FE2BF89DAB0039F460 /* DNFont.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DNFont.xcassets; sourceTree = "<group>"; };
+		BD8666002BF89F850039F460 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		BDD8FED82BF8CAA300A1E25F /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Font.swift; path = DeulLangNalLang/Sources/Helper/Extensions/DNDesignSystem/Font.swift; sourceTree = SOURCE_ROOT; };
+		08DBEF212BF893B9007834A3 /* DNColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNColor.swift; sourceTree = "<group>"; };
+
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +69,7 @@
 		080072332BF6E7E2007B2956 /* DeulLangNalLang */ = {
 			isa = PBXGroup;
 			children = (
+				BD8666002BF89F850039F460 /* Info.plist */,
 				08DBEF102BF8563A007834A3 /* Resources */,
 				08DBEF0F2BF855D6007834A3 /* Sources */,
 				080072362BF6E7E2007B2956 /* ContentView.swift */,
@@ -73,6 +90,7 @@
 		08DBEF0C2BF797CD007834A3 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				080072362BF6E7E2007B2956 /* ContentView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -80,6 +98,9 @@
 		08DBEF0D2BF797F0007834A3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				08DBEF152BF8699E007834A3 /* User.swift */,
+				08DBEF192BF86BD7007834A3 /* Boast.swift */,
+				08DBEF1B2BF86CF1007834A3 /* Award.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -107,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				080072382BF6E7E3007B2956 /* Assets.xcassets */,
+				BD8665FE2BF89DAB0039F460 /* DNFont.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -115,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				08DBEF132BF85983007834A3 /* Extensions */,
+				08DBEF1D2BF87781007834A3 /* Constants.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -122,6 +145,8 @@
 		08DBEF132BF85983007834A3 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				BDD8FEDA2BF8CD9600A1E25F /* DNDesignSystem */,
+				08DBEF212BF893B9007834A3 /* DNColor.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -132,6 +157,14 @@
 				080072342BF6E7E2007B2956 /* DeulLangNalLangApp.swift */,
 			);
 			path = Application;
+			sourceTree = "<group>";
+		};
+		BDD8FEDA2BF8CD9600A1E25F /* DNDesignSystem */ = {
+			isa = PBXGroup;
+			children = (
+				BDD8FED82BF8CAA300A1E25F /* Font.swift */,
+			);
+			path = DNDesignSystem;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,6 +225,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD8665FF2BF89DAB0039F460 /* DNFont.xcassets in Resources */,
 				0800723C2BF6E7E3007B2956 /* Preview Assets.xcassets in Resources */,
 				080072392BF6E7E3007B2956 /* Assets.xcassets in Resources */,
 			);
@@ -206,7 +240,13 @@
 			files = (
 				0769FC4B2BF882B900AF4E85 /* AwardDetailView.swift in Sources */,
 				080072372BF6E7E2007B2956 /* ContentView.swift in Sources */,
+				08DBEF222BF893B9007834A3 /* DNColor.swift in Sources */,
+				08DBEF1C2BF86CF1007834A3 /* Award.swift in Sources */,
+				BDD8FED92BF8CAA300A1E25F /* Font.swift in Sources */,
+				08DBEF1A2BF86BD7007834A3 /* Boast.swift in Sources */,
 				080072352BF6E7E2007B2956 /* DeulLangNalLangApp.swift in Sources */,
+				08DBEF162BF8699E007834A3 /* User.swift in Sources */,
+				08DBEF1E2BF87781007834A3 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,6 +383,7 @@
 				DEVELOPMENT_TEAM = 2Q4V2LFG28;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DeulLangNalLang/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -373,6 +414,7 @@
 				DEVELOPMENT_TEAM = 2Q4V2LFG28;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DeulLangNalLang/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
