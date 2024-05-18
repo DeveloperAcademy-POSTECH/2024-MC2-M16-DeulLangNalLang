@@ -13,9 +13,9 @@ struct ContentView: View {
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundStyle(.tint)
-            Text("PRTest")
+                .padding(.bottom, 1)
+            Text("상장 도서관 메인")
         }
-        .padding()
     }
 }
 
