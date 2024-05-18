@@ -10,13 +10,17 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         NavigationStack{
-            VStack {
-                Image(systemName: "globe")
-                    .imageScale(.large)
-                    .foregroundStyle(.tint)
-                    .padding(.bottom, 1)
-                NavigationLink(destination: AwardDetailView()){
-                    Text("상장 박물관 메인")
+            NavigationLink(destination: AwardDetailView()){
+
+            ZStack{
+                RoundedRectangle(cornerRadius: 20)
+                    .frame(width: 110, height: 160)
+                    .foregroundColor(.yellow)
+                VStack {
+                        Text("상장")
+                            .foregroundColor(.black)
+                            .fontWeight(.heavy)
+                    }
                 }
             }
         }
