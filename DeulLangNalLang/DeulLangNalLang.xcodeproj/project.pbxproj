@@ -17,6 +17,7 @@
 		08DBEF1E2BF87781007834A3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DBEF1D2BF87781007834A3 /* Constants.swift */; };
 		BD8665FF2BF89DAB0039F460 /* DNFont.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD8665FE2BF89DAB0039F460 /* DNFont.xcassets */; };
 		BDD8FED92BF8CAA300A1E25F /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD8FED82BF8CAA300A1E25F /* Font.swift */; };
+		08DBEF222BF893B9007834A3 /* DNColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DBEF212BF893B9007834A3 /* DNColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,8 @@
 		BD8665FE2BF89DAB0039F460 /* DNFont.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DNFont.xcassets; sourceTree = "<group>"; };
 		BD8666002BF89F850039F460 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		BDD8FED82BF8CAA300A1E25F /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Font.swift; path = DeulLangNalLang/Sources/Helper/Extensions/DNDesignSystem/Font.swift; sourceTree = SOURCE_ROOT; };
+		08DBEF212BF893B9007834A3 /* DNColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNColor.swift; sourceTree = "<group>"; };
+
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				BDD8FEDA2BF8CD9600A1E25F /* DNDesignSystem */,
+				08DBEF212BF893B9007834A3 /* DNColor.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -231,6 +235,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				080072372BF6E7E2007B2956 /* ContentView.swift in Sources */,
+				08DBEF222BF893B9007834A3 /* DNColor.swift in Sources */,
 				08DBEF1C2BF86CF1007834A3 /* Award.swift in Sources */,
 				BDD8FED92BF8CAA300A1E25F /* Font.swift in Sources */,
 				08DBEF1A2BF86BD7007834A3 /* Boast.swift in Sources */,
