@@ -8,42 +8,42 @@
 
 /* Begin PBXBuildFile section */
 		0769FC4B2BF882B900AF4E85 /* AwardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0769FC4A2BF882B900AF4E85 /* AwardDetailView.swift */; };
+		07F5F6302BF8F7F0008A184B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F5F62F2BF8F7F0008A184B /* ContentView.swift */; };
+		07F5F6342BF9C8F4008A184B /* BoastDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F5F6332BF9C8F4008A184B /* BoastDetailView.swift */; };
 		080072352BF6E7E2007B2956 /* DeulLangNalLangApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080072342BF6E7E2007B2956 /* DeulLangNalLangApp.swift */; };
-		080072372BF6E7E2007B2956 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080072362BF6E7E2007B2956 /* ContentView.swift */; };
 		080072392BF6E7E3007B2956 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 080072382BF6E7E3007B2956 /* Assets.xcassets */; };
 		0800723C2BF6E7E3007B2956 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0800723B2BF6E7E3007B2956 /* Preview Assets.xcassets */; };
 		08DBEF162BF8699E007834A3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DBEF152BF8699E007834A3 /* User.swift */; };
 		08DBEF1A2BF86BD7007834A3 /* Boast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DBEF192BF86BD7007834A3 /* Boast.swift */; };
 		08DBEF1C2BF86CF1007834A3 /* Award.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DBEF1B2BF86CF1007834A3 /* Award.swift */; };
 		08DBEF1E2BF87781007834A3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DBEF1D2BF87781007834A3 /* Constants.swift */; };
+		08DBEF222BF893B9007834A3 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DBEF212BF893B9007834A3 /* Color.swift */; };
 		BD8665FF2BF89DAB0039F460 /* DNFont.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD8665FE2BF89DAB0039F460 /* DNFont.xcassets */; };
 		BDD8FED92BF8CAA300A1E25F /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD8FED82BF8CAA300A1E25F /* Font.swift */; };
-		08DBEF222BF893B9007834A3 /* DNColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DBEF212BF893B9007834A3 /* DNColor.swift */; };
 		08DBEF252BF8D082007834A3 /* AwardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DBEF242BF8D082007834A3 /* AwardDetailView.swift */; };
 		08DBEF272BF8D102007834A3 /* CardFlipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DBEF262BF8D102007834A3 /* CardFlipView.swift */; };
-		08DBEF292BF8D389007834A3 /* TempAView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DBEF282BF8D389007834A3 /* TempAView.swift */; };
-		08DBEF2B2BF8D39C007834A3 /* TempBView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DBEF2A2BF8D39C007834A3 /* TempBView.swift */; };
+		BDD8FEDE2BF8FD4F00A1E25F /* BoastCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD8FEDD2BF8FD4F00A1E25F /* BoastCardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0769FC4A2BF882B900AF4E85 /* AwardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardDetailView.swift; sourceTree = "<group>"; };
+		07F5F62F2BF8F7F0008A184B /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		07F5F6332BF9C8F4008A184B /* BoastDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoastDetailView.swift; sourceTree = "<group>"; };
 		080072312BF6E7E2007B2956 /* DeulLangNalLang.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeulLangNalLang.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		080072342BF6E7E2007B2956 /* DeulLangNalLangApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeulLangNalLangApp.swift; sourceTree = "<group>"; };
-		080072362BF6E7E2007B2956 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		080072382BF6E7E3007B2956 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0800723B2BF6E7E3007B2956 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		08DBEF152BF8699E007834A3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		08DBEF192BF86BD7007834A3 /* Boast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Boast.swift; sourceTree = "<group>"; };
 		08DBEF1B2BF86CF1007834A3 /* Award.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Award.swift; sourceTree = "<group>"; };
 		08DBEF1D2BF87781007834A3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		08DBEF212BF893B9007834A3 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		BD8665FE2BF89DAB0039F460 /* DNFont.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DNFont.xcassets; sourceTree = "<group>"; };
 		BD8666002BF89F850039F460 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		BDD8FED82BF8CAA300A1E25F /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Font.swift; path = DeulLangNalLang/Sources/Helper/Extensions/DNDesignSystem/Font.swift; sourceTree = SOURCE_ROOT; };
-		08DBEF212BF893B9007834A3 /* DNColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNColor.swift; sourceTree = "<group>"; };
 		08DBEF242BF8D082007834A3 /* AwardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardDetailView.swift; sourceTree = "<group>"; };
 		08DBEF262BF8D102007834A3 /* CardFlipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFlipView.swift; sourceTree = "<group>"; };
-		08DBEF282BF8D389007834A3 /* TempAView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempAView.swift; sourceTree = "<group>"; };
-		08DBEF2A2BF8D39C007834A3 /* TempBView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempBView.swift; sourceTree = "<group>"; };
+		BDD8FEDD2BF8FD4F00A1E25F /* BoastCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoastCardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,8 +79,8 @@
 				BD8666002BF89F850039F460 /* Info.plist */,
 				08DBEF102BF8563A007834A3 /* Resources */,
 				08DBEF0F2BF855D6007834A3 /* Sources */,
-				080072362BF6E7E2007B2956 /* ContentView.swift */,
 				0769FC4A2BF882B900AF4E85 /* AwardDetailView.swift */,
+				07F5F6332BF9C8F4008A184B /* BoastDetailView.swift */,
 				0800723A2BF6E7E3007B2956 /* Preview Content */,
 			);
 			path = DeulLangNalLang;
@@ -97,11 +97,11 @@
 		08DBEF0C2BF797CD007834A3 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				07F5F62F2BF8F7F0008A184B /* ContentView.swift */,
+				BDD8FEDD2BF8FD4F00A1E25F /* BoastCardView.swift */,
 				080072362BF6E7E2007B2956 /* ContentView.swift */,
 				08DBEF242BF8D082007834A3 /* AwardDetailView.swift */,
 				08DBEF262BF8D102007834A3 /* CardFlipView.swift */,
-				08DBEF282BF8D389007834A3 /* TempAView.swift */,
-				08DBEF2A2BF8D39C007834A3 /* TempBView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -157,7 +157,6 @@
 			isa = PBXGroup;
 			children = (
 				BDD8FEDA2BF8CD9600A1E25F /* DNDesignSystem */,
-				08DBEF212BF893B9007834A3 /* DNColor.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -173,6 +172,7 @@
 		BDD8FEDA2BF8CD9600A1E25F /* DNDesignSystem */ = {
 			isa = PBXGroup;
 			children = (
+				08DBEF212BF893B9007834A3 /* Color.swift */,
 				BDD8FED82BF8CAA300A1E25F /* Font.swift */,
 			);
 			path = DNDesignSystem;
@@ -250,14 +250,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				0769FC4B2BF882B900AF4E85 /* AwardDetailView.swift in Sources */,
+				08DBEF222BF893B9007834A3 /* Color.swift in Sources */,
+				BDD8FEDE2BF8FD4F00A1E25F /* BoastCardView.swift in Sources */,
 				080072372BF6E7E2007B2956 /* ContentView.swift in Sources */,
 				08DBEF272BF8D102007834A3 /* CardFlipView.swift in Sources */,
-				08DBEF292BF8D389007834A3 /* TempAView.swift in Sources */,
-				08DBEF222BF893B9007834A3 /* DNColor.swift in Sources */,
-				08DBEF2B2BF8D39C007834A3 /* TempBView.swift in Sources */,
 				08DBEF1C2BF86CF1007834A3 /* Award.swift in Sources */,
 				BDD8FED92BF8CAA300A1E25F /* Font.swift in Sources */,
 				08DBEF1A2BF86BD7007834A3 /* Boast.swift in Sources */,
+				07F5F6342BF9C8F4008A184B /* BoastDetailView.swift in Sources */,
+				07F5F6302BF8F7F0008A184B /* ContentView.swift in Sources */,
 				080072352BF6E7E2007B2956 /* DeulLangNalLangApp.swift in Sources */,
 				08DBEF162BF8699E007834A3 /* User.swift in Sources */,
 				08DBEF252BF8D082007834A3 /* AwardDetailView.swift in Sources */,

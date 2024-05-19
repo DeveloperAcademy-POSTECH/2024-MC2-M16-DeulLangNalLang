@@ -19,7 +19,7 @@ extension Font {
     static let title3Emphasized: Font = .custom("AppleSDGothicNeo-Bold", size: 19)
     
     // Headline
-    static let headline: Font = .custom("AppleSDGothicNeo-Bold", size: 17)
+    static let headlineEmphasized: Font = .custom("AppleSDGothicNeo-Bold", size: 17)
     
     // Body
     static let bodyRegular: Font = .custom("AppleSDGothicNeo-Regular", size: 16.5)
@@ -45,3 +45,10 @@ extension Font {
     static let caption2Regular: Font = .custom("AppleSDGothicNeo-Regular", size: 10.5)
     static let caption2Emphasized: Font = .custom("AppleSDGothicNeo-SemiBold", size: 10.5)
 }
+
+extension String{
+    func splitCharacter() -> String{
+        return self.split(separator: "").joined(separator: "\u{200B}")
+    }
+}
+
