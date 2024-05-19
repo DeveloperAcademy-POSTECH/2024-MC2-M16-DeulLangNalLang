@@ -7,23 +7,52 @@
 
 import SwiftUI
 
+struct Constants {
+    static let ButtonFill: Color = Color(red: 0.87, green: 0.87, blue: 0.87)
+}
+
 struct UserSelectView: View {
     var body: some View {
-        VStack {
-            NavigationStack{
-                NavigationLink(destination: AwardDetailView()){
+        NavigationStack {
+            VStack {
+                Rectangle()
+                    .frame(width: .infinity, height: 68)
+                    .foregroundColor(.clear)
+                
+                Text("당신은 누구인가요?")
+                    .font(.largeTitleEmphasized)
+                    .foregroundColor(.black)
+                    .frame(width: 361, height: 44, alignment: .topLeading)
+                
+                Rectangle()
+                    .frame(width: .infinity, height: 164)
+                    .foregroundColor(.clear)
+                
+                HStack(alignment: .top, spacing: 9){
+                    NavigationLink(destination: ContentView()) {
+                        Text("산")
+                            .font(.title1Regular)
+                            .multilineTextAlignment(.center)
+                            .foregroundColor(.black)
+                        .frame(width: 46, height: 50, alignment: .center) }
+                    .padding(0)
+                    .frame(width: 176, height: 192, alignment: .center)
+                    .background(Constants.ButtonFill)
+                    .cornerRadius(16)
                     
-                    ZStack{
-                        RoundedRectangle(cornerRadius: 20)
-                            .frame(width: 110, height: 160)
-                            .foregroundColor(.yellow)
-                        VStack {
-                            Text("상장")
-                                .foregroundColor(.black)
-                                .fontWeight(.heavy)
-                        }
+                    NavigationLink(destination: ContentView()) {
+                        Text("들")
+                            .font(Font.custom("Apple SD Gothic Neo", size: 25))
+                            .multilineTextAlignment(.center)
+                            .foregroundColor(.black)
+                            .frame(width: 46, height: 50, alignment: .center)
+                            .padding(0)
+                            .frame(width: 176, height: 192, alignment: .center)
+                            .background(Constants.ButtonFill)
+                            .cornerRadius(16)
                     }
                 }
+                Spacer()
             }
         }
     }
@@ -32,3 +61,4 @@ struct UserSelectView: View {
 #Preview {
     UserSelectView()
 }
+
