@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct AwardMainView: View {
+    @State var selection: Int = 0
+    
     var body: some View {
         ScrollView{
             VStack (alignment: .leading) {
@@ -22,11 +24,19 @@ struct AwardMainView: View {
                 Text("상장이 n개 모였네요! \n아주 칭찬합니다람쥐")
                     .font(.DlnlHeadline)
                 
-                TotalAwardsListView()
+                SegmentedPickerView(selection: $selection)
+                
+                if selection == 0 {
+                    TotalAwardsListView()
+                } else {
+                    LikedAwardsListView()
+                }
+                
                 
             }
             .border(Color.blue, width: 2)
             .padding()
+            .animation(.easeInOut(duration: 0.2), value: selection)
         }
     }
 }
