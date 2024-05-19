@@ -3,12 +3,12 @@ import UIKit
 
 struct BoastAddView: View {
     @State private var text = ""
-    @State private var isShowingImagePicker = false
-    @State private var selectedImage: UIImage? = nil
-    @Environment(\.presentationMode) var presentationMode // presentationMode 환경 변수 추가
+        @State private var isShowingImagePicker = false
+        @State private var selectedImages: [UIImage?] = [nil, nil]
+        @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
-            NavigationView { // NavigationView로 감싸기
+            NavigationView {
                 VStack {
                     CustomTextView(text: $text, isShowingImagePicker: $isShowingImagePicker)
                         .frame(height: 200)
@@ -16,21 +16,36 @@ struct BoastAddView: View {
                     
                     Spacer()
                     
-                    if let selectedImage = selectedImage {
-                        Image(uiImage: selectedImage)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(height: 200)
-                            .padding()
+                    HStack(spacing: 20) {
+                        ForEach(0..<selectedImages.count, id: \.self) { index in
+                            if let image = selectedImages[index] {
+                                Image(uiImage: image)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(height: 100)
+                                    .padding()
+                            } 
+                                else {
+                                Button(action: {
+                                    isShowingImagePicker = true
+                                }) {
+                                    Image(systemName: "add")
+                                        .font(.title)
+                                }
+                                .sheet(isPresented: $isShowingImagePicker) {
+                                    ImagePicker(selectedImage: $selectedImages[index])
+                                }
+                            }
+                        }
                     }
+                    
+                    Spacer()
                 }
                 .navigationBarTitle("자랑쓰기")
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationBarItems(trailing: Button("완료") { // 오른쪽에 "완료" 버튼 추가
-                                presentationMode.wrappedValue.dismiss() // 버튼이 눌리면 모달 닫기
-                            })                .sheet(isPresented: $isShowingImagePicker) {
-                    ImagePicker(selectedImage: $selectedImage)
-                }
+                    presentationMode.wrappedValue.dismiss() // 버튼이 눌리면 모달 닫기
+                })
             }
         }
     }
