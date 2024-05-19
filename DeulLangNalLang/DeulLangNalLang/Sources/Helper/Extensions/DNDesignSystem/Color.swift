@@ -1,5 +1,5 @@
 //
-//  DNColor.swift
+//  Color.swift
 //  DeulLangNalLang
 //
 //  Created by 윤동주 on 5/18/24.
