@@ -17,6 +17,8 @@
 		F16525FC2BF8E4E20013C2CF /* SegmentedPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16525FB2BF8E4E20013C2CF /* SegmentedPickerView.swift */; };
 		F16525FE2BF8E52C0013C2CF /* TotalAwardsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16525FD2BF8E52C0013C2CF /* TotalAwardsListView.swift */; };
 		F16526002BF8E54A0013C2CF /* LikedAwardsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16525FF2BF8E54A0013C2CF /* LikedAwardsListView.swift */; };
+		F16526092BF8F3300013C2CF /* Font+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16526082BF8F3300013C2CF /* Font+Extention.swift */; };
+		F165260C2BF9B0FE0013C2CF /* AppleSDGothicNeo.ttc in Resources */ = {isa = PBXBuildFile; fileRef = F165260B2BF9B0FE0013C2CF /* AppleSDGothicNeo.ttc */; };
 		F1DFB5542BF7D2D100AE18AC /* AwardMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DFB5532BF7D2D100AE18AC /* AwardMainView.swift */; };
 		F1DFB5562BF7D6ED00AE18AC /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DFB5552BF7D6ED00AE18AC /* CarouselView.swift */; };
 		F1DFB5582BF871AB00AE18AC /* AwardEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DFB5572BF871AB00AE18AC /* AwardEmptyView.swift */; };
@@ -34,6 +36,8 @@
 		F16525FB2BF8E4E20013C2CF /* SegmentedPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedPickerView.swift; sourceTree = "<group>"; };
 		F16525FD2BF8E52C0013C2CF /* TotalAwardsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalAwardsListView.swift; sourceTree = "<group>"; };
 		F16525FF2BF8E54A0013C2CF /* LikedAwardsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedAwardsListView.swift; sourceTree = "<group>"; };
+		F16526082BF8F3300013C2CF /* Font+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extention.swift"; sourceTree = "<group>"; };
+		F165260B2BF9B0FE0013C2CF /* AppleSDGothicNeo.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeo.ttc; sourceTree = "<group>"; };
 		F1DFB5532BF7D2D100AE18AC /* AwardMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardMainView.swift; sourceTree = "<group>"; };
 		F1DFB5552BF7D6ED00AE18AC /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
 		F1DFB5572BF871AB00AE18AC /* AwardEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardEmptyView.swift; sourceTree = "<group>"; };
@@ -69,10 +73,9 @@
 		080072332BF6E7E2007B2956 /* DeulLangNalLang */ = {
 			isa = PBXGroup;
 			children = (
+				F165260A2BF9B0BD0013C2CF /* font */,
 				080072342BF6E7E2007B2956 /* DeulLangNalLangApp.swift */,
-				080072362BF6E7E2007B2956 /* ContentView.swift */,
-				F16525F42BF8B23A0013C2CF /* TabBarView.swift */,
-				F16525F82BF8E2E90013C2CF /* Awards */,
+				F16526042BF8E8BF0013C2CF /* View */,
 				080072382BF6E7E3007B2956 /* Assets.xcassets */,
 				0800723A2BF6E7E3007B2956 /* Preview Content */,
 			);
@@ -92,9 +95,10 @@
 			children = (
 				F16525F62BF8E2CD0013C2CF /* UserSwichView.swift */,
 				F16525F92BF8E4A10013C2CF /* SectionTitleView.swift */,
-				F16526022BF8E5600013C2CF /* Empty */,
 				F16526012BF8E5590013C2CF /* TopMain */,
 				F16526032BF8E5900013C2CF /* BottomMain */,
+				F16526072BF8F30F0013C2CF /* Helper */,
+				F16526022BF8E5600013C2CF /* Empty */,
 			);
 			path = Awards;
 			sourceTree = "<group>";
@@ -102,8 +106,8 @@
 		F16526012BF8E5590013C2CF /* TopMain */ = {
 			isa = PBXGroup;
 			children = (
-				F1DFB5552BF7D6ED00AE18AC /* CarouselView.swift */,
 				F1DFB5532BF7D2D100AE18AC /* AwardMainView.swift */,
+				F1DFB5552BF7D6ED00AE18AC /* CarouselView.swift */,
 			);
 			path = TopMain;
 			sourceTree = "<group>";
@@ -124,6 +128,32 @@
 				F16525FF2BF8E54A0013C2CF /* LikedAwardsListView.swift */,
 			);
 			path = BottomMain;
+			sourceTree = "<group>";
+		};
+		F16526042BF8E8BF0013C2CF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				080072362BF6E7E2007B2956 /* ContentView.swift */,
+				F16525F42BF8B23A0013C2CF /* TabBarView.swift */,
+				F16525F82BF8E2E90013C2CF /* Awards */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F16526072BF8F30F0013C2CF /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				F16526082BF8F3300013C2CF /* Font+Extention.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		F165260A2BF9B0BD0013C2CF /* font */ = {
+			isa = PBXGroup;
+			children = (
+				F165260B2BF9B0FE0013C2CF /* AppleSDGothicNeo.ttc */,
+			);
+			path = font;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -185,6 +215,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0800723C2BF6E7E3007B2956 /* Preview Assets.xcassets in Resources */,
+				F165260C2BF9B0FE0013C2CF /* AppleSDGothicNeo.ttc in Resources */,
 				080072392BF6E7E3007B2956 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -198,6 +229,7 @@
 			files = (
 				F1DFB5582BF871AB00AE18AC /* AwardEmptyView.swift in Sources */,
 				F1DFB5542BF7D2D100AE18AC /* AwardMainView.swift in Sources */,
+				F16526092BF8F3300013C2CF /* Font+Extention.swift in Sources */,
 				F16525FC2BF8E4E20013C2CF /* SegmentedPickerView.swift in Sources */,
 				F16526002BF8E54A0013C2CF /* LikedAwardsListView.swift in Sources */,
 				F16525F72BF8E2CD0013C2CF /* UserSwichView.swift in Sources */,
