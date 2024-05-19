@@ -22,6 +22,7 @@ struct BoastMainView: View {
                         .font(.title1Regular)
                 }
                 .padding(.trailing, 4)
+                
                 Button(action: {
                     showSheet.toggle()
                     //TODO: 상장 작성 view 연결
@@ -40,6 +41,7 @@ struct BoastMainView: View {
             ScrollView{
                 ForEach($tempBoasts, id: \.self) { boast in
                     BoastCardView(tempBoast: boast)
+                        .padding(.bottom, 8)
                 }
             }
             .padding()
