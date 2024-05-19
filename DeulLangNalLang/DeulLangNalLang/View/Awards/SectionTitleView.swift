@@ -19,7 +19,6 @@ struct SectionTitleView: View {
             
             
         }.font(.DlnlHeadline)
-            .fontWeight(.bold)
     }
 }
 

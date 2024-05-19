@@ -17,12 +17,12 @@ struct AwardMainView: View {
                 UserSwichView()
                 
                 Text("이번주 상장을 확인해 \n보세요구르트")
-                    .font(.DlnlHeadline)
+                    .font(.DlnlLargetitle)
                 
                 CarouselView()
                 
                 Text("상장이 n개 모였네요! \n아주 칭찬합니다람쥐")
-                    .font(.DlnlHeadline)
+                    .font(.DlnlLargetitle)
                 
                 SegmentedPickerView(selection: $selection)
                 

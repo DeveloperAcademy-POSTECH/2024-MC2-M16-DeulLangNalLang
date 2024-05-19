@@ -35,6 +35,7 @@ struct TotalAwardsListView: View {
                                 .frame(height: 115)
                             
                             Text(award)
+                                .font(.DlnlHeadline)
                         }
                     }
                 }

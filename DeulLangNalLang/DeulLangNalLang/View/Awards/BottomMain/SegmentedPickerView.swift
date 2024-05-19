@@ -22,15 +22,16 @@ struct SegmentedPickerView: View {
                content: {
             ForEach(filterOptions.indices) { index in
                 Text(filterOptions[index])
+                    .font(.DlnlHeadline)
             }
         })
         .pickerStyle(SegmentedPickerStyle())
         .onAppear {
-            UISegmentedControl.appearance().selectedSegmentTintColor = UIColor.gray
+            UISegmentedControl.appearance().selectedSegmentTintColor = UIColor.white
             
             let attributes: [NSAttributedString.Key:Any] = [
                 //원하는 색상
-                .foregroundColor : UIColor.white
+                .foregroundColor : UIColor.black
             ]
             UISegmentedControl.appearance().setTitleTextAttributes(attributes, for: .selected)
         }
