@@ -20,16 +20,35 @@ struct BoastDetailView: View {
                     .foregroundColor(.blue)
                 VStack(spacing: 0){
                     //---------- 사진 1장일 때--------------
-                    Image("선인장")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 281, height: 220)
-                        .clipped()
-                        .cornerRadius(8)
-                        .padding(.top, 20)
+//                    Image("선인장")
+//                        .resizable()
+//                        .aspectRatio(contentMode: .fill)
+//                        .frame(width: 281, height: 220)
+//                        .clipped()
+//                        .cornerRadius(8)
+//                        .padding(.top, 20)
                     
                     //---------- 사진 2장일 때--------------
+                    HStack(spacing: 0){
+                        Image("선인장")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 136, height: 220)
+                            .clipped()
+                            .cornerRadius(8)
+                            .padding(.top, 20)
+                            .padding(.horizontal, 5)
 
+                        Image("선인장")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 136, height: 220)
+                            .clipped()
+                            .cornerRadius(8)
+                            .padding(.top, 20)
+                            .padding(.horizontal, 5)
+
+                    }
                     
                     Text("오늘 들이가 배고프다고 해서 새로운 메뉴 파스타에 도전해봤다. 생각보다 쉽고 맛있었다. 다행히 들이도 맛있게 먹어준 것 같아서 좋았다. 오늘 들이가 배고프다고 해서 새로운 메뉴이다.")
                         .font(.bodyRegular)
