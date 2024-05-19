@@ -45,3 +45,10 @@ extension Font {
     static let caption2Regular: Font = .custom("AppleSDGothicNeo-Regular", size: 10.5)
     static let caption2Emphasized: Font = .custom("AppleSDGothicNeo-SemiBold", size: 10.5)
 }
+
+extension String{
+    func splitCharacter() -> String{
+        return self.split(separator: "").joined(separator: "\u{200B}")
+    }
+}
+
