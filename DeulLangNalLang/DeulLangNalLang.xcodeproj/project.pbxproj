@@ -20,6 +20,7 @@
 		BD8665FF2BF89DAB0039F460 /* DNFont.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD8665FE2BF89DAB0039F460 /* DNFont.xcassets */; };
 		BDD8FED92BF8CAA300A1E25F /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD8FED82BF8CAA300A1E25F /* Font.swift */; };
 		BDD8FEDE2BF8FD4F00A1E25F /* BoastCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD8FEDD2BF8FD4F00A1E25F /* BoastCardView.swift */; };
+		BDF0A5B72BFA482500070045 /* BoastMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF0A5B62BFA482500070045 /* BoastMainView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		BD8666002BF89F850039F460 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		BDD8FED82BF8CAA300A1E25F /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Font.swift; path = DeulLangNalLang/Sources/Helper/Extensions/DNDesignSystem/Font.swift; sourceTree = SOURCE_ROOT; };
 		BDD8FEDD2BF8FD4F00A1E25F /* BoastCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoastCardView.swift; sourceTree = "<group>"; };
+		BDF0A5B62BFA482500070045 /* BoastMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoastMainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 			children = (
 				07F5F62F2BF8F7F0008A184B /* ContentView.swift */,
 				BDD8FEDD2BF8FD4F00A1E25F /* BoastCardView.swift */,
+				BDF0A5B62BFA482500070045 /* BoastMainView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -246,6 +249,7 @@
 				BDD8FED92BF8CAA300A1E25F /* Font.swift in Sources */,
 				08DBEF1A2BF86BD7007834A3 /* Boast.swift in Sources */,
 				07F5F6302BF8F7F0008A184B /* ContentView.swift in Sources */,
+				BDF0A5B72BFA482500070045 /* BoastMainView.swift in Sources */,
 				080072352BF6E7E2007B2956 /* DeulLangNalLangApp.swift in Sources */,
 				08DBEF162BF8699E007834A3 /* User.swift in Sources */,
 				08DBEF1E2BF87781007834A3 /* Constants.swift in Sources */,
