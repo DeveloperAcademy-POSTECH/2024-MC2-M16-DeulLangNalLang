@@ -29,7 +29,7 @@ struct ContentView: View {
                     }
                 }
             }
-            Button("Show Modal") {
+            Button("자랑 추가하기") {
                 showModal = true
                 //                            Text("자랑 추가")
                 //                                .foregroundColor(.black)

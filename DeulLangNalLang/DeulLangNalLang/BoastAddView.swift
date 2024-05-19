@@ -19,13 +19,21 @@ struct BoastAddView: View {
                     HStack(spacing: 20) {
                         ForEach(0..<selectedImages.count, id: \.self) { index in
                             if let image = selectedImages[index] {
-                                Image(uiImage: image)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(height: 100)
-                                    .padding()
-                            } 
-                                else {
+                                VStack {
+                                    Image(uiImage: image)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(height: 100)
+                                        .padding()
+                                    
+                                    Button(action: {
+                                        selectedImages[index] = nil
+                                    }) {
+                                        Text("삭제")
+                                            .foregroundColor(.red)
+                                    }
+                                }
+                            } else {
                                 Button(action: {
                                     isShowingImagePicker = true
                                 }) {
@@ -43,8 +51,8 @@ struct BoastAddView: View {
                 }
                 .navigationBarTitle("자랑쓰기")
                 .navigationBarTitleDisplayMode(.inline)
-                .navigationBarItems(trailing: Button("완료") { // 오른쪽에 "완료" 버튼 추가
-                    presentationMode.wrappedValue.dismiss() // 버튼이 눌리면 모달 닫기
+                .navigationBarItems(trailing: Button("완료") {
+                    presentationMode.wrappedValue.dismiss()
                 })
             }
         }
