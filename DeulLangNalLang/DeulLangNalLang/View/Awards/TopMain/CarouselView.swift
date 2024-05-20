@@ -12,7 +12,6 @@ struct CarouselView: View {
         
         ScrollView(.horizontal){
             HStack {
-                Spacer()
                 RoundedRectangle(cornerRadius: 20)
                     .fill(Color.blue)
                     .frame(width: 268, height: 390)
@@ -25,7 +24,6 @@ struct CarouselView: View {
                     .fill(Color.blue)
                     .frame(width: 268, height: 390)
                 
-                Spacer()
             }
         }
     }

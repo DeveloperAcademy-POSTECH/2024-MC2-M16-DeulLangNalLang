@@ -19,7 +19,7 @@ struct UserSwitchView: View {
             Button("류들", action: {selectedOption = "들이"})
         } label: {
             Text("나는 \(selectedOption) \(Image(systemName: "chevron.down")) ")
-        } .font(.DlnlTitle3)
+        } .font(.DlnlTitle3SB)
             .accentColor(.black)
     }
 }

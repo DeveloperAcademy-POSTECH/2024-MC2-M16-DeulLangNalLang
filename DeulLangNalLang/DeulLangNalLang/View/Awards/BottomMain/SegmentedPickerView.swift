@@ -12,7 +12,8 @@ struct SegmentedPickerView: View {
     @Binding var selection: Int
     
     let filterOptions: [String] = [
-        "전체 상장보기", "소중한 상장"
+        "전체 상장보기",
+        "소중한 상장"
     ]
     
     var body: some View {

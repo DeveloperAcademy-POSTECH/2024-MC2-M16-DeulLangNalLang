@@ -22,26 +22,25 @@ struct LikedAwardsListView: View {
     
     var body: some View {
         
-   
-            VStack(alignment: .leading){
-
-                LazyVGrid(columns: columns, spacing: 20) {
-                    ForEach(data, id: \.self) { award in
+        VStack(alignment: .leading){
+            
+            LazyVGrid(columns: columns, spacing: 20) {
+                ForEach(data, id: \.self) { award in
+                    
+                    VStack {
+                        RoundedRectangle(cornerRadius: 20)
+                            .fill(Color.green)
+                            .frame(height: 285)
                         
-                        VStack {
-                            RoundedRectangle(cornerRadius: 20)
-                                .fill(Color.green)
-                                .frame(height: 285)
-                            
-                            Text(award)
-                                .font(.DlnlHeadline)
-                        }
+                        Text(award)
+                            .font(.DlnlHeadline)
                     }
                 }
-                
             }
+            
         }
     }
+}
 
 
 #Preview {
