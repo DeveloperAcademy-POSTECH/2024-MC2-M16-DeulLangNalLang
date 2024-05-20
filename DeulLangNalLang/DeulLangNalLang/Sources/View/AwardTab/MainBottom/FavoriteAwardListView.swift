@@ -37,8 +37,8 @@ struct FavoriteAwardListView: View {
                     }
                 }
             }
-            
         }
+        .padding(.horizontal)
     }
 }
 
