@@ -13,7 +13,6 @@ struct AwardDetailView: View {
     
     var body: some View {
         VStack(spacing: 0){
-            Spacer()
             ZStack{
                 RoundedRectangle(cornerRadius: 20)
                     .frame(width: 329, height: 480)
