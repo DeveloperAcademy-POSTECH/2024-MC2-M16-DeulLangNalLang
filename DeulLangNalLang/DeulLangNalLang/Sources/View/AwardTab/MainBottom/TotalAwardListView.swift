@@ -26,14 +26,15 @@ struct TotalAwardListView: View {
             VStack(alignment: .leading){
                 LazyVGrid(columns: columns, spacing: 20) {
                     ForEach(data, id: \.self) { award in
-                        
-                        VStack {
-                            RoundedRectangle(cornerRadius: 4)
-                                .fill(Color.yellow)
-                                .frame(height: 115)
-                            
-                            Text(award)
-                                .font(.headlineEmphasized)
+                        NavigationLink(destination: CardFlipView()){
+                            VStack {
+                                RoundedRectangle(cornerRadius: 4)
+                                    .fill(Color.yellow)
+                                    .frame(height: 115)
+                                
+                                Text(award)
+                                    .font(.headlineEmphasized)
+                            }
                         }
                     }
                 }
