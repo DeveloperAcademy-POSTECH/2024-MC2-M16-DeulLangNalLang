@@ -59,7 +59,7 @@ struct BoastCardView: View {
             Divider()
             VStack{
                 HStack{
-                    Text("2024.00.00")
+                    Text(getDateFormat(date: tempBoast.date))
                         .font(.bodyRegular)
                         .foregroundStyle(.white)
                     Spacer()
