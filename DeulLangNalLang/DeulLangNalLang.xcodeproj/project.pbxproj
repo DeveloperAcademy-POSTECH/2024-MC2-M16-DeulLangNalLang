@@ -20,6 +20,7 @@
 		1F986F5B2BFA291E00601064 /* AwardAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F986F5A2BFA291E00601064 /* AwardAddView.swift */; };
 		1FE99FC62BF9F43D0043E0DB /* UserSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE99FC52BF9F43D0043E0DB /* UserSelectView.swift */; };
 		BD8665FF2BF89DAB0039F460 /* DNFont.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD8665FE2BF89DAB0039F460 /* DNFont.xcassets */; };
+		BDBD65582BFB727F005ECC96 /* ContentsLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBD65572BFB727F005ECC96 /* ContentsLine.swift */; };
 		BDD8FED92BF8CAA300A1E25F /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD8FED82BF8CAA300A1E25F /* Font.swift */; };
 		BDD8FEDE2BF8FD4F00A1E25F /* BoastCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD8FEDD2BF8FD4F00A1E25F /* BoastCardView.swift */; };
 		BDF0A5B72BFA482500070045 /* BoastMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF0A5B62BFA482500070045 /* BoastMainView.swift */; };
@@ -52,6 +53,7 @@
 		1FE99FC52BF9F43D0043E0DB /* UserSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSelectView.swift; sourceTree = "<group>"; };
 		BD8665FE2BF89DAB0039F460 /* DNFont.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DNFont.xcassets; sourceTree = "<group>"; };
 		BD8666002BF89F850039F460 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		BDBD65572BFB727F005ECC96 /* ContentsLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentsLine.swift; sourceTree = "<group>"; };
 		BDD8FED82BF8CAA300A1E25F /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Font.swift; path = DeulLangNalLang/Sources/Helper/Extensions/DNDesignSystem/Font.swift; sourceTree = SOURCE_ROOT; };
 		BDD8FEDD2BF8FD4F00A1E25F /* BoastCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoastCardView.swift; sourceTree = "<group>"; };
 		BDF0A5B62BFA482500070045 /* BoastMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoastMainView.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 			children = (
 				08DBEF132BF85983007834A3 /* Extensions */,
 				08DBEF1D2BF87781007834A3 /* Constants.swift */,
+				BDBD65572BFB727F005ECC96 /* ContentsLine.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				1F986F5B2BFA291E00601064 /* AwardAddView.swift in Sources */,
 				08DBEF1C2BF86CF1007834A3 /* Award.swift in Sources */,
 				BDD8FED92BF8CAA300A1E25F /* Font.swift in Sources */,
+				BDBD65582BFB727F005ECC96 /* ContentsLine.swift in Sources */,
 				08DBEF1A2BF86BD7007834A3 /* Boast.swift in Sources */,
 				07F5F6342BF9C8F4008A184B /* BoastDetailView.swift in Sources */,
 				BDF0A5B72BFA482500070045 /* BoastMainView.swift in Sources */,
