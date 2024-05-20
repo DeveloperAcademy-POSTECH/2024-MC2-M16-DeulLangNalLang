@@ -17,6 +17,7 @@
 		08DBEF1A2BF86BD7007834A3 /* Boast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DBEF192BF86BD7007834A3 /* Boast.swift */; };
 		08DBEF1C2BF86CF1007834A3 /* Award.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DBEF1B2BF86CF1007834A3 /* Award.swift */; };
 		08DBEF1E2BF87781007834A3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DBEF1D2BF87781007834A3 /* Constants.swift */; };
+		1F986F5B2BFA291E00601064 /* AwardAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F986F5A2BFA291E00601064 /* AwardAddView.swift */; };
 		1FE99FC62BF9F43D0043E0DB /* UserSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE99FC52BF9F43D0043E0DB /* UserSelectView.swift */; };
 		08DBEF222BF893B9007834A3 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DBEF212BF893B9007834A3 /* Color.swift */; };
 		BD8665FF2BF89DAB0039F460 /* DNFont.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD8665FE2BF89DAB0039F460 /* DNFont.xcassets */; };
@@ -38,6 +39,7 @@
 		08DBEF1D2BF87781007834A3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		08DBEF212BF893B9007834A3 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		1FE99FC52BF9F43D0043E0DB /* UserSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSelectView.swift; sourceTree = "<group>"; };
+		1F986F5A2BFA291E00601064 /* AwardAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardAddView.swift; sourceTree = "<group>"; };
 		BD8665FE2BF89DAB0039F460 /* DNFont.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DNFont.xcassets; sourceTree = "<group>"; };
 		BD8666002BF89F850039F460 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		BDD8FED82BF8CAA300A1E25F /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Font.swift; path = DeulLangNalLang/Sources/Helper/Extensions/DNDesignSystem/Font.swift; sourceTree = SOURCE_ROOT; };
@@ -98,6 +100,7 @@
 				07F5F62F2BF8F7F0008A184B /* ContentView.swift */,
 				BDD8FEDD2BF8FD4F00A1E25F /* BoastCardView.swift */,
 				1FE99FC52BF9F43D0043E0DB /* UserSelectView.swift */,
+				1F986F5A2BFA291E00601064 /* AwardAddView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -248,6 +251,7 @@
 				0769FC4B2BF882B900AF4E85 /* AwardDetailView.swift in Sources */,
 				08DBEF222BF893B9007834A3 /* Color.swift in Sources */,
 				BDD8FEDE2BF8FD4F00A1E25F /* BoastCardView.swift in Sources */,
+				1F986F5B2BFA291E00601064 /* AwardAddView.swift in Sources */,
 				08DBEF1C2BF86CF1007834A3 /* Award.swift in Sources */,
 				BDD8FED92BF8CAA300A1E25F /* Font.swift in Sources */,
 				08DBEF1A2BF86BD7007834A3 /* Boast.swift in Sources */,
@@ -256,6 +260,7 @@
 				080072352BF6E7E2007B2956 /* DeulLangNalLangApp.swift in Sources */,
 				1FE99FC62BF9F43D0043E0DB /* UserSelectView.swift in Sources */,
 				08DBEF162BF8699E007834A3 /* User.swift in Sources */,
+				1F96480C2BF9F7B800F9C1A1 /* UserSelectView.swift in Sources */,
 				08DBEF1E2BF87781007834A3 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
