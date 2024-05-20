@@ -49,7 +49,7 @@ struct BoastCardView: View {
             
             //MARK: text 부분
             VStack {
-                Text(tempBoast.contents.splitCharacter())
+                Text(tempBoast.contents)
                     .font(.bodyRegular)
                     .foregroundStyle(.white)
             }
