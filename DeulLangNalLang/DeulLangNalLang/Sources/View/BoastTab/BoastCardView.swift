@@ -79,7 +79,6 @@ struct BoastCardView: View {
                     if Username == "San"  {
                         Button(action: {
                             showSheet.toggle()
-                            //TODO: 상장 작성 view 연결
                         }) {
                             Text("상장주기")
                                 .font(.subheadlineEmphasized)
@@ -90,7 +89,7 @@ struct BoastCardView: View {
                         .background(Color.black)
                         .cornerRadius(14)
                         .sheet(isPresented: $showSheet) {
-                            Text("hi")
+                            AwardAddView()
                         }
                     }
                 }
