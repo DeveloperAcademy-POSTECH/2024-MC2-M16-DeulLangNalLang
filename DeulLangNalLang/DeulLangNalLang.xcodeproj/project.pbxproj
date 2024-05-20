@@ -326,7 +326,7 @@
 				07F5F6342BF9C8F4008A184B /* BoastDetailView.swift in Sources */,
 				07F5F6302BF8F7F0008A184B /* ContentView.swift in Sources */,
 				BDF0A5B72BFA482500070045 /* BoastMainView.swift in Sources */,
-				080072352BF6E7E2007B2956 /* DeulLangNalLangApp.swift in Sources */
+				080072352BF6E7E2007B2956 /* DeulLangNalLangApp.swift in Sources */,
 				F1DFB5542BF7D2D100AE18AC /* AwardMainView.swift in Sources */,
 				F16525FC2BF8E4E20013C2CF /* SegmentedPickerView.swift in Sources */,
 				F16526002BF8E54A0013C2CF /* LikedAwardsListView.swift in Sources */,
