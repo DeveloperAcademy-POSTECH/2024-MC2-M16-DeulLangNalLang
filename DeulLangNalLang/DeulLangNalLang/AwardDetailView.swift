@@ -67,7 +67,7 @@ struct AwardDetailView: View {
                 Button(action: {
                     dismiss()
                 }) {
-                    HStack {
+                    HStack(spacing: 3){
                         Image(systemName: "chevron.left")
                         Text("상장 박물관")
                     }
