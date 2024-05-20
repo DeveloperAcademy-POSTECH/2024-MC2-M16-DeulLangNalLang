@@ -9,38 +9,47 @@ struct BoastAddView: View {
 
     var body: some View {
         NavigationView {
-            VStack {
-                CustomTextView(text: $text, isShowingImagePicker: $isShowingImagePicker)
+            VStack(spacing: 0) {
+                CustomTextView(text: $text, isShowingImagePicker: $isShowingImagePicker, placeholder: "내용을 입력하세요")
                     .frame(height: 200)
                     .padding()
-                HStack{
+                HStack {
                     Spacer()
                     Text("\(text.count)/100")
-                        .font(.caption1Regular)
+                        .font(.caption)
                         .foregroundColor(.gray)
-                        .padding()
+                        .padding(.horizontal, 16)
+                        .padding(.bottom, 5)
                 }
-                
-                Spacer()
-                
-                HStack(spacing: 20) {
+                HStack(spacing: 8) {
                     ForEach(0..<selectedImages.count, id: \.self) { index in
                         if let image = selectedImages[index] {
-                            VStack {
+                            ZStack {
                                 Image(uiImage: image)
                                     .resizable()
-                                    .scaledToFit()
-                                    .frame(height: 100)
-                                    .padding()
-                                
-                                Button(action: {
-                                    selectedImages[index] = nil
-                                }) {
-                                    Text("삭제")
-                                        .foregroundColor(.red)
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 177, height: 116)
+                                    .clipped()
+                                    .cornerRadius(16)
+
+                                VStack(spacing: 0) {
+                                    HStack(spacing: 0) {
+                                        Spacer()
+                                        Button(action: {
+                                            selectedImages[index] = nil
+                                        }) {
+                                            Image(systemName: "x.circle")
+                                                .foregroundColor(.red)
+                                                .padding(.top, 5)
+                                                .padding(.trailing, 6)
+                                        }
+                                    }
+                                    Spacer()
                                 }
                             }
-                        } else {
+                            .frame(width: 177, height: 116)
+                        } 
+                            else {
                             Button(action: {
                                 isShowingImagePicker = true
                             }) {
@@ -53,7 +62,7 @@ struct BoastAddView: View {
                         }
                     }
                 }
-                
+
                 Spacer()
             }
             .navigationBarTitle("자랑쓰기")
@@ -68,6 +77,7 @@ struct BoastAddView: View {
 struct CustomTextView: UIViewRepresentable {
     @Binding var text: String
     @Binding var isShowingImagePicker: Bool
+    var placeholder: String
 
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
@@ -77,20 +87,30 @@ struct CustomTextView: UIViewRepresentable {
         let textView = UITextView()
         textView.delegate = context.coordinator
         textView.font = UIFont.systemFont(ofSize: 16)
+
+        // Placeholder 설정
+        textView.text = placeholder
+        textView.textColor = .lightGray
         
         // 툴바 설정
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
         let cameraButton = UIBarButtonItem(barButtonSystemItem: .camera, target: context.coordinator, action: #selector(context.coordinator.cameraButtonTapped))
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        toolbar.items = [flexibleSpace, cameraButton]
+        toolbar.items = [cameraButton, flexibleSpace]
         textView.inputAccessoryView = toolbar
-        
+
         return textView
     }
 
     func updateUIView(_ uiView: UITextView, context: Context) {
-        uiView.text = text
+        if text.isEmpty {
+            uiView.text = placeholder
+            uiView.textColor = .lightGray
+        } else {
+            uiView.text = text
+            uiView.textColor = .black
+        }
     }
 
     class Coordinator: NSObject, UITextViewDelegate {
@@ -100,17 +120,31 @@ struct CustomTextView: UIViewRepresentable {
             self.parent = parent
         }
 
+        func textViewDidBeginEditing(_ textView: UITextView) {
+            if textView.textColor == .lightGray {
+                textView.text = ""
+                textView.textColor = .black
+            }
+        }
+
+        func textViewDidEndEditing(_ textView: UITextView) {
+            if textView.text.isEmpty {
+                textView.text = parent.placeholder
+                textView.textColor = .lightGray
+            }
+        }
+
         func textViewDidChange(_ textView: UITextView) {
             parent.text = textView.text
         }
-        
+
         func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
             let currentText = textView.text ?? ""
             guard let stringRange = Range(range, in: currentText) else { return false }
             let updatedText = currentText.replacingCharacters(in: stringRange, with: text)
             return updatedText.count <= 100
         }
-        
+
         @objc func cameraButtonTapped() {
             parent.isShowingImagePicker = true
         }
