@@ -7,13 +7,12 @@
 
 import SwiftUI
 
-struct AwardLargeView: View {
+struct AwardDetailView: View {
     @Environment(\.dismiss) var dismiss
     @State private var isFavorite: Bool = false
     
     var body: some View {
         VStack(spacing: 0){
-            Spacer()
             ZStack{
                 RoundedRectangle(cornerRadius: 20)
                     .frame(width: 329, height: 480)
@@ -94,5 +93,5 @@ struct AwardLargeView: View {
 }
 
 #Preview {
-    AwardLargeView()
+    AwardDetailView()
 }

@@ -47,23 +47,6 @@ struct CustomTextEditor: UIViewRepresentable {
 
 struct AwardAddView: View {
     
-    @State private var showModal = false
-    
-    static let labelsTeritory: Color = Color(red: 0.24, green: 0.24, blue: 0.26)
-    
-    var body: some View {
-        
-        Button(action: {
-            self.showModal = true
-        }){Text("Hello").bold()
-        }
-        .sheet(isPresented: self.$showModal) {
-            ModalView()
-        }
-    }
-}
-
-struct ModalView: View {
     @Environment(\.presentationMode) var presentation
     @State var awardTitle: String = ""
     @State var awardContents: String = ""
@@ -154,7 +137,8 @@ struct ModalView: View {
                 .foregroundColor(.black)
                 .frame(width: 361, alignment: .topLeading)
             
-            /////////////////// 여기 문제있음 ////////////////////////////////////////////////////////////////////////////////////////////////////////
+            //TODO: - TextEditor 입력이 한 글자씩만 입력이 안되는 이슈
+            //TODO: - TextEditor에 placeholder가 안 들어가지는 이슈
             if awardContents == "" {
                 ZStack{
                     Text("상장 내용을 입력하세요")
@@ -236,7 +220,6 @@ struct ModalView: View {
         Spacer()
     }
 }
-
 
 #Preview {
     AwardAddView()

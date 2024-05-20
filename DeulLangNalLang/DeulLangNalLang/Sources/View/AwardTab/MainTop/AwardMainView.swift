@@ -14,8 +14,6 @@ struct AwardMainView: View {
         ScrollView{
             VStack (alignment: .leading) {
                 
-                UserSwitchView()
-                
                 Text("이번 주 상장을 확인해 \n보세요구르트")
                     .font(.largeTitleEmphasized)
                     .padding(.bottom, 20)
@@ -30,14 +28,13 @@ struct AwardMainView: View {
                 SegmentedPickerView(selection: $selection)
                 
                 if selection == 0 {
-                    TotalAwardsListView()
+                    TotalAwardListView()
                 } else {
-                    LikedAwardsListView()
+                    FavoriteAwardListView()
                 }
                 
                 
             }
-            .padding()
             .animation(.easeInOut(duration: 0.2), value: selection)
         }
     }
