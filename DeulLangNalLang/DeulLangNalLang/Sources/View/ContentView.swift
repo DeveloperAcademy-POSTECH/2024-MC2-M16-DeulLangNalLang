@@ -12,10 +12,9 @@ struct ContentView: View {
     
     
     var body: some View {
-        NavigationStack{
-            
-            VStack(spacing: 0){
-                NavigationLink(destination: AwardDetailView()){
+        VStack {
+            NavigationStack{
+                NavigationLink(destination: AwardLargeView()){
                     
                     ZStack{
                         RoundedRectangle(cornerRadius: 20)
