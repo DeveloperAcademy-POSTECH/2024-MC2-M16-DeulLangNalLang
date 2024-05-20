@@ -25,14 +25,13 @@ struct BoastMainView: View {
                 
                 Button(action: {
                     showSheet.toggle()
-                    //TODO: 상장 작성 view 연결
                 }) {
                     Image(systemName: "plus")
                         .foregroundStyle(.black)
                         .font(.title1Regular)
                 }
                 .sheet(isPresented: $showSheet) {
-                    Text("hi")
+                    BoastAddView()
                 }
             }
             .padding(.trailing)

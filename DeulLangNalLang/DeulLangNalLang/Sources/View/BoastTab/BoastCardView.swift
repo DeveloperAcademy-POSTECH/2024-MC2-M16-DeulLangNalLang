@@ -48,8 +48,8 @@ struct BoastCardView: View {
             }
             
             //MARK: text 부분
-            VStack {
-                Text(tempBoast.contents)
+            VStack(alignment: .leading){
+                ExpandableText(tempBoast.contents, lineLimit: 3)
                     .font(.bodyRegular)
                     .foregroundStyle(.white)
             }
@@ -79,7 +79,6 @@ struct BoastCardView: View {
                     if Username == "San"  {
                         Button(action: {
                             showSheet.toggle()
-                            //TODO: 상장 작성 view 연결
                         }) {
                             Text("상장주기")
                                 .font(.subheadlineEmphasized)
@@ -90,7 +89,7 @@ struct BoastCardView: View {
                         .background(Color.black)
                         .cornerRadius(14)
                         .sheet(isPresented: $showSheet) {
-                            Text("hi")
+                            AwardAddView()
                         }
                     }
                 }
@@ -100,10 +99,12 @@ struct BoastCardView: View {
         .padding(12)
         .frame(width: 361) //나중에 보면서 삭제하기
         //                .frame(height: 324)
-        .background(Username == "Deul" ? Color.green : Color.blue)
+        .background(Username == "Deul" ? Color.DNGreen : Color.DNBlue)
         .cornerRadius(16)
     }
 }
+
+
 
 //#Preview {
 //    BoastCardView()

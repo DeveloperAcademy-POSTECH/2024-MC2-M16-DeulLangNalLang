@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct LikedAwardsListView: View {
+struct FavoriteAwardListView: View {
     
     //목록을 1부터 100까지 만듬
     let data = Array(1...100).map { "목록 \($0)"}
@@ -44,5 +44,5 @@ struct LikedAwardsListView: View {
 
 
 #Preview {
-    LikedAwardsListView()
+    FavoriteAwardListView()
 }

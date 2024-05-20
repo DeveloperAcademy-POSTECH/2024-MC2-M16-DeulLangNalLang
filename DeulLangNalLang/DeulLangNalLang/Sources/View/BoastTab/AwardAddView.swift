@@ -7,66 +7,13 @@
 
 import SwiftUI
 
-//Editable TextEditor
-struct CustomTextEditor: UIViewRepresentable {
-    @Binding var text: String
-    
-    func makeUIView(context: Context) -> UITextView {
-        let textView = UITextView()
-        textView.backgroundColor = .clear
-        textView.font = UIFont.systemFont(ofSize: 17)
-        textView.isScrollEnabled = true
-        textView.isEditable = true
-        textView.isUserInteractionEnabled = true
-        textView.textContainerInset = UIEdgeInsets(top: 12, left: 8, bottom: 12, right: 8)
-        textView.delegate = context.coordinator
-        return textView
-    }
-    
-    func updateUIView(_ uiView: UITextView, context: Context) {
-        uiView.text = text
-    }
-    
-    func makeCoordinator() -> Coordinator {
-        Coordinator(self)
-    }
-    
-    class Coordinator: NSObject, UITextViewDelegate {
-        var parent: CustomTextEditor
-        
-        init(_ parent: CustomTextEditor) {
-            self.parent = parent
-        }
-        
-        func textViewDidChange(_ textView: UITextView) {
-            parent.text = textView.text
-        }
-    }
-}
-
-
 struct AwardAddView: View {
     
-    @State private var showModal = false
-    
-    static let labelsTeritory: Color = Color(red: 0.24, green: 0.24, blue: 0.26)
-    
-    var body: some View {
-        
-        Button(action: {
-            self.showModal = true
-        }){Text("Hello").bold()
-        }
-        .sheet(isPresented: self.$showModal) {
-            ModalView()
-        }
-    }
-}
-
-struct ModalView: View {
     @Environment(\.presentationMode) var presentation
     @State var awardTitle: String = ""
     @State var awardContents: String = ""
+    @State var titleCharacterCount: Int = 0
+    @State var contentsCharacterCount: Int = 0
     
     
     var body: some View {
@@ -126,16 +73,30 @@ struct ModalView: View {
                 .frame(width: 361, alignment: .topLeading)
             
             HStack{
-                
-                VStack {
-                    TextField("제목을 입력하세요", text: $awardTitle)
-                        .padding(.horizontal, 8)
-                        .padding(.vertical, 12)
-                        .frame(maxWidth: .infinity)
-                        .background(Color(uiColor: .secondarySystemBackground))
-                        .cornerRadius(12)
+                ZStack {
+                    VStack {
+                        TextField("제목을 입력하세요", text: $awardTitle)
+                            .onChange(of: awardTitle) {
+                                newValue in titleCharacterCount = newValue.count}
+                            .padding(.horizontal, 12)
+                            .padding(.vertical, 12)
+                            .frame(maxWidth: .infinity)
+                            .background(.white)
+                            .cornerRadius(12)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 12)
+                                    .stroke(Color.black, lineWidth: 1)
+                            )
+                        
+                    }
+                    HStack {
+                        Spacer()
+                        Text("\(titleCharacterCount)/8")
+                            .font(.footnote)
+                            .foregroundColor(.gray)
+                    }
+                    .padding(.horizontal, 16)
                 }
-                
                 
                 Text("상")
                     .font(.bodyRegular)
@@ -143,6 +104,8 @@ struct ModalView: View {
                     .padding(.leading, 8)
             }
             .padding(.horizontal, 16)
+            
+            
             
             //row 2 - AwardContents
             Rectangle()
@@ -154,25 +117,54 @@ struct ModalView: View {
                 .foregroundColor(.black)
                 .frame(width: 361, alignment: .topLeading)
             
-            /////////////////// 여기 문제있음 ////////////////////////////////////////////////////////////////////////////////////////////////////////
-            if awardContents == "" {
-                ZStack{
+            ZStack(alignment: .topLeading) {
+                
+                TextEditor(text: $awardContents)
+                    .onChange(of: awardContents) {
+                        newValue in contentsCharacterCount = newValue.count}
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 8)
+                    .background(Color.white)
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                    .frame(height: 100)
+                    .foregroundColor(.black)
+                //                    .onAppear {
+                //                        UITextView.appearance().backgroundColor = .clear
+                //                    }
+                //                    .onChange(of: awardContents) { oldValue, newValue in
+                //                        UITextView.appearance().backgroundColor = .clear
+                //                    }
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 12)
+                            .stroke(Color.black, lineWidth: 1)
+                    )
+                
+                
+                if awardContents.isEmpty {
                     Text("상장 내용을 입력하세요")
-                        .foregroundColor(.black)
-                    
-                    CustomTextEditor(text: $awardContents)
-                        .frame(height: 138)
-                        .background(Color(uiColor: .secondarySystemBackground))
-                        .cornerRadius(12)
-                        .padding(.horizontal, 16)
-                    
+                        .font(.bodyRegular)
+                        .foregroundColor(Color(red: 0.1, green: 0.1, blue: 0.1).opacity(0.3))
+                        .padding(.horizontal, 14)
+                        .padding(.vertical, 16)
                 }
-            } else {CustomTextEditor(text: $awardContents)
-                    .frame(height: 138)
-                    .background(Color(uiColor: .secondarySystemBackground))
-                    .cornerRadius(12)
-                .padding(.horizontal, 16)}
-            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                
+                VStack {
+                    Rectangle()
+                        .frame(height: 56)
+                        .foregroundColor(.clear)
+                    HStack {
+                        Spacer()
+                        Text("\(contentsCharacterCount)/90")
+                            .font(.footnote)
+                            .foregroundColor(.gray)
+                            .padding(.horizontal, 16)
+                            .padding(.vertical, 8)
+                    }
+                }
+            }
+            .padding(.horizontal, 16)
+            
+            
             
             //row 3 - AwardFrame
             Rectangle()
@@ -183,10 +175,6 @@ struct ModalView: View {
                 .font(.headlineEmphasized)
                 .foregroundColor(.black)
                 .frame(width: 361, alignment: .topLeading)
-            
-            //            Rectangle()
-            //                .frame(width: .infinity, height: 8)
-            //                .foregroundColor(.clear)
             
             
             ScrollView(.horizontal) {
@@ -236,7 +224,6 @@ struct ModalView: View {
         Spacer()
     }
 }
-
 
 #Preview {
     AwardAddView()
