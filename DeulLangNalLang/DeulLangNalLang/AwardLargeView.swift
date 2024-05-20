@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AwardDetailView: View {
+struct AwardLargeView: View {
     @Environment(\.dismiss) var dismiss
     @State private var isFavorite: Bool = false
     
@@ -94,5 +94,5 @@ struct AwardDetailView: View {
 }
 
 #Preview {
-    AwardDetailView()
+    AwardLargeView()
 }
