@@ -12,7 +12,7 @@ struct ContentView: View {
     var body: some View {
         VStack {
             NavigationStack{
-                NavigationLink(destination: AwardDetailView()){
+                NavigationLink(destination: CardFlipView()){
                     
                     ZStack{
                         RoundedRectangle(cornerRadius: 20)
