@@ -23,7 +23,7 @@ struct SegmentedPickerView: View {
                content: {
             ForEach(filterOptions.indices) { index in
                 Text(filterOptions[index])
-                    .font(.DlnlHeadline)
+                    .font(.headlineEmphasized)
             }
         })
         .pickerStyle(SegmentedPickerStyle())
