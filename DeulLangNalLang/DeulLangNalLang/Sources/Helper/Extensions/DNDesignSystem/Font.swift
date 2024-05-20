@@ -4,7 +4,7 @@ extension Font {
     
     // LargeTitle
     static let largeTitleRegular: Font = .custom("AppleSDGothicNeo-Regular", size: 29)
-    static let largeTitleEmphasized: Font = .custom("AppleSDGothicNeo-Heavy", size: 24)
+    static let largeTitleEmphasized: Font = .custom("AppleSDGothicNeo-Heavy", size: 29)
     
     // Title1
     static let title1Regular: Font = .custom("AppleSDGothicNeo-Regular", size: 25)
