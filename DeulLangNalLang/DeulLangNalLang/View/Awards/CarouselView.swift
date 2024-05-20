@@ -13,15 +13,15 @@ struct CarouselView: View {
         ScrollView(.horizontal){
             HStack {
                 RoundedRectangle(cornerRadius: 20)
-                    .fill(Color.DNGreen)
+                    .fill(Color.blue)
                     .frame(width: 268, height: 390)
                 
                 RoundedRectangle(cornerRadius: 20)
-                    .fill(Color.DNBlue)
+                    .fill(Color.green)
                     .frame(width: 268, height: 390)
                 
                 RoundedRectangle(cornerRadius: 20)
-                    .fill(Color.DNGreen)
+                    .fill(Color.blue)
                     .frame(width: 268, height: 390)
                 
             }
