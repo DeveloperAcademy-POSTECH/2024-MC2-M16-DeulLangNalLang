@@ -6,7 +6,7 @@ struct BoastCardView: View {
     @State private var Username = "Deul"
     @State private var images: [String] = [
         "https://i.pinimg.com/564x/1e/a8/1f/1ea81fe0ddc6b0dbd76899c7aebfb47c.jpg",
-        "https://i.pinimg.com/564x/8a/be/9b/8abe9b3640dbef426f6c9c9a67457e9d.jpg"
+        //        "https://i.pinimg.com/564x/8a/be/9b/8abe9b3640dbef426f6c9c9a67457e9d.jpg"
     ]
     
     @State private var showSheet: Bool = false
@@ -21,9 +21,10 @@ struct BoastCardView: View {
                 } placeholder: {
                     Color.red
                 }
-                .frame(height: 180)
-                .aspectRatio(contentMode: .fit)
+                .aspectRatio(contentMode: .fill)
+                .frame(height: 180, alignment: .center)
                 .clipShape(RoundedRectangle(cornerRadius: 8))
+                .clipped()
             }
             
             if images.count == 2 {
