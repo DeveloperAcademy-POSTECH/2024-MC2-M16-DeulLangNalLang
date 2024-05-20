@@ -20,6 +20,7 @@
 		1F986F5B2BFA291E00601064 /* AwardAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F986F5A2BFA291E00601064 /* AwardAddView.swift */; };
 		1FE99FC62BF9F43D0043E0DB /* UserSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE99FC52BF9F43D0043E0DB /* UserSelectView.swift */; };
 		8CCC8BE72BFB7A1E009DBEE0 /* BoastEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCC8BE62BFB7A1E009DBEE0 /* BoastEmptyView.swift */; };
+		8CCC8BEB2BFB8BCC009DBEE0 /* AwardEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCC8BEA2BFB8BCC009DBEE0 /* AwardEmptyView.swift */; };
 		BD8665FF2BF89DAB0039F460 /* DNFont.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD8665FE2BF89DAB0039F460 /* DNFont.xcassets */; };
 		BDBD65582BFB727F005ECC96 /* ContentsLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBD65572BFB727F005ECC96 /* ContentsLine.swift */; };
 		BDD8FED92BF8CAA300A1E25F /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD8FED82BF8CAA300A1E25F /* Font.swift */; };
@@ -53,6 +54,7 @@
 		1F986F5A2BFA291E00601064 /* AwardAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardAddView.swift; sourceTree = "<group>"; };
 		1FE99FC52BF9F43D0043E0DB /* UserSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSelectView.swift; sourceTree = "<group>"; };
 		8CCC8BE62BFB7A1E009DBEE0 /* BoastEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoastEmptyView.swift; sourceTree = "<group>"; };
+		8CCC8BEA2BFB8BCC009DBEE0 /* AwardEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardEmptyView.swift; sourceTree = "<group>"; };
 		BD8665FE2BF89DAB0039F460 /* DNFont.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DNFont.xcassets; sourceTree = "<group>"; };
 		BD8666002BF89F850039F460 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		BDBD65572BFB727F005ECC96 /* ContentsLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentsLine.swift; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				F16525FB2BF8E4E20013C2CF /* SegmentedPickerView.swift */,
+				8CCC8BEA2BFB8BCC009DBEE0 /* AwardEmptyView.swift */,
 				F16525FD2BF8E52C0013C2CF /* TotalAwardListView.swift */,
 				F16525FF2BF8E54A0013C2CF /* FavoriteAwardListView.swift */,
 			);
@@ -343,6 +346,7 @@
 				F16525FC2BF8E4E20013C2CF /* SegmentedPickerView.swift in Sources */,
 				F16526002BF8E54A0013C2CF /* FavoriteAwardListView.swift in Sources */,
 				F16525F72BF8E2CD0013C2CF /* UserSwitchView.swift in Sources */,
+				8CCC8BEB2BFB8BCC009DBEE0 /* AwardEmptyView.swift in Sources */,
 				F16525FE2BF8E52C0013C2CF /* TotalAwardListView.swift in Sources */,
 				F1DFB5562BF7D6ED00AE18AC /* CarouselView.swift in Sources */,
 				F12B05F72BFB5D28006E2777 /* DNColor.swift in Sources */,
