@@ -21,9 +21,10 @@ struct BoastCardView: View {
                 } placeholder: {
                     Color.red
                 }
-                .frame(height: 180)
-                .aspectRatio(contentMode: .fit)
+                .aspectRatio(contentMode: .fill)
+                .frame(height: 180, alignment: .center)
                 .clipShape(RoundedRectangle(cornerRadius: 8))
+                .clipped()
             }
             
             if images.count == 2 {
@@ -33,18 +34,20 @@ struct BoastCardView: View {
                     } placeholder: {
                         Color.red
                     }
-                    .frame(height: 180)
-                    .aspectRatio(contentMode: .fit)
+                    .aspectRatio(contentMode: .fill)
+                    .frame(height: 180, alignment: .center)
                     .clipShape(RoundedRectangle(cornerRadius: 8))
+                    .clipped()
                     
                     AsyncImage(url: URL(string: images[1])) { image in
                         image.resizable()
                     } placeholder: {
                         Color.red
                     }
-                    .frame(height: 180)
-                    .aspectRatio(contentMode: .fit)
+                    .aspectRatio(contentMode: .fill)
+                    .frame(height: 180, alignment: .center)
                     .clipShape(RoundedRectangle(cornerRadius: 8))
+                    .clipped()
                 }
             }
             
@@ -59,7 +62,7 @@ struct BoastCardView: View {
             Divider()
             VStack{
                 HStack{
-                    Text("2024.00.00")
+                    Text(getDateFormat(date: tempBoast.date))
                         .font(.bodyRegular)
                         .foregroundStyle(.white)
                     Spacer()
