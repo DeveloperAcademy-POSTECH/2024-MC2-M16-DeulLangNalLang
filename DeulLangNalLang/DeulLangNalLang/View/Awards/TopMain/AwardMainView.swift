@@ -17,7 +17,7 @@ struct AwardMainView: View {
                 UserSwitchView()
                 
                 Text("이번 주 상장을 확인해 \n보세요구르트")
-                    .font(.DlnlLargetitle)
+                    .font(.largeTitleEmphasized)
                     .padding(.bottom, 20)
                 
                 CarouselView()
@@ -25,7 +25,7 @@ struct AwardMainView: View {
                     .padding(.bottom, 20)
                 
                 Text("상장이 n개 모였네요! \n아주 칭찬합니다람쥐")
-                    .font(.DlnlLargetitle)
+                    .font(.largeTitleEmphasized)
                 
                 SegmentedPickerView(selection: $selection)
                 

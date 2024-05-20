@@ -33,7 +33,7 @@ struct LikedAwardsListView: View {
                             .frame(height: 285)
                         
                         Text(award)
-                            .font(.DlnlHeadline)
+                            .font(.headlineEmphasized)
                     }
                 }
             }
