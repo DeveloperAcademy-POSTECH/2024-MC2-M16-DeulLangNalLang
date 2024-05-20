@@ -15,39 +15,11 @@ struct BoastCardView: View {
     var body: some View {
         VStack {
             //MARK: image 부분
-            if images.count == 1 {
-                AsyncImage(url: URL(string: images[0])) { image in
-                    image.resizable()
-                } placeholder: {
-                    Color.red
-                }
-                .aspectRatio(contentMode: .fill)
-                .frame(height: 180, alignment: .center)
-                .clipShape(RoundedRectangle(cornerRadius: 8))
-                .clipped()
-            }
-            
-            if images.count == 2 {
-                HStack {
-                    AsyncImage(url: URL(string: images[0])) { image in
-                        image.resizable()
-                    } placeholder: {
-                        Color.red
+            if images.count > 0 {
+                HStack(spacing: 10) {
+                    ForEach(0..<min(images.count, 2), id: \.self) { index in
+                        loadImage(urlString: images[index])
                     }
-                    .aspectRatio(contentMode: .fill)
-                    .frame(height: 180, alignment: .center)
-                    .clipShape(RoundedRectangle(cornerRadius: 8))
-                    .clipped()
-                    
-                    AsyncImage(url: URL(string: images[1])) { image in
-                        image.resizable()
-                    } placeholder: {
-                        Color.red
-                    }
-                    .aspectRatio(contentMode: .fill)
-                    .frame(height: 180, alignment: .center)
-                    .clipShape(RoundedRectangle(cornerRadius: 8))
-                    .clipped()
                 }
             }
             
@@ -123,6 +95,24 @@ struct BoastCardView: View {
         return ActionSheet(title: title,
                            message: nil,
                            buttons: [deleteButton, cancelButton])
+    }
+    
+    //MARK: ImageLoad 함수
+    //TODO: 추후 이미지 데이터를 불러오면 삭제 예정
+    private func loadImage(urlString: String) -> some View {
+        AsyncImage(url: URL(string: urlString)) { image in
+            image
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(height: 180, alignment: .center)
+                .clipShape(RoundedRectangle(cornerRadius: 8))
+                .clipped()
+        } placeholder: {
+            Color.secondary
+                .frame(height: 180)
+                .clipShape(RoundedRectangle(cornerRadius: 8))
+                .clipped()
+        }
     }
 }
 
