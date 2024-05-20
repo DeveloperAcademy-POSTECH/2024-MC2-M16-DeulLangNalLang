@@ -38,6 +38,7 @@ struct TotalAwardListView: View {
                     }
                 }
             }
+            .padding(.horizontal)
         }
     }
 
