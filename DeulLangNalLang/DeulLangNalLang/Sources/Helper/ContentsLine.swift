@@ -12,15 +12,7 @@ struct ExpandableText: View {
         self.text = text
         self.lineLimit = lineLimit
     }
-    
-    private var moreLessText: String {
-        if !truncated {
-            return ""
-        } else {
-            return self.expanded ? "줄이기" : "더보기"
-        }
-    }
-    
+
     var body: some View {
         VStack(alignment: .leading) {
             Text(text)
@@ -40,15 +32,12 @@ struct ExpandableText: View {
                         })
                         .hidden()
                 )
-            if truncated {
-                Button(action: {
+                .onTapGesture {
                     withAnimation {
                         expanded.toggle()
                     }
-                }, label: {
-                    Text(moreLessText)
-                })
-            }
+                }
+            
         }
     }
 }
