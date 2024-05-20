@@ -24,19 +24,19 @@ struct BoastCardView: View {
             }
             
             //MARK: text 부분
-            VStack(alignment: .leading){
+            VStack {
                 ExpandableText(tempBoast.contents, lineLimit: 3)
                     .font(.bodyRegular)
-                    .foregroundStyle(.white)
             }
+            .padding(.vertical, 2)
             
             //MARK: 하단 날짜 + 버튼 부분
             Divider()
+            
             VStack{
                 HStack{
                     Text(getDateFormat(date: tempBoast.date))
-                        .font(.bodyRegular)
-                        .foregroundStyle(.white)
+                        .font(.footnoteEmphasized)
                     Spacer()
                     
                     /// 본인일 때 (내가 쓴 글) 수정하기 버튼
@@ -51,7 +51,7 @@ struct BoastCardView: View {
                             .foregroundColor(.red)
                         } label: {
                             Image(systemName: "ellipsis")
-                                .foregroundStyle(.white)
+                                .foregroundStyle(.black)
                         }
                         .actionSheet(isPresented: $showActionSheet, content: getActionSheet)
                     }
@@ -74,12 +74,10 @@ struct BoastCardView: View {
                         }
                     }
                 }
+                .padding(.vertical, 2)
             }
-            .padding(.vertical, 0)
         }
         .padding(12)
-        .frame(width: 361) //나중에 보면서 삭제하기
-        //                .frame(height: 324)
         .background(Username == "Deul" ? Color.DNGreen : Color.DNBlue)
         .cornerRadius(16)
     }
