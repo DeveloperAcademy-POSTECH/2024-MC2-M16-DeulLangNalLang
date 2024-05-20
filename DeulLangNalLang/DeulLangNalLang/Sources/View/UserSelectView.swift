@@ -29,7 +29,7 @@ struct UserSelectView: View {
                     .foregroundColor(.clear)
                 
                 HStack(alignment: .top, spacing: 9){
-                    NavigationLink(destination: ContentView()) {
+                    NavigationLink(destination: TabBarView()) {
                         Text("산")
                             .font(.title1Regular)
                             .multilineTextAlignment(.center)
@@ -40,7 +40,7 @@ struct UserSelectView: View {
                     .background(Constants.ButtonFill)
                     .cornerRadius(16)
                     
-                    NavigationLink(destination: ContentView()) {
+                    NavigationLink(destination: TabBarView()) {
                         Text("들")
                             .font(Font.custom("Apple SD Gothic Neo", size: 25))
                             .multilineTextAlignment(.center)

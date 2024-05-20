@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TotalAwardsListView: View {
+struct TotalAwardListView: View {
     
     //목록을 1부터 100까지 만듬
     let data = Array(1...100).map { "목록 \($0)"}
@@ -22,10 +22,8 @@ struct TotalAwardsListView: View {
     ]
     
     var body: some View {
-        
    
             VStack(alignment: .leading){
-
                 LazyVGrid(columns: columns, spacing: 20) {
                     ForEach(data, id: \.self) { award in
                         
@@ -39,11 +37,11 @@ struct TotalAwardsListView: View {
                         }
                     }
                 }
-                
             }
+            .padding(.horizontal)
         }
     }
 
 #Preview {
-    TotalAwardsListView()
+    TotalAwardListView()
 }

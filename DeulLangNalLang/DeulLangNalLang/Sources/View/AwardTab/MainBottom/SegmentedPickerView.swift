@@ -21,7 +21,7 @@ struct SegmentedPickerView: View {
         Picker(selection: $selection,
                label: Text("picker"),
                content: {
-            ForEach(filterOptions.indices) { index in
+            ForEach(filterOptions.indices, id: \.self) { index in
                 Text(filterOptions[index])
                     .font(.headlineEmphasized)
             }
