@@ -77,7 +77,7 @@ struct BoastDetailView: View {
                         .font(.bodyRegular)
                         .frame(width: 281, height: 152, alignment: .topLeading)
                         .padding(.vertical, 22)
-                    Text("\(boast.date)")
+                    Text("\(getDateFormat(date: boast.date))")
                         .font(.bodyEmphasized)
                         .frame(width: 281, alignment: .leading)
                 }

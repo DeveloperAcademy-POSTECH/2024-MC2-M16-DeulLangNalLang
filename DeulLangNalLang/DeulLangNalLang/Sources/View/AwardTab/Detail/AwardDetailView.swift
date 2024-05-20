@@ -29,7 +29,7 @@ struct AwardDetailView: View {
                         .font(.title3Emphasized)
                         .multilineTextAlignment(.center)
                     
-                    Text("\(award.date)")
+                    Text("\(getDateFormat(date: award.date))")
                         .font(.bodyEmphasized)
                         .padding(.bottom, 4)
                     
