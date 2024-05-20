@@ -9,10 +9,9 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            NavigationStack{
+        NavigationStack{
+            VStack {
                 NavigationLink(destination: AwardDetailView()){
-                    
                     ZStack{
                         RoundedRectangle(cornerRadius: 20)
                             .frame(width: 110, height: 160)
