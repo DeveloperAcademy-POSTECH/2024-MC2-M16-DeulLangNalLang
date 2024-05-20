@@ -10,7 +10,7 @@ import SwiftUI
 struct TotalAwardListView: View {
     
     //목록을 1부터 100까지 만듬
-    let data = Array(1...100).map { "목록 \($0)"}
+    let data = AwardData.dummy
     
     //화면을 그리드형식으로 꽉채워줌
     let columns = [
@@ -25,16 +25,8 @@ struct TotalAwardListView: View {
    
             VStack(alignment: .leading){
                 LazyVGrid(columns: columns, spacing: 20) {
-                    ForEach(data, id: \.self) { award in
-                        
-                        VStack {
-                            RoundedRectangle(cornerRadius: 4)
-                                .fill(Color.yellow)
-                                .frame(height: 115)
-                            
-                            Text(award)
-                                .font(.headlineEmphasized)
-                        }
+                    ForEach(data) { awardData in
+                        AwardThumbnailView(data: awardData)
                     }
                 }
             }
