@@ -12,11 +12,13 @@
 		07F5F6362BF9E29B008A184B /* BoastAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F5F6352BF9E29B008A184B /* BoastAddView.swift */; };
 		080072392BF6E7E3007B2956 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 080072382BF6E7E3007B2956 /* Assets.xcassets */; };
 		0800723C2BF6E7E3007B2956 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0800723B2BF6E7E3007B2956 /* Preview Assets.xcassets */; };
+		0813883C2BFB93E500B78F3C /* BoastCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0813883B2BFB93E500B78F3C /* BoastCardView.swift */; };
 		08DBEF162BF8699E007834A3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DBEF152BF8699E007834A3 /* User.swift */; };
 		08DBEF1A2BF86BD7007834A3 /* Boast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DBEF192BF86BD7007834A3 /* Boast.swift */; };
 		08DBEF1C2BF86CF1007834A3 /* Award.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DBEF1B2BF86CF1007834A3 /* Award.swift */; };
 		08DBEF1E2BF87781007834A3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DBEF1D2BF87781007834A3 /* Constants.swift */; };
 		08DBEF222BF893B9007834A3 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DBEF212BF893B9007834A3 /* Color.swift */; };
+		08DBEF272BF8D102007834A3 /* CardFlipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DBEF262BF8D102007834A3 /* CardFlipView.swift */; };
 		1F986F5B2BFA291E00601064 /* AwardAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F986F5A2BFA291E00601064 /* AwardAddView.swift */; };
 		1FE99FC62BF9F43D0043E0DB /* UserSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE99FC52BF9F43D0043E0DB /* UserSelectView.swift */; };
 		8CCC8BE72BFB7A1E009DBEE0 /* BoastEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCC8BE62BFB7A1E009DBEE0 /* BoastEmptyView.swift */; };
@@ -24,7 +26,6 @@
 		BD8665FF2BF89DAB0039F460 /* DNFont.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD8665FE2BF89DAB0039F460 /* DNFont.xcassets */; };
 		BDBD65582BFB727F005ECC96 /* ContentsLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBD65572BFB727F005ECC96 /* ContentsLine.swift */; };
 		BDD8FED92BF8CAA300A1E25F /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD8FED82BF8CAA300A1E25F /* Font.swift */; };
-		BDD8FEDE2BF8FD4F00A1E25F /* BoastCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD8FEDD2BF8FD4F00A1E25F /* BoastCardView.swift */; };
 		BDF0A5B72BFA482500070045 /* BoastMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF0A5B62BFA482500070045 /* BoastMainView.swift */; };
 		F12B05F32BFB593F006E2777 /* AwardCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12B05F22BFB593F006E2777 /* AwardCarouselView.swift */; };
 		F12B05F52BFB5A19006E2777 /* AwardFavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12B05F42BFB5A19006E2777 /* AwardFavoriteView.swift */; };
@@ -46,11 +47,13 @@
 		080072312BF6E7E2007B2956 /* DeulLangNalLang.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeulLangNalLang.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		080072382BF6E7E3007B2956 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
 		0800723B2BF6E7E3007B2956 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0813883B2BFB93E500B78F3C /* BoastCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoastCardView.swift; sourceTree = "<group>"; };
 		08DBEF152BF8699E007834A3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		08DBEF192BF86BD7007834A3 /* Boast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Boast.swift; sourceTree = "<group>"; };
 		08DBEF1B2BF86CF1007834A3 /* Award.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Award.swift; sourceTree = "<group>"; };
 		08DBEF1D2BF87781007834A3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		08DBEF212BF893B9007834A3 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		08DBEF262BF8D102007834A3 /* CardFlipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFlipView.swift; sourceTree = "<group>"; };
 		1F986F5A2BFA291E00601064 /* AwardAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardAddView.swift; sourceTree = "<group>"; };
 		1FE99FC52BF9F43D0043E0DB /* UserSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSelectView.swift; sourceTree = "<group>"; };
 		8CCC8BE62BFB7A1E009DBEE0 /* BoastEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoastEmptyView.swift; sourceTree = "<group>"; };
@@ -59,7 +62,6 @@
 		BD8666002BF89F850039F460 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		BDBD65572BFB727F005ECC96 /* ContentsLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentsLine.swift; sourceTree = "<group>"; };
 		BDD8FED82BF8CAA300A1E25F /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Font.swift; path = DeulLangNalLang/Sources/Helper/Extensions/DNDesignSystem/Font.swift; sourceTree = SOURCE_ROOT; };
-		BDD8FEDD2BF8FD4F00A1E25F /* BoastCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoastCardView.swift; sourceTree = "<group>"; };
 		BDF0A5B62BFA482500070045 /* BoastMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoastMainView.swift; sourceTree = "<group>"; };
 		F12B05F22BFB593F006E2777 /* AwardCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardCarouselView.swift; sourceTree = "<group>"; };
 		F12B05F42BFB5A19006E2777 /* AwardFavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardFavoriteView.swift; sourceTree = "<group>"; };
@@ -203,7 +205,7 @@
 				8CCC8BE62BFB7A1E009DBEE0 /* BoastEmptyView.swift */,
 				07F5F6352BF9E29B008A184B /* BoastAddView.swift */,
 				BDF0A5B62BFA482500070045 /* BoastMainView.swift */,
-				BDD8FEDD2BF8FD4F00A1E25F /* BoastCardView.swift */,
+				0813883B2BFB93E500B78F3C /* BoastCardView.swift */,
 			);
 			path = BoastTab;
 			sourceTree = "<group>";
@@ -225,6 +227,7 @@
 				07F5F6332BF9C8F4008A184B /* BoastDetailView.swift */,
 				F12B05F22BFB593F006E2777 /* AwardCarouselView.swift */,
 				F12B05F42BFB5A19006E2777 /* AwardFavoriteView.swift */,
+				08DBEF262BF8D102007834A3 /* CardFlipView.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -334,8 +337,8 @@
 				8CCC8BE72BFB7A1E009DBEE0 /* BoastEmptyView.swift in Sources */,
 				08DBEF222BF893B9007834A3 /* Color.swift in Sources */,
 				07F5F6362BF9E29B008A184B /* BoastAddView.swift in Sources */,
-				BDD8FEDE2BF8FD4F00A1E25F /* BoastCardView.swift in Sources */,
 				1F986F5B2BFA291E00601064 /* AwardAddView.swift in Sources */,
+				08DBEF272BF8D102007834A3 /* CardFlipView.swift in Sources */,
 				08DBEF1C2BF86CF1007834A3 /* Award.swift in Sources */,
 				BDD8FED92BF8CAA300A1E25F /* Font.swift in Sources */,
 				BDBD65582BFB727F005ECC96 /* ContentsLine.swift in Sources */,
@@ -346,6 +349,7 @@
 				F16525FC2BF8E4E20013C2CF /* SegmentedPickerView.swift in Sources */,
 				F16526002BF8E54A0013C2CF /* FavoriteAwardListView.swift in Sources */,
 				F16525F72BF8E2CD0013C2CF /* UserSwitchView.swift in Sources */,
+				0813883C2BFB93E500B78F3C /* BoastCardView.swift in Sources */,
 				8CCC8BEB2BFB8BCC009DBEE0 /* AwardEmptyView.swift in Sources */,
 				F16525FE2BF8E52C0013C2CF /* TotalAwardListView.swift in Sources */,
 				F1DFB5562BF7D6ED00AE18AC /* CarouselView.swift in Sources */,
