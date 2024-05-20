@@ -28,15 +28,11 @@ struct TabBarView: View {
 
 struct TabSub1View: View { // 첫 번째 탭 화면
     var body: some View {
-        VStack {
-            Image(systemName: "1.circle")
-                .resizable()
-                .frame(width: 100, height: 100)
-                .padding()
-            Text("첫 번째 탭")
+        
+        AwardMainView()
+
         }
     }
-}
 
 struct TabSub2View: View { // 두 번째 탭 화면
     var body: some View {
