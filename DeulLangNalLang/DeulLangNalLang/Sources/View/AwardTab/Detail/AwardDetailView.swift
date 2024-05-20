@@ -14,50 +14,42 @@ struct AwardDetailView: View {
     var body: some View {
         VStack(spacing: 0){
             ZStack{
-                RoundedRectangle(cornerRadius: 20)
-                    .frame(width: 329, height: 480)
-                    .foregroundColor(Color(red: 26/255, green: 195/255, blue: 69/255))
-                VStack(spacing: 0){
-                    Rectangle()
-                        .frame(width: 80, height: 80)
-                        .foregroundColor(.gray)
-                        .padding(20)
-                    Spacer()
-                }
-                
-                Image("선인장")
+                Image("cardCactus")
+                    .shadow(radius: 5, x: 3, y: 3)
                 
                 VStack(spacing: 0){
                     Spacer()
                     HStack(spacing: 0){
                         Text("우리집 요리왕")
-                        Text("상")
+                        Text(" 상")
                     }
                     .font(.largeTitleRegular)
                     .fontWeight(.heavy)
                     
                     
                     Text("산이는 부모님이 집에 안계실 때 부모님을 대신하여 들이가 배고픈지 물어보고 맛있는 밥을 만들어 주었기에 이 상을 수여합니다.")
-                        .frame(width: 233, height: 233)
+                        .frame(width: 229, height: 196)
                         .padding(.vertical, 12)
                         .font(.title3Emphasized)
-                        .fontWeight(.medium)
                         .multilineTextAlignment(.center)
+                    
                     Text("2024년 5월 5일")
-                        .fontWeight(.semibold)
                         .font(.bodyEmphasized)
+                        .padding(.bottom, 4)
+
                     Text("류들")
                         .font(.headlineEmphasized)
-                        .fontWeight(.regular)
-                        .padding(.top, 5)
-                        .padding(.bottom, 22)
+                        .padding(.bottom, 51)
 
 
                     
                 }
             }
             .frame(width: 329, height: 480)
-            .padding(.bottom, 59)
+            Text("터치해서 뒷면의 자랑을 확인해바라기!")
+                .font(.caption1Regular)
+                .foregroundColor(.gray)
+                .padding(.top, 32)
         }
         .navigationTitle("상장과 자랑 보기")
         .navigationBarBackButtonHidden(true)
