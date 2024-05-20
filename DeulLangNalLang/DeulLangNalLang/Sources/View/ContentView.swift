@@ -8,9 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var showModal = false
+    
+    
     var body: some View {
-        VStack {
-            NavigationStack{
+        NavigationStack{
+            
+            VStack(spacing: 0){
                 NavigationLink(destination: AwardDetailView()){
                     
                     ZStack{
@@ -24,6 +28,16 @@ struct ContentView: View {
                         }
                     }
                 }
+            }
+            Button("자랑 추가하기") {
+                showModal = true
+                //                            Text("자랑 추가")
+                //                                .foregroundColor(.black)
+                //                                .fontWeight(.heavy)
+                
+            }
+            .sheet(isPresented: $showModal) {
+                BoastAddView()
             }
         }
     }
