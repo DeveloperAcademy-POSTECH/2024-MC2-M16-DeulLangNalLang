@@ -3,60 +3,67 @@ import UIKit
 
 struct BoastAddView: View {
     @State private var text = ""
-        @State private var isShowingImagePicker = false
-        @State private var selectedImages: [UIImage?] = [nil, nil]
-        @Environment(\.presentationMode) var presentationMode
+    @State private var isShowingImagePicker = false
+    @State private var selectedImages: [UIImage?] = [nil, nil]
+    @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
-            NavigationView {
-                VStack {
-                    CustomTextView(text: $text, isShowingImagePicker: $isShowingImagePicker)
-                        .frame(height: 200)
-                        .padding()
-                    
+        NavigationView {
+            VStack {
+                CustomTextView(text: $text, isShowingImagePicker: $isShowingImagePicker)
+                    .frame(height: 200)
+                    .padding()
+                HStack{
                     Spacer()
-                    
-                    HStack(spacing: 20) {
-                        ForEach(0..<selectedImages.count, id: \.self) { index in
-                            if let image = selectedImages[index] {
-                                VStack {
-                                    Image(uiImage: image)
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(height: 100)
-                                        .padding()
-                                    
-                                    Button(action: {
-                                        selectedImages[index] = nil
-                                    }) {
-                                        Text("삭제")
-                                            .foregroundColor(.red)
-                                    }
-                                }
-                            } else {
+                    Text("\(text.count)/100")
+                        .font(.caption1Regular)
+                        .foregroundColor(.gray)
+                        .padding()
+                }
+                
+                Spacer()
+                
+                HStack(spacing: 20) {
+                    ForEach(0..<selectedImages.count, id: \.self) { index in
+                        if let image = selectedImages[index] {
+                            VStack {
+                                Image(uiImage: image)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(height: 100)
+                                    .padding()
+                                
                                 Button(action: {
-                                    isShowingImagePicker = true
+                                    selectedImages[index] = nil
                                 }) {
-                                    Image(systemName: "add")
-                                        .font(.title)
+                                    Text("삭제")
+                                        .foregroundColor(.red)
                                 }
-                                .sheet(isPresented: $isShowingImagePicker) {
-                                    ImagePicker(selectedImage: $selectedImages[index])
-                                }
+                            }
+                        } else {
+                            Button(action: {
+                                isShowingImagePicker = true
+                            }) {
+                                Image(systemName: "add")
+                                    .font(.title)
+                            }
+                            .sheet(isPresented: $isShowingImagePicker) {
+                                ImagePicker(selectedImage: $selectedImages[index])
                             }
                         }
                     }
-                    
-                    Spacer()
                 }
-                .navigationBarTitle("자랑쓰기")
-                .navigationBarTitleDisplayMode(.inline)
-                .navigationBarItems(trailing: Button("완료") {
-                    presentationMode.wrappedValue.dismiss()
-                })
+                
+                Spacer()
             }
+            .navigationBarTitle("자랑쓰기")
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarItems(trailing: Button("완료") {
+                presentationMode.wrappedValue.dismiss()
+            })
         }
     }
+}
 
 struct CustomTextView: UIViewRepresentable {
     @Binding var text: String
@@ -95,6 +102,13 @@ struct CustomTextView: UIViewRepresentable {
 
         func textViewDidChange(_ textView: UITextView) {
             parent.text = textView.text
+        }
+        
+        func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+            let currentText = textView.text ?? ""
+            guard let stringRange = Range(range, in: currentText) else { return false }
+            let updatedText = currentText.replacingCharacters(in: stringRange, with: text)
+            return updatedText.count <= 100
         }
         
         @objc func cameraButtonTapped() {
