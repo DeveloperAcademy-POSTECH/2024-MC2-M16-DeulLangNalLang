@@ -11,6 +11,23 @@ class User {
     var id = UUID()
     var name: Username
     
+    var partner: Username {
+        switch self.name {
+        case .San:
+            return .Deul
+        case .Deul:
+            return .San
+        }
+    }
+    
+    var koreanName: String {
+        switch self.name {
+        case .San: "류산"
+        case .Deul: "류들"
+        }
+    }
+
+    
     init(name: Username) {
         self.name = name
     }
@@ -19,15 +36,7 @@ class User {
 /// Username 종류(San / Deul)
 enum Username {
     case San, Deul
-    
-    var partner: Username {
-        switch self {
-        case .San:
-            return .Deul
-        case .Deul:
-            return .San
-        }
-    }
+
 }
 
 // MARK: - Protocols
