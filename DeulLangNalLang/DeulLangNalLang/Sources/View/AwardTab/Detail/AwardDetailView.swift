@@ -39,10 +39,6 @@ struct AwardDetailView: View {
                 }
             }
             .frame(width: 329, height: 480)
-            Text("터치해서 뒷면의 자랑을 확인해바라기!")
-                .font(.caption1Regular)
-                .foregroundColor(.gray)
-                .padding(.top, 32)
         }
     }
 }

@@ -51,27 +51,27 @@ struct BoastDetailView: View {
 //                        .frame(width: 281, alignment: .leading)
 //                    Spacer()
                     
-                    //---------- 사진 2장일 때--------------
-//                    HStack(spacing: 0){
-//                        Image("선인장")
-//                            .resizable()
-//                            .aspectRatio(contentMode: .fill)
-//                            .frame(width: 136, height: 220)
-//                            .clipped()
-//                            .cornerRadius(8)
-//                            .padding(.top, 20)
-//                            .padding(.horizontal, 5)
-//
-//                        Image("선인장")
-//                            .resizable()
-//                            .aspectRatio(contentMode: .fill)
-//                            .frame(width: 136, height: 220)
-//                            .clipped()
-//                            .cornerRadius(8)
-//                            .padding(.top, 20)
-//                            .padding(.horizontal, 5)
-//
-//                    }
+//                    ---------- 사진 2장일 때--------------
+                    HStack(spacing: 0){
+                        Image("awardCactus")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 136, height: 220)
+                            .clipped()
+                            .cornerRadius(8)
+                            .padding(.top, 20)
+                            .padding(.horizontal, 5)
+
+                        Image("awardCactus")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 136, height: 220)
+                            .clipped()
+                            .cornerRadius(8)
+                            .padding(.top, 20)
+                            .padding(.horizontal, 5)
+
+                    }
                     
                     Text("\(boast.contents)")
                         .font(.bodyRegular)
@@ -83,11 +83,6 @@ struct BoastDetailView: View {
                 }
             }
             .frame(width: 329, height: 480)
-            
-            Text("터치해서 뒷면의 자랑을 확인해바라기!")
-                .font(.caption1Regular)
-                .foregroundColor(.gray)
-                .padding(.top, 32)
         }
     }
 }
