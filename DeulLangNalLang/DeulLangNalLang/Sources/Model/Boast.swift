@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@Observable
 class Boast {
     var id = UUID()
     var contents: String
@@ -15,9 +16,10 @@ class Boast {
     var date: Date
     var award: Award?
     
-    init(contents: String, date: Date) {
+    init(contents: String, date: Date, award: Award? = nil) {
         self.contents = contents
         self.date = date
+        self.award = award
     }
 }
 

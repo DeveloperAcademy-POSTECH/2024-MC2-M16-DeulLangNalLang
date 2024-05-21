@@ -48,3 +48,12 @@ extension String{
         return self.split(separator: "").joined(separator: "\u{200B}")
     }
 }
+
+//MARK: DateFormatting
+func getDateFormat(date: Date) -> String {
+    let formatter = DateFormatter()
+    formatter.dateFormat = "yyyy.MM.dd"
+    
+    let dateString = formatter.string(from: date)
+    return dateString
+}
