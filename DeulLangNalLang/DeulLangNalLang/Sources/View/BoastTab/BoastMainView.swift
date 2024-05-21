@@ -11,91 +11,96 @@ struct BoastMainView: View {
     var body: some View {
         TrackableScrollView(header: {
             ScrollView{
-                    HStack {
-                        Spacer()
-                        Menu {
-                            Button("산이만 보기", action:{})
-                            Button("들이만 보기", action:{})
-                            Button("전체보기", action:{})
-                        } label: {
-                            Image(systemName: "line.3.horizontal.decrease.circle")
-                                .foregroundStyle(.black)
-                                .font(.title1Regular)
-                        }
-                        .padding(.trailing, 4)
-                        
-                        Button(action: {
-                            showSheet.toggle()
-                        }) {
-                            Image(systemName: "plus")
-                                .foregroundStyle(.black)
-                                .font(.title1Regular)
-                        }
-                        .sheet(isPresented: $showSheet) {
-                            BoastAddView()
-                        }
+                HStack {
+                    Spacer()
+                    Menu {
+                        Button("산이만 보기", action:{})
+                        Button("들이만 보기", action:{})
+                        Button("전체보기", action:{})
+                    } label: {
+                        Image(systemName: "line.3.horizontal.decrease.circle")
+                            .foregroundStyle(.black)
+                            .font(.title1Regular)
                     }
-                    .background(.white)
-                    .padding(.trailing)
-//                    .padding(.vertical, 4)
-                    .border(.black)
+                    .padding(.trailing, 12)
+                    
+                    Button(action: {
+                        showSheet.toggle()
+                    }) {
+                        Image(systemName: "plus")
+                            .foregroundStyle(.black)
+                            .font(.title1Regular)
+                    }
+                    .sheet(isPresented: $showSheet) {
+                        BoastAddView()
+                    }
+                }
+                .background(.white)
+                .padding(.trailing, 12)
             }
             .padding()
         }, content: {
-            ForEach($tempBoasts, id: \.self) { boast in
-                BoastCardView(tempBoast: boast)
-                    .padding(.bottom, 8)
+            VStack(spacing: 0){
+                ForEach($tempBoasts, id: \.self) { boast in
+                    BoastCardView(tempBoast: boast)
+                        .padding(.bottom, 8)
+                }
             }
-            .border(.black)
         })
     }
     
     struct TrackableScrollView<Header: View, Content: View>: View {
-     @State private var canShowHeader = true // on of the header
-     let header: () -> Header
-     let content: () -> Content
-     var body: some View {
-      VStack {
-       if canShowHeader {
-        VStack {
-         header() // header content
+        @State private var showHeader = true
+        
+        let header: () -> Header
+        let content: () -> Content
+        
+        var body: some View {
+            VStack(spacing :0){
+                if showHeader {
+                    VStack(spacing :0){
+                        header()
+                            .frame(height: 60)
+                    }
+                    .transition(
+                        .asymmetric(
+                            insertion: .push(from: .top),
+                            removal: .push(from: .bottom)
+                        )
+                    )
+                    .padding(.top, -12)
+                }
+                
+                GeometryReader { outerGeo in
+                    let outerHeight = outerGeo.size.height
+                    ScrollView(.vertical) {
+                        content()
+                            .background {
+                                GeometryReader { innnerGeo in
+                                    let contentHeight = innnerGeo.size.height
+                                    let minY = max(
+                                        min(0, innnerGeo.frame(in: .named("ScrollView")).minY),
+                                        outerHeight - contentHeight
+                                    )
+                                    Color.clear
+                                        .onChange(of: minY) { oldVal, newVal in
+                                            if (showHeader && newVal < oldVal) || !showHeader && newVal > oldVal {
+                                                showHeader = newVal > oldVal
+                                            }
+                                        }
+                                }
+                            }
+                    }
+                    .coordinateSpace(name: "ScrollView")
+                    .padding(.horizontal)
+                }
+                .padding(.top, 1)
+            }
+            .animation(.easeInOut, value: showHeader)
         }
-        .transition(
-         .asymmetric(
-          insertion: .push(from: .top),
-          removal: .push(from: .bottom)
-         )
-        )
-       }
-       GeometryReader { outerGeo in
-        let outerHeight = outerGeo.size.height
-        ScrollView(.vertical) {
-         content() // scorllable content
-          .background {
-           GeometryReader { innnerGeo in
-            let contentHeight = innnerGeo.size.height
-            let minY = max(
-             min(0, innnerGeo.frame(in: .named("ScrollView")).minY),
-             outerHeight - contentHeight
-            )
-            Color.clear
-             .onChange(of: minY) { oldVal, newVal in
-              if (canShowHeader && newVal < oldVal) || !canShowHeader && newVal > oldVal {
-               canShowHeader = newVal > oldVal
-              }
-             }
-           }
-          }
-        }
-        .coordinateSpace(name: "ScrollView") // coordinator space
-       }
-       .padding(.top, 1)
-      }
-      .animation(.easeInOut, value: canShowHeader)
-     }
     }
 }
-    
+
 #Preview {
     BoastMainView()
 }
