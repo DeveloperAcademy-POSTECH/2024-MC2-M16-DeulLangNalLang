@@ -30,6 +30,7 @@
 		F12B05F32BFB593F006E2777 /* AwardCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12B05F22BFB593F006E2777 /* AwardCarouselView.swift */; };
 		F12B05F52BFB5A19006E2777 /* AwardFavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12B05F42BFB5A19006E2777 /* AwardFavoriteView.swift */; };
 		F12B05F72BFB5D28006E2777 /* DNColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12B05F62BFB5D28006E2777 /* DNColor.swift */; };
+		F12B05FD2BFBA22F006E2777 /* AwardThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12B05FC2BFBA22F006E2777 /* AwardThumbnailView.swift */; };
 		F16525F52BF8B23A0013C2CF /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16525F42BF8B23A0013C2CF /* TabBarView.swift */; };
 		F16525F72BF8E2CD0013C2CF /* UserSwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16525F62BF8E2CD0013C2CF /* UserSwitchView.swift */; };
 		F16525FC2BF8E4E20013C2CF /* SegmentedPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16525FB2BF8E4E20013C2CF /* SegmentedPickerView.swift */; };
@@ -66,6 +67,7 @@
 		F12B05F22BFB593F006E2777 /* AwardCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardCarouselView.swift; sourceTree = "<group>"; };
 		F12B05F42BFB5A19006E2777 /* AwardFavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardFavoriteView.swift; sourceTree = "<group>"; };
 		F12B05F62BFB5D28006E2777 /* DNColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNColor.swift; sourceTree = "<group>"; };
+		F12B05FC2BFBA22F006E2777 /* AwardThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardThumbnailView.swift; sourceTree = "<group>"; };
 		F16525F42BF8B23A0013C2CF /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		F16525F62BF8E2CD0013C2CF /* UserSwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSwitchView.swift; sourceTree = "<group>"; };
 		F16525FB2BF8E4E20013C2CF /* SegmentedPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedPickerView.swift; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 				F12B05F22BFB593F006E2777 /* AwardCarouselView.swift */,
 				F12B05F42BFB5A19006E2777 /* AwardFavoriteView.swift */,
 				08DBEF262BF8D102007834A3 /* CardFlipView.swift */,
+				F12B05FC2BFBA22F006E2777 /* AwardThumbnailView.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 				1FE99FC62BF9F43D0043E0DB /* UserSelectView.swift in Sources */,
 				F1F47BF92BFAE0CA002F15E2 /* DeulLangNalLangApp.swift in Sources */,
 				08DBEF162BF8699E007834A3 /* User.swift in Sources */,
+				F12B05FD2BFBA22F006E2777 /* AwardThumbnailView.swift in Sources */,
 				F12B05F32BFB593F006E2777 /* AwardCarouselView.swift in Sources */,
 				08DBEF1E2BF87781007834A3 /* Constants.swift in Sources */,
 			);

@@ -16,7 +16,8 @@ struct AwardMainView: View {
             VStack (alignment: .leading) {
                 
                 Text("이번 주 상장을 확인해 \n보세요구르트")
-                    .font(.largeTitleEmphasized)
+                    .font(.largeTitleRegular)
+                    .fontWeight(.heavy)
                     .padding(.bottom, 20)
                     .padding(.horizontal)
                 
@@ -28,7 +29,8 @@ struct AwardMainView: View {
                 .padding(.bottom, 20)
                 
                 Text("상장이 n개 모였네요! \n아주 칭찬합니다람쥐")
-                    .font(.largeTitleEmphasized)
+                    .font(.largeTitleRegular)
+                    .fontWeight(.heavy)
                     .padding(.horizontal)
                     .padding(.bottom, 20)
                 

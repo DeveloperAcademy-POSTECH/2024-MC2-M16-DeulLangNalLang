@@ -10,7 +10,7 @@ import SwiftUI
 struct FavoriteAwardListView: View {
     
     //목록을 1부터 100까지 만듬
-    let data = Array(1...100).map { "목록 \($0)"}
+    let data = AwardFavoriteData.favoriteDummy
     
     //화면을 그리드형식으로 꽉채워줌
     let columns = [
@@ -25,17 +25,9 @@ struct FavoriteAwardListView: View {
         VStack(alignment: .leading){
             
             LazyVGrid(columns: columns, spacing: 20) {
-                ForEach(data, id: \.self) { award in
-                    NavigationLink(destination: CardFlipView()){
-                        VStack {
-                            RoundedRectangle(cornerRadius: 20)
-                                .fill(Color.green)
-                                .frame(height: 285)
-                            
-                            Text(award)
-                                .font(.headlineEmphasized)
-                        }
-                    }
+                
+                    ForEach(data) { awardFavoriteData in
+                        AwardFavoriteView(data: awardFavoriteData)
                 }
             }
         }

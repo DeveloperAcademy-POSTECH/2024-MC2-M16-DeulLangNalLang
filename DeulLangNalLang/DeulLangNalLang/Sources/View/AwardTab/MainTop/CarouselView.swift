@@ -42,8 +42,7 @@ struct CarouselView: View {
                             }
                         }
                     })
-            )
-            
+                )
             HStack(spacing: 8) {
                 ForEach(0..<5) { i in
                     Circle()

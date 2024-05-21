@@ -8,13 +8,13 @@
 import SwiftUI
 
 
-        
-        extension Color {
-            static let DNBlue = Color("DNBlue")
-            static let DNDarkBlue = Color("DNDarkBlue")
-            static let DNDarkGreen = Color("DNDarkGreen")
-            static let DNGreen = Color("DNGreen")
-            }
+
+extension Color {
+    static let DNBlue = Color("DNBlue")
+    static let DNDarkBlue = Color("DNDarkBlue")
+    static let DNDarkGreen = Color("DNDarkGreen")
+    static let DNGreen = Color("DNGreen")
+}
 
 //
 //#Preview {
