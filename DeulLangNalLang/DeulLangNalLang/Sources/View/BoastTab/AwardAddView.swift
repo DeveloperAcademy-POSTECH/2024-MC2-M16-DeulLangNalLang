@@ -14,7 +14,7 @@ struct AwardAddView: View {
     @State var awardContents: String = ""
     @State var titleCharacterCount: Int = 0
     @State var contentsCharacterCount: Int = 0
-    
+    @State private var selectedFrameIndex: Int? = nil
     
     var body: some View {
         
@@ -76,8 +76,13 @@ struct AwardAddView: View {
                 ZStack {
                     VStack {
                         TextField("제목을 입력하세요", text: $awardTitle)
-                            .onChange(of: awardTitle) {
-                                newValue in titleCharacterCount = newValue.count}
+                            .onChange(of: awardTitle) { newValue in
+                                if newValue.count <= 8 {
+                                    titleCharacterCount = newValue.count
+                                } else {
+                                    awardTitle = String(newValue.prefix(8))
+                                }
+                            }
                             .padding(.horizontal, 12)
                             .padding(.vertical, 12)
                             .frame(maxWidth: .infinity)
@@ -120,8 +125,13 @@ struct AwardAddView: View {
             ZStack(alignment: .topLeading) {
                 
                 TextEditor(text: $awardContents)
-                    .onChange(of: awardContents) {
-                        newValue in contentsCharacterCount = newValue.count}
+                    .onChange(of: awardContents) { newValue in
+                        if newValue.count <= 90 {
+                            contentsCharacterCount = newValue.count
+                        } else {
+                            awardContents = String(newValue.prefix(90))
+                        }
+                    }
                     .padding(.horizontal, 8)
                     .padding(.vertical, 8)
                     .background(Color.white)
@@ -177,44 +187,26 @@ struct AwardAddView: View {
                 .frame(width: 361, alignment: .topLeading)
             
             
-            ScrollView(.horizontal) {
-                HStack(spacing: 8){
-                    Button(action: {
-                        //code
-                    }){
-                        Rectangle()
-                            .frame(width: 72, height: 72)
-                            .cornerRadius(8.0)
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 8) {
+                    ForEach(0..<5, id: \.self) { index in
+                        Button(action: {
+                            if selectedFrameIndex == index {
+                                selectedFrameIndex = nil
+                            } else {
+                                selectedFrameIndex = index
+                            }
+                        }) {
+                            Rectangle()
+                                .frame(width: 72, height: 72)
+                                .cornerRadius(8.0)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .stroke(selectedFrameIndex == index ? Color.blue : Color.clear, lineWidth: 2)
+                                )
+                        }
+                        .disabled(selectedFrameIndex != nil && selectedFrameIndex != index)
                     }
-                    Button(action: {
-                        //code
-                    }){
-                        Rectangle()
-                            .frame(width: 72, height: 72)
-                            .cornerRadius(8.0)
-                    }
-                    Button(action: {
-                        //code
-                    }){
-                        Rectangle()
-                            .frame(width: 72, height: 72)
-                            .cornerRadius(8.0)
-                    }
-                    Button(action: {
-                        //code
-                    }){
-                        Rectangle()
-                            .frame(width: 72, height: 72)
-                            .cornerRadius(8.0)
-                    }
-                    Button(action: {
-                        //code
-                    }){
-                        Rectangle()
-                            .frame(width: 72, height: 72)
-                            .cornerRadius(8.0)
-                    }
-                    
                 }
                 .frame(width: .infinity, height: 72)
                 .padding(.horizontal, 16)
