@@ -26,7 +26,9 @@ struct TotalAwardListView: View {
             VStack(alignment: .leading){
                 LazyVGrid(columns: columns, spacing: 20) {
                     ForEach(data) { awardData in
-                        AwardThumbnailView(data: awardData)
+                        NavigationLink(destination: CardFlipView()) {
+                            AwardThumbnailView(data: awardData)
+                        }
                     }
                 }
             }
