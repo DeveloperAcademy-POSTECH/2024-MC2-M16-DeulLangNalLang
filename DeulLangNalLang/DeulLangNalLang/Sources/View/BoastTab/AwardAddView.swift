@@ -3,7 +3,6 @@
 //  DeulLangNalLang
 //
 //  Created by Huijeong Bae on 5/19/24.
-//  ㅎ.ㅎ
 
 import SwiftUI
 
@@ -15,6 +14,8 @@ struct AwardAddView: View {
     @State var titleCharacterCount: Int = 0
     @State var contentsCharacterCount: Int = 0
     @State private var selectedFrameIndex: Int? = nil
+    
+    let awardImages = ["awardOctopus", "awardOrigami", "awardCactus","awardBicycle", "awardGem"]
     
     var body: some View {
         
@@ -189,7 +190,7 @@ struct AwardAddView: View {
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 8) {
-                    ForEach(0..<5, id: \.self) { index in
+                    ForEach(0..<awardImages.count, id: \.self) { index in
                         Button(action: {
                             if selectedFrameIndex == index {
                                 selectedFrameIndex = nil
@@ -197,13 +198,15 @@ struct AwardAddView: View {
                                 selectedFrameIndex = index
                             }
                         }) {
-                            Rectangle()
+                            Image(awardImages[index])
                                 .frame(width: 72, height: 72)
+                                .scaledToFill()
                                 .cornerRadius(8.0)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 8)
                                         .stroke(selectedFrameIndex == index ? Color.blue : Color.clear, lineWidth: 2)
                                 )
+                            //나중에 컬러 수정
                         }
                         .disabled(selectedFrameIndex != nil && selectedFrameIndex != index)
                     }
