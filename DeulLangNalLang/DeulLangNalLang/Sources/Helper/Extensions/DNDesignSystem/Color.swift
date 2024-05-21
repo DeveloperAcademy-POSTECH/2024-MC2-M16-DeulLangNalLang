@@ -37,3 +37,13 @@ extension Color {
         static let blue = Color(hex: "#007AFF")
     }
 }
+
+
+extension Color {
+    static let DNBlue = Color("DNBlue")
+    static let DNDarkBlue = Color("DNDarkBlue")
+    static let DNDarkGreen = Color("DNDarkGreen")
+    static let DNGreen = Color("DNGreen")
+}
+
+
