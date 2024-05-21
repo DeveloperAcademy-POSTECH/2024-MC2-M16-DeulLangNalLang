@@ -13,7 +13,7 @@ struct CardFlipView: View {
     @Environment(\.dismiss) var dismiss
     @State var isFlipped = false
     
-    @State var boast = Boast(contents: "오늘 들이가 배고프다고 해서 새로운 메뉴 파스타에 도전해봤다. 생각보다 쉽고 맛있었다. 다행히 들이도 맛있게 먹어준 것 같아서 좋았다. 오늘 들이가 배고프다고 해서 새로운 메뉴이다.",
+    @State var boast = Boast(contents: "오늘 들이가 배고프다고 해서 새로운 메뉴 파스타에 도전해봤다. 생각보다 쉽고 맛있었다. 다행히 들이도 맛있게 먹어준 것 같아서 좋았다. 오늘 들이가 배고프다고 해서 새로운 메뉴이다.", 
                              date: Date(),
                              award: Award(title: "우리집 요리왕",
                                           contents: "산이는 부모님이 집에 안계실 때 부모님을 대신하여 들이가 배고픈지 물어보고 맛있는 밥을 만들어 주었기에 이 상을 수여합니다.",
