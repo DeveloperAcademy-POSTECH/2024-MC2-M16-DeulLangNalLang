@@ -6,18 +6,7 @@ struct BoastEmptyView: View {
             
             Spacer().frame(height: 130)
 
-            Rectangle()
-                .foregroundColor(.clear)
-                .frame(width: 361, height: 242)
-                .background(
-                    Image("EmpttyViewimage")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 361, height: 242)
-                        .clipped()
-                )
-            
-            Spacer().frame(height: 16)
+        
             
             Image("EmptyViewimage")
               .frame(width: 32, height: 64)
