@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "cardGem.png",
+      "filename" : "보석카드.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "보석카드@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "보석카드@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
