@@ -57,7 +57,7 @@ struct BoastAddView: View {
                                 Image(systemName: "add")
                                     .font(.title)
                             }
-                            .sheet(isPresented: $isShowingCamera) {
+                            .fullScreenCover(isPresented: $isShowingCamera) {
                                 ImagePicker(selectedImage: $selectedImages[index],
                                             isShowingGallery: $isShowingGallery)
                                 .ignoresSafeArea()
@@ -100,7 +100,7 @@ struct CustomTextView: UIViewRepresentable {
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
         let cameraButton = UIBarButtonItem(barButtonSystemItem: .camera, target: context.coordinator,
-            action: #selector(context.coordinator.cameraButtonTapped)
+                                           action: #selector(context.coordinator.cameraButtonTapped)
         )
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let galleryButton = UIBarButtonItem(
