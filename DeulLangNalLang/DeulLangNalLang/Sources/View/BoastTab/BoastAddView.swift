@@ -92,11 +92,11 @@ struct CustomTextView: UIViewRepresentable {
         textView.delegate = context.coordinator
         textView.font = UIFont.systemFont(ofSize: 16)
         
-        // Placeholder 설정
+        //MARK: Placeholder 설정
         textView.text = placeholder
         textView.textColor = .lightGray
         
-        // 툴바 설정
+        //MARK: 툴바 설정
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
         let cameraButton = UIBarButtonItem(barButtonSystemItem: .camera, target: context.coordinator,
@@ -117,26 +117,21 @@ struct CustomTextView: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: UITextView, context: Context) {
-        if text.isEmpty {
-            uiView.text = placeholder
-            uiView.textColor = .lightGray
-        } else {
-            uiView.text = text
-            uiView.textColor = .black
-        }
     }
     
     class Coordinator: NSObject, UITextViewDelegate {
         var parent: CustomTextView
+        var isPlaceholderVisible = true
         
         init(_ parent: CustomTextView) {
             self.parent = parent
         }
         
         func textViewDidBeginEditing(_ textView: UITextView) {
-            if textView.textColor == .lightGray {
+            if isPlaceholderVisible {
                 textView.text = ""
                 textView.textColor = .black
+                isPlaceholderVisible = false
             }
         }
         
@@ -144,6 +139,7 @@ struct CustomTextView: UIViewRepresentable {
             if textView.text.isEmpty {
                 textView.text = parent.placeholder
                 textView.textColor = .lightGray
+                isPlaceholderVisible = true
             }
         }
         
@@ -163,7 +159,7 @@ struct CustomTextView: UIViewRepresentable {
             parent.isShowingGallery = true
         }
         
-        //MARK: 갤러리 버튼 tap 했을 때
+        // 갤러리 버튼 tap 했을 때
         @objc func galleryButtonTapped() {
             parent.isShowingImagePicker = true
             parent.isShowingGallery = false
@@ -183,7 +179,7 @@ struct ImagePicker: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UIImagePickerController {
         let picker = UIImagePickerController()
         picker.delegate = context.coordinator
-        //MARK: camera / gallery 설정
+        // camera / gallery 설정
         if isShowingGallery {
             picker.sourceType = .camera
         }
