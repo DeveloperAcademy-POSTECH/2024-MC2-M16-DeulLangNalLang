@@ -14,6 +14,7 @@ struct TabBarView: View {
             UserSwitchView()
                 .padding(.leading, 16)
                 .padding(.bottom, 10)
+                .padding(.top, 16)
             TabView {
                 AwardMainView() // 첫 번째 탭 화면
                     .tabItem { // 탭바 버튼으로 등록

@@ -26,7 +26,7 @@ struct AwardMainView: View {
                     CarouselView(currentIndex: $weeklyAwardSelection)
                     Spacer()
                 }
-                .padding(.bottom, 20)
+                .padding(.bottom, 40)
                 
                 Text("상장이 n개 모였네요! \n아주 칭찬합니다람쥐")
                     .font(.largeTitleRegular)
