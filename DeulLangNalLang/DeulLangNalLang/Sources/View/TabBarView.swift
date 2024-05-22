@@ -27,7 +27,7 @@ struct TabBarView: View {
                         Text("자랑 우체국")
                     }
             }
-            .accentColor(.DNBlue)
+            .accentColor(.DNTabBarBlue)
         }
         .navigationBarBackButtonHidden()
     }
