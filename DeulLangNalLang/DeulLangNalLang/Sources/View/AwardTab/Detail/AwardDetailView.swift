@@ -6,11 +6,21 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct AwardDetailView: View {
     @Environment(\.dismiss) var dismiss
+    @Environment(\.modelContext) var modelContext
+    
+    @Query var boasts: [Boast]
+
     @State private var isFavorite: Bool = false
-    var award: Award
+    
+    var boastID: UUID
+    
+    var boast: Boast {
+        return boasts.first { $0.id == boastID }!
+    }
     
     var body: some View {
         VStack(spacing: 0){
@@ -20,20 +30,20 @@ struct AwardDetailView: View {
                 
                 VStack(spacing: 0){
                     Spacer(minLength: 120)
-                    Text("\(award.title) 상")
+                    Text("\(boast.award?.title ?? "") 상")
                         .font(.largeTitleRegular)
                         .fontWeight(.heavy)
-                    Text("\(award.contents)")
+                    Text("\(boast.award?.contents ?? "")")
                         .frame(width: 229, height: 196)
                         .padding(.vertical, 12)
                         .font(.title3Emphasized)
                         .multilineTextAlignment(.center)
                     
-                    Text("\(getDateFormat(date: award.date))")
+                    Text("\(getDateFormat(date: boast.date))")
                         .font(.bodyEmphasized)
                         .padding(.bottom, 4)
                     
-                    Text("\(award.receiver.koreanName)")
+                    Text("\(boast.writer)")
                         .font(.headlineEmphasized)
                         .padding(.bottom, 51)
                 }

@@ -1,12 +1,16 @@
 import SwiftUI
 import UIKit
+import SwiftData
 
 struct BoastAddView: View {
+    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.modelContext) var modelContext
+    @Environment(User.self) var user: User
+    
     @State private var text = ""
     @State private var isShowingImagePicker = false
-    @State private var selectedImages: [UIImage?] = [nil, nil]
-    @Environment(\.presentationMode) var presentationMode
-
+    @State private var selectedImageDatas: [Data] = []
+    
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
@@ -22,8 +26,9 @@ struct BoastAddView: View {
                         .padding(.bottom, 5)
                 }
                 HStack(spacing: 8) {
-                    ForEach(0..<selectedImages.count, id: \.self) { index in
-                        if let image = selectedImages[index] {
+                    ForEach(0..<selectedImageDatas.count, id: \.self) { index in
+                        let data = selectedImageDatas[index]
+                        if let image = UIImage(data: data) {
                             ZStack {
                                 Image(uiImage: image)
                                     .resizable()
@@ -31,12 +36,12 @@ struct BoastAddView: View {
                                     .frame(width: 177, height: 116)
                                     .clipped()
                                     .cornerRadius(16)
-
+                                
                                 VStack(spacing: 0) {
                                     HStack(spacing: 0) {
                                         Spacer()
                                         Button(action: {
-                                            selectedImages[index] = nil
+                                            selectedImageDatas.remove(at: index)
                                         }) {
                                             Image(systemName: "x.circle")
                                                 .foregroundColor(.red)
@@ -48,8 +53,7 @@ struct BoastAddView: View {
                                 }
                             }
                             .frame(width: 177, height: 116)
-                        } 
-                            else {
+                        } else {
                             Button(action: {
                                 isShowingImagePicker = true
                             }) {
@@ -57,17 +61,24 @@ struct BoastAddView: View {
                                     .font(.title)
                             }
                             .sheet(isPresented: $isShowingImagePicker) {
-                                ImagePicker(selectedImage: $selectedImages[index])
+                                ImagePicker(selectedImageData: $selectedImageDatas[index])
                             }
                         }
+                        
                     }
                 }
-
+                
                 Spacer()
             }
             .navigationBarTitle("자랑쓰기")
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(trailing: Button("완료") {
+                if text != "" {
+                    let newBoast = Boast(contents: text, 
+                                         date: Date(),
+                                         writer: user.name)
+                    modelContext.insert(newBoast)
+                }
                 presentationMode.wrappedValue.dismiss()
             })
         }
@@ -78,16 +89,16 @@ struct CustomTextView: UIViewRepresentable {
     @Binding var text: String
     @Binding var isShowingImagePicker: Bool
     var placeholder: String
-
+    
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
-
+    
     func makeUIView(context: Context) -> UITextView {
         let textView = UITextView()
         textView.delegate = context.coordinator
         textView.font = UIFont.systemFont(ofSize: 16)
-
+        
         // Placeholder 설정
         textView.text = placeholder
         textView.textColor = .lightGray
@@ -99,10 +110,10 @@ struct CustomTextView: UIViewRepresentable {
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         toolbar.items = [cameraButton, flexibleSpace]
         textView.inputAccessoryView = toolbar
-
+        
         return textView
     }
-
+    
     func updateUIView(_ uiView: UITextView, context: Context) {
         if text.isEmpty {
             uiView.text = placeholder
@@ -112,39 +123,39 @@ struct CustomTextView: UIViewRepresentable {
             uiView.textColor = .black
         }
     }
-
+    
     class Coordinator: NSObject, UITextViewDelegate {
         var parent: CustomTextView
-
+        
         init(_ parent: CustomTextView) {
             self.parent = parent
         }
-
+        
         func textViewDidBeginEditing(_ textView: UITextView) {
             if textView.textColor == .lightGray {
                 textView.text = ""
                 textView.textColor = .black
             }
         }
-
+        
         func textViewDidEndEditing(_ textView: UITextView) {
             if textView.text.isEmpty {
                 textView.text = parent.placeholder
                 textView.textColor = .lightGray
             }
         }
-
+        
         func textViewDidChange(_ textView: UITextView) {
             parent.text = textView.text
         }
-
+        
         func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
             let currentText = textView.text ?? ""
             guard let stringRange = Range(range, in: currentText) else { return false }
             let updatedText = currentText.replacingCharacters(in: stringRange, with: text)
             return updatedText.count <= 100
         }
-
+        
         @objc func cameraButtonTapped() {
             parent.isShowingImagePicker = true
         }
@@ -153,36 +164,37 @@ struct CustomTextView: UIViewRepresentable {
 
 struct ImagePicker: UIViewControllerRepresentable {
     @Environment(\.presentationMode) private var presentationMode
-    @Binding var selectedImage: UIImage?
-
+    @Binding var selectedImageData: Data
+    
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
-
+    
     func makeUIViewController(context: Context) -> UIImagePickerController {
         let picker = UIImagePickerController()
         picker.delegate = context.coordinator
         picker.sourceType = .camera
         return picker
     }
-
+    
     func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {}
-
+    
     class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         var parent: ImagePicker
-
+        
         init(_ parent: ImagePicker) {
             self.parent = parent
         }
-
+        
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
             if let image = info[.originalImage] as? UIImage {
-                parent.selectedImage = image
+                guard let data = image.pngData() else { return }
+                parent.selectedImageData = data
             }
-
+            
             parent.presentationMode.wrappedValue.dismiss()
         }
-
+        
         func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
             parent.presentationMode.wrappedValue.dismiss()
         }

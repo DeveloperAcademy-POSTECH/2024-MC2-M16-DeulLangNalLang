@@ -9,7 +9,7 @@ struct BoastEmptyView: View {
               .foregroundColor(.clear)
               .frame(width: 361, height: 242)
               .background(
-                Image("EmpttyViewimage")
+                Image("EmptyViewimage")
                   .resizable()
                   .aspectRatio(contentMode: .fill)
                   .frame(width: 361, height: 242)

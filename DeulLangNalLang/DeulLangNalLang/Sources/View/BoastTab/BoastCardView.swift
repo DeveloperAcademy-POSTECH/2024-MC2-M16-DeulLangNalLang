@@ -1,59 +1,34 @@
 import SwiftUI
+import SwiftData
 
 struct BoastCardView: View {
-    @Binding var tempBoast: Boast
+    @Environment(\.modelContext) var modelContext: ModelContext
+    @Environment(User.self) var user: User
     
-    @State private var Username = "Deul"
-    @State private var images: [String] = [
-        "https://i.pinimg.com/564x/1e/a8/1f/1ea81fe0ddc6b0dbd76899c7aebfb47c.jpg",
-        "https://i.pinimg.com/564x/8a/be/9b/8abe9b3640dbef426f6c9c9a67457e9d.jpg"
-    ]
+    @Query var boasts: [Boast]
     
     @State private var showSheet: Bool = false
     @State private var showActionSheet: Bool = false
     
+    @Binding var boast: Boast
+    var onDelete: () -> Void
+    
     var body: some View {
         VStack {
             //MARK: image 부분
-            if images.count == 1 {
-                AsyncImage(url: URL(string: images[0])) { image in
-                    image.resizable()
-                } placeholder: {
-                    Color.red
-                }
-                .aspectRatio(contentMode: .fill)
-                .frame(height: 180, alignment: .center)
-                .clipShape(RoundedRectangle(cornerRadius: 8))
-                .clipped()
-            }
-            
-            if images.count == 2 {
-                HStack {
-                    AsyncImage(url: URL(string: images[0])) { image in
-                        image.resizable()
-                    } placeholder: {
-                        Color.red
-                    }
-                    .aspectRatio(contentMode: .fill)
-                    .frame(height: 180, alignment: .center)
-                    .clipShape(RoundedRectangle(cornerRadius: 8))
-                    .clipped()
-                    
-                    AsyncImage(url: URL(string: images[1])) { image in
-                        image.resizable()
-                    } placeholder: {
-                        Color.red
-                    }
-                    .aspectRatio(contentMode: .fill)
-                    .frame(height: 180, alignment: .center)
-                    .clipShape(RoundedRectangle(cornerRadius: 8))
-                    .clipped()
+            ForEach(boast.imageDatas, id: \.self) { data in
+                if let image = UIImage(data: data){
+                    Image(uiImage: image)
+                        .aspectRatio(contentMode: .fill)
+                        .frame(height: 180, alignment: .center)
+                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                        .clipped()
                 }
             }
             
             //MARK: text 부분
             VStack(alignment: .leading){
-                ExpandableText(tempBoast.contents, lineLimit: 3)
+                ExpandableText(boast.contents, lineLimit: 3)
                     .font(.bodyRegular)
                     .foregroundStyle(.white)
             }
@@ -62,13 +37,13 @@ struct BoastCardView: View {
             Divider()
             VStack{
                 HStack{
-                    Text(getDateFormat(date: tempBoast.date))
+                    Text(getDateFormat(date: boast.date))
                         .font(.bodyRegular)
                         .foregroundStyle(.white)
                     Spacer()
                     
                     /// 본인일 때 (내가 쓴 글) 수정하기 버튼
-                    if Username == "Deul" {
+                    if boast.writer == user.name {
                         Menu {
                             Button("수정하기", action:{})
                             Button(role: .destructive, action:{
@@ -85,7 +60,7 @@ struct BoastCardView: View {
                     }
                     
                     /// 상대일 때 상장주기 버튼
-                    if Username == "San"  {
+                    if boast.writer != user.name  {
                         Button(action: {
                             showSheet.toggle()
                         }) {
@@ -98,7 +73,7 @@ struct BoastCardView: View {
                         .background(Color.black)
                         .cornerRadius(14)
                         .sheet(isPresented: $showSheet) {
-                            AwardAddView()
+                            AwardAddView(onDelete: onDelete, boast: $boast)
                         }
                     }
                 }
@@ -108,25 +83,27 @@ struct BoastCardView: View {
         .padding(12)
         .frame(width: 361) //나중에 보면서 삭제하기
         //                .frame(height: 324)
-        .background(Username == "Deul" ? Color.DNGreen : Color.DNBlue)
+        .background(boast.writer == "류들" ? Color.DNGreen : Color.DNBlue)
         .cornerRadius(16)
     }
     
     //MARK: ActionSheet 동작 함수
     func getActionSheet() -> ActionSheet {
         
-        let deleteButton: ActionSheet.Button = .destructive(Text("삭제"))
+        let title = Text("정말로 삭제하실 건가요?")
+        let message = Text("이 작업은 취소할 수 없습니다.")
+        
+        let deleteButton: ActionSheet.Button = .destructive(Text("삭제")) {
+            modelContext.delete(boast)
+            self.onDelete()
+        }
         let cancelButton: ActionSheet.Button = .cancel(Text("취소"))
         
-        let title = Text("정말로 삭제하실 건가요?\n이 작업은 취소할 수 없습니다.")
-        
         return ActionSheet(title: title,
-                           message: nil,
+                           message: message,
                            buttons: [deleteButton, cancelButton])
     }
 }
-
-
 
 //#Preview {
 //    BoastCardView()
