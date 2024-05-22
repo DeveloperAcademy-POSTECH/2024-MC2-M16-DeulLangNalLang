@@ -43,7 +43,7 @@ struct BoastMainView: View {
             VStack(spacing: 0){
                 ForEach($tempBoasts, id: \.self) { boast in
                     BoastCardView(tempBoast: boast)
-                        .padding(.bottom, 8)
+                        .padding(.bottom, 16)
                 }
             }
         })
