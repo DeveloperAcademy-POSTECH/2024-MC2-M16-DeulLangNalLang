@@ -16,7 +16,7 @@ struct BoastAddView: View {
                 HStack {
                     Spacer()
                     Text("\(text.count)/100")
-                        .font(.caption)
+                        .font(.footnoteRegular)
                         .foregroundColor(.gray)
                         .padding(.horizontal, 16)
                         .padding(.bottom, 5)
@@ -57,7 +57,7 @@ struct BoastAddView: View {
                                 isShowingImagePicker = true
                             }) {
                                 Image(systemName: "add")
-                                    .font(.title)
+                                    .font(.title1Regular)
                             }
                             .fullScreenCover(isPresented: $isShowingImagePicker) {
                                 ImagePicker(selectedImage: $selectedImages[index],
@@ -92,9 +92,9 @@ struct CustomTextView: UIViewRepresentable {
     func makeUIView(context: Context) -> UITextView {
         let textView = UITextView()
         textView.delegate = context.coordinator
-        textView.font = UIFont.systemFont(ofSize: 16)
-        
-        //MARK: Placeholder 설정
+        textView.font = .bodyRegular(ofSize: 16.5)
+
+        // Placeholder 설정
         textView.text = placeholder
         textView.textColor = .lightGray
         

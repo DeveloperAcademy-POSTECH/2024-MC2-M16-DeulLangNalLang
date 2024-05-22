@@ -45,3 +45,11 @@ extension Font {
     static let caption2Regular: Font = .custom("AppleSDGothicNeo-Regular", size: 10.5)
     static let caption2Emphasized: Font = .custom("AppleSDGothicNeo-SemiBold", size: 10.5)
 }
+
+extension UIFont {
+    static func bodyRegular(ofSize size: CGFloat) -> UIFont {
+        return UIFont(name: "AppleSDGothicNeo-Regular", size: 16.5) ?? UIFont.systemFont(ofSize: 16.5)
+    }
+}
+
+
