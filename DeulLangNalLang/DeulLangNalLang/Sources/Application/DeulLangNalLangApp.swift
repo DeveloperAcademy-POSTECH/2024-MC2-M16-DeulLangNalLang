@@ -12,6 +12,7 @@ struct DeulLangNalLangApp: App {
     var body: some Scene {
         WindowGroup {
             UserSelectView()
+            .environment(User(name: ""))
         }
     }
 }
