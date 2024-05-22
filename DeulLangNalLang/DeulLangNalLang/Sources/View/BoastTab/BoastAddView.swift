@@ -59,6 +59,7 @@ struct BoastAddView: View {
                             .sheet(isPresented: $isShowingCamera) {
                                 ImagePicker(selectedImage: $selectedImages[index],
                                             isShowingGallery: $isShowingGallery)
+                                .ignoresSafeArea()
                             }
                         }
                     }
