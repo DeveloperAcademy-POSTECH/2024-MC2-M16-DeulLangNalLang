@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "선인장 카드.png",
+      "filename" : "cardCactus.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "선인장 카드@2x.png",
+      "filename" : "cardCactus@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "선인장 카드@3x.png",
+      "filename" : "cardCactus@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
