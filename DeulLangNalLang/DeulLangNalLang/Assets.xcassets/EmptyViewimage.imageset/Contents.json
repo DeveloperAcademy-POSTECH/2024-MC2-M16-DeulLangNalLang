@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "들랑날랑 로고 1.png",
+      "filename" : "DNLogo1x.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "DNLogo2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "DNLogo3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
