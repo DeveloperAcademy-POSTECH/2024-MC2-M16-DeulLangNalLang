@@ -20,7 +20,8 @@ struct UserSelectView: View {
                     .foregroundColor(.clear)
                 
                 Text("당신은 누구인가요?")
-                    .font(.largeTitleEmphasized)
+                    .font(.largeTitleRegular)
+                    .fontWeight(.heavy)
                     .foregroundColor(.black)
                     .frame(width: 361, height: 44, alignment: .topLeading)
                 
@@ -42,7 +43,7 @@ struct UserSelectView: View {
                     
                     NavigationLink(destination: TabBarView()) {
                         Text("들")
-                            .font(Font.custom("Apple SD Gothic Neo", size: 25))
+                            .font(.title1Regular)
                             .multilineTextAlignment(.center)
                             .foregroundColor(.black)
                             .frame(width: 46, height: 50, alignment: .center)
