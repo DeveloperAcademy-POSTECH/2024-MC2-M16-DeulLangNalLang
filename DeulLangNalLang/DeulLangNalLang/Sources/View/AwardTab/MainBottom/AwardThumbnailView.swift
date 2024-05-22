@@ -11,15 +11,16 @@ struct AwardData: Identifiable {
     let id: UUID = UUID()
     var category: AwardCategory
     var title: String
+    var isFavorit: Bool
     
     static var dummy: [AwardData] = [
-        AwardData(category: .cactus, title: "짱상"),
-        AwardData(category: .octopus, title: "바보상"),
-        AwardData(category: .gem, title: "호랑이상"),
-        AwardData(category: .origami, title: "피자치킨상"),
-        AwardData(category: .gem, title: "아메리카노상"),
-        AwardData(category: .bicycle, title: "레모니와나기상"),
-        AwardData(category: .cactus, title: "바나나껍질주움상")
+        AwardData(category: .cactus, title: "짱상", isFavorit: true),
+        AwardData(category: .octopus, title: "바보상", isFavorit: true),
+        AwardData(category: .gem, title: "호랑이상", isFavorit: false),
+        AwardData(category: .origami, title: "피자치킨상", isFavorit: true),
+        AwardData(category: .gem, title: "아메리카노상", isFavorit: true),
+        AwardData(category: .bicycle, title: "레모니와나기상", isFavorit: true),
+        AwardData(category: .cactus, title: "바나나껍질주움상", isFavorit: false)
     ]
 }
 
@@ -45,12 +46,20 @@ struct AwardThumbnailView: View {
             data.category.image
                 .resizable()
                 .scaledToFit()
+                .overlay(alignment: .topTrailing){
+                    if data.isFavorit {
+                        Image(systemName: "heart.fill")
+                            .foregroundColor(.DNDarkBlue)
+                            .padding(4)
+                    }
+            }
             Text(data.title)
                 .font(.headlineEmphasized)
+                .fixedSize()
         }
     }
 }
 
 #Preview {
-    AwardThumbnailView(data: AwardData(category: .gem, title: "이정진 최@고"))
+    AwardThumbnailView(data: AwardData(category: .gem, title: "장왕소최고", isFavorit: true))
 }
