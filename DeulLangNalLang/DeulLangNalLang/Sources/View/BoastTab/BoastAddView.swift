@@ -11,16 +11,16 @@ struct BoastAddView: View {
     @State private var isShowingImagePicker = false
     @State private var selectedImageDatas: [Data] = []
     
+    @State private var isShowingCamera = false
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
-                CustomTextView(text: $text, isShowingImagePicker: $isShowingImagePicker, placeholder: "내용을 입력하세요")
-                    .frame(height: 200)
+                CustomTextView(text: $text, isShowingImagePicker: $isShowingImagePicker, isShowingCamera: $isShowingCamera, placeholder: "내용을 입력하세요")
                     .padding()
                 HStack {
                     Spacer()
                     Text("\(text.count)/100")
-                        .font(.caption)
+                        .font(.footnoteRegular)
                         .foregroundColor(.gray)
                         .padding(.horizontal, 16)
                         .padding(.bottom, 5)
@@ -41,12 +41,15 @@ struct BoastAddView: View {
                                     HStack(spacing: 0) {
                                         Spacer()
                                         Button(action: {
+                                            isShowingImagePicker = false
+                                            isShowingCamera = false // 여기서 상태를 false로 초기화합니다.
                                             selectedImageDatas.remove(at: index)
                                         }) {
-                                            Image(systemName: "x.circle")
-                                                .foregroundColor(.red)
-                                                .padding(.top, 5)
-                                                .padding(.trailing, 6)
+                                            Image(systemName: "x.circle.fill")
+                                                .font(.title1Regular)
+                                                .foregroundColor(.gray)
+                                                .padding(.top, 4)
+                                                .padding(.trailing, 4)
                                         }
                                     }
                                     Spacer()
@@ -58,10 +61,11 @@ struct BoastAddView: View {
                                 isShowingImagePicker = true
                             }) {
                                 Image(systemName: "add")
-                                    .font(.title)
+                                    .font(.title1Regular)
                             }
-                            .sheet(isPresented: $isShowingImagePicker) {
-                                ImagePicker(selectedImageData: $selectedImageDatas[index])
+                            .fullScreenCover(isPresented: $isShowingImagePicker) {
+                                ImagePicker(isShowingCamera: $isShowingCamera, selectedImageData: $selectedImageDatas[index])
+                                .ignoresSafeArea()
                             }
                         }
                         
@@ -88,6 +92,7 @@ struct BoastAddView: View {
 struct CustomTextView: UIViewRepresentable {
     @Binding var text: String
     @Binding var isShowingImagePicker: Bool
+    @Binding var isShowingCamera: Bool
     var placeholder: String
     
     func makeCoordinator() -> Coordinator {
@@ -97,44 +102,48 @@ struct CustomTextView: UIViewRepresentable {
     func makeUIView(context: Context) -> UITextView {
         let textView = UITextView()
         textView.delegate = context.coordinator
-        textView.font = UIFont.systemFont(ofSize: 16)
-        
+        textView.font = .bodyRegular(ofSize: 16.5)
+
         // Placeholder 설정
         textView.text = placeholder
         textView.textColor = .lightGray
         
-        // 툴바 설정
+        //MARK: 툴바 설정
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
-        let cameraButton = UIBarButtonItem(barButtonSystemItem: .camera, target: context.coordinator, action: #selector(context.coordinator.cameraButtonTapped))
+        let cameraButton = UIBarButtonItem(barButtonSystemItem: .camera, target: context.coordinator,
+                                           action: #selector(context.coordinator.cameraButtonTapped)
+        )
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        toolbar.items = [cameraButton, flexibleSpace]
+        let galleryButton = UIBarButtonItem(
+            image: UIImage(systemName: "photo"),
+            style: .plain,
+            target: context.coordinator,
+            action: #selector(context.coordinator.galleryButtonTapped)
+        )
+        
+        toolbar.items = [cameraButton, galleryButton, flexibleSpace]
         textView.inputAccessoryView = toolbar
         
         return textView
     }
     
     func updateUIView(_ uiView: UITextView, context: Context) {
-        if text.isEmpty {
-            uiView.text = placeholder
-            uiView.textColor = .lightGray
-        } else {
-            uiView.text = text
-            uiView.textColor = .black
-        }
     }
     
     class Coordinator: NSObject, UITextViewDelegate {
         var parent: CustomTextView
+        var isPlaceholderVisible = true
         
         init(_ parent: CustomTextView) {
             self.parent = parent
         }
         
         func textViewDidBeginEditing(_ textView: UITextView) {
-            if textView.textColor == .lightGray {
+            if isPlaceholderVisible {
                 textView.text = ""
                 textView.textColor = .black
+                isPlaceholderVisible = false
             }
         }
         
@@ -142,6 +151,7 @@ struct CustomTextView: UIViewRepresentable {
             if textView.text.isEmpty {
                 textView.text = parent.placeholder
                 textView.textColor = .lightGray
+                isPlaceholderVisible = true
             }
         }
         
@@ -158,12 +168,20 @@ struct CustomTextView: UIViewRepresentable {
         
         @objc func cameraButtonTapped() {
             parent.isShowingImagePicker = true
+            parent.isShowingCamera = true
+        }
+        
+        // 갤러리 버튼 tap 했을 때
+        @objc func galleryButtonTapped() {
+            parent.isShowingImagePicker = true
+            parent.isShowingCamera = false
         }
     }
 }
 
 struct ImagePicker: UIViewControllerRepresentable {
     @Environment(\.presentationMode) private var presentationMode
+    @Binding var isShowingCamera: Bool
     @Binding var selectedImageData: Data
     
     func makeCoordinator() -> Coordinator {
@@ -173,7 +191,10 @@ struct ImagePicker: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UIImagePickerController {
         let picker = UIImagePickerController()
         picker.delegate = context.coordinator
-        picker.sourceType = .camera
+        // camera / gallery 설정
+        if isShowingCamera {
+            picker.sourceType = .camera
+        }
         return picker
     }
     

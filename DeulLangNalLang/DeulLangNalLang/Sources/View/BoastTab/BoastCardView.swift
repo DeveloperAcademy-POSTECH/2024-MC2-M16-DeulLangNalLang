@@ -27,19 +27,19 @@ struct BoastCardView: View {
             }
             
             //MARK: text 부분
-            VStack(alignment: .leading){
+            VStack {
                 ExpandableText(boast.contents, lineLimit: 3)
                     .font(.bodyRegular)
-                    .foregroundStyle(.white)
             }
+            .padding(.vertical, 2)
             
             //MARK: 하단 날짜 + 버튼 부분
             Divider()
+            
             VStack{
                 HStack{
                     Text(getDateFormat(date: boast.date))
-                        .font(.bodyRegular)
-                        .foregroundStyle(.white)
+                        .font(.footnoteEmphasized)
                     Spacer()
                     
                     /// 본인일 때 (내가 쓴 글) 수정하기 버튼
@@ -54,7 +54,7 @@ struct BoastCardView: View {
                             .foregroundColor(.red)
                         } label: {
                             Image(systemName: "ellipsis")
-                                .foregroundStyle(.white)
+                                .foregroundStyle(.black)
                         }
                         .actionSheet(isPresented: $showActionSheet, content: getActionSheet)
                     }
@@ -77,12 +77,10 @@ struct BoastCardView: View {
                         }
                     }
                 }
+                .padding(.vertical, 2)
             }
-            .padding(.vertical, 0)
         }
         .padding(12)
-        .frame(width: 361) //나중에 보면서 삭제하기
-        //                .frame(height: 324)
         .background(boast.writer == "류들" ? Color.DNGreen : Color.DNBlue)
         .cornerRadius(16)
     }
@@ -102,6 +100,24 @@ struct BoastCardView: View {
         return ActionSheet(title: title,
                            message: message,
                            buttons: [deleteButton, cancelButton])
+    }
+    
+    //MARK: ImageLoad 함수
+    //TODO: 추후 이미지 데이터를 불러오면 삭제 예정
+    private func loadImage(urlString: String) -> some View {
+        AsyncImage(url: URL(string: urlString)) { image in
+            image
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(height: 180, alignment: .center)
+                .clipShape(RoundedRectangle(cornerRadius: 8))
+                .clipped()
+        } placeholder: {
+            Color.secondary
+                .frame(height: 180)
+                .clipShape(RoundedRectangle(cornerRadius: 8))
+                .clipped()
+        }
     }
 }
 

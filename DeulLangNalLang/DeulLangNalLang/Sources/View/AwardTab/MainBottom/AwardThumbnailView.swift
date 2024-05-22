@@ -34,13 +34,25 @@ struct AwardThumbnailView: View {
     
     var id: UUID
     
+    var boast: Boast {
+        return boasts.first { $0.id == id }!
+    }
+    
     var body: some View {
         VStack {
             Image(systemName: "star.fill")
                 .resizable()
                 .scaledToFit()
+                .overlay(alignment: .topTrailing){
+                    if boast.award?.isFavorite ?? false {
+                        Image(systemName: "heart.fill")
+                            .foregroundColor(.DNDarkBlue)
+                            .padding(4)
+                    }
+            }
             Text("\(boasts.first { $0.id == id }?.award?.title ?? "")")
                 .font(.headlineEmphasized)
+                .fixedSize()
         }
     }
 }

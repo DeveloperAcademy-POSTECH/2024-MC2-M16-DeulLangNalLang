@@ -10,6 +10,7 @@ import SwiftData
 
 struct CardFlipView: View {
     
+    
     @Environment(\.dismiss) var dismiss
     
     @Query var boasts: [Boast]
@@ -23,33 +24,29 @@ struct CardFlipView: View {
     }
     
     var body: some View {
-        Group{
-            if !isFlipped {
-                // scaleEffect를 적용하여 CardView를 반대로 뒤집어 둠.
-                // rotation3DEffect로 앞 -> 뒤로 뒤집으려 할 때 뒤에 있던 View가 뒤집어진 채로 보이기 때문.
-                BoastDetailView(boastID: boastID)
-            } else {
-                AwardDetailView(boastID: boastID)
+        VStack {
+            Group{
+                if !isFlipped {
+                    // scaleEffect를 적용하여 CardView를 반대로 뒤집어 둠.
+                    // rotation3DEffect로 앞 -> 뒤로 뒤집으려 할 때 뒤에 있던 View가 뒤집어진 채로 보이기 때문.
+                    BoastDetailView(boastID: boastID)
+                } else {
+                    AwardDetailView(boastID: boastID)
+                }
             }
-        }
-        .scaleEffect(x: isFlipped ? -1 : 1)
-        .cornerRadius(10)
-        .frame(width: 300,
-               height: 500)
-        .rotation3DEffect(
-            // 해당 각도로 만듦. 이때 UI가 자연스레 돌아가는 이유는 하단의 animation 덕분.
-            .degrees(isFlipped
-                     ? 180
-                     : 0),
-            // y축을 기준으로 돌리겠다는 의미
-            axis: (x: 0,
-                   y: 1,
-                   z: 0)
-        )
-        // 자연스럽게 '보이던 View'는 사라지고 '안보이던 View'는 나타나는 효과
-        .animation(.default, value: isFlipped)
-        .onTapGesture {
-            self.isFlipped.toggle()
+            .scaleEffect(x: isFlipped ? -1 : 1)
+            .frame(width: 200, height: 300)
+            .rotation3DEffect(.degrees(isFlipped ? 180 : 0), axis: (x: 0, y: -1, z: 0))
+            .animation(.easeInOut(duration: 0.6), value: isFlipped)
+            .onTapGesture {
+                isFlipped.toggle()
+            }
+            .frame(width: 329, height: 480)
+            
+            Text("터치해서 뒷면의 자랑을 확인해바라기!")
+                .font(.caption1Regular)
+                .foregroundColor(.gray)
+                .padding(.top, 32)
         }
         .navigationBarBackButtonHidden()
         .navigationTitle("상장과 자랑 보기")
