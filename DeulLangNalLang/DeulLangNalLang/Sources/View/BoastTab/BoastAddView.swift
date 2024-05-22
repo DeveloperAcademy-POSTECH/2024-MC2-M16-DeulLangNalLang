@@ -38,10 +38,11 @@ struct BoastAddView: View {
                                         Button(action: {
                                             selectedImages[index] = nil
                                         }) {
-                                            Image(systemName: "x.circle")
-                                                .foregroundColor(.red)
-                                                .padding(.top, 5)
-                                                .padding(.trailing, 6)
+                                            Image(systemName: "x.circle.fill")
+                                                .font(.title1Regular)
+                                                .foregroundColor(.gray)
+                                                .padding(.top, 4)
+                                                .padding(.trailing, 4)
                                         }
                                     }
                                     Spacer()
