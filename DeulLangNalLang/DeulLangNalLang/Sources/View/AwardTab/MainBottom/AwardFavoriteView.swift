@@ -54,5 +54,5 @@ struct AwardFavoriteView: View {
 }
 
 #Preview {
-    AwardFavoriteView(data: AwardFavoriteData(favoriteCategory: .gem, title: "이정진 최@고"))
+    AwardFavoriteView(data: AwardFavoriteData(favoriteCategory: .gem, title: "장왕소최고"))
 }
