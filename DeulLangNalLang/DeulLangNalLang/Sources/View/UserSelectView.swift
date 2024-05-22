@@ -19,7 +19,7 @@ struct UserSelectView: View {
                     .frame(width: .infinity, height: 68)
                     .foregroundColor(.clear)
                 
-                Text("당신은 누구인가요?")
+                Text("당신은 누구새우깡?")
                     .font(.largeTitleRegular)
                     .fontWeight(.heavy)
                     .foregroundColor(.black)

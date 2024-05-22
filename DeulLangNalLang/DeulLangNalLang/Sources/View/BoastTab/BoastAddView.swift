@@ -86,7 +86,7 @@ struct CustomTextView: UIViewRepresentable {
     func makeUIView(context: Context) -> UITextView {
         let textView = UITextView()
         textView.delegate = context.coordinator
-        textView.font = UIFont.bodyRegular(ofSize: 16.5)
+        textView.font = .bodyRegular(ofSize: 16.5)
 
         // Placeholder 설정
         textView.text = placeholder
