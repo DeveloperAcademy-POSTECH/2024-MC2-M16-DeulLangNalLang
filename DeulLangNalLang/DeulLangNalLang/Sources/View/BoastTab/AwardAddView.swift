@@ -9,13 +9,20 @@ import SwiftUI
 struct AwardAddView: View {
     
     @Environment(\.presentationMode) var presentation
+    @Environment(\.modelContext) var modelContext
+    
     @State var awardTitle: String = ""
     @State var awardContents: String = ""
     @State var titleCharacterCount: Int = 0
     @State var contentsCharacterCount: Int = 0
     @State private var selectedFrameIndex: Int? = nil
     
+    var onDelete: () -> Void
+    
+    
     let awardImages = ["awardOctopus", "awardOrigami", "awardCactus","awardBicycle", "awardGem"]
+    
+    @Binding var boast: Boast
     
     var body: some View {
         
@@ -51,6 +58,12 @@ struct AwardAddView: View {
                 
                 Button(action: {
                     presentation.wrappedValue.dismiss()
+                    boast.award = Award(title: self.awardTitle,
+                                        contents: self.awardContents,
+                                        date: Date(),
+                                        isFavorite: false,
+                                        themeName: "awardOctopus")
+                    onDelete()
                 }) {
                     Text("완료")
                         .font(.bodyRegular)
@@ -219,9 +232,3 @@ struct AwardAddView: View {
         Spacer()
     }
 }
-
-#Preview {
-    AwardAddView()
-}
-
-

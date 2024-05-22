@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct FavoriteAwardListView: View {
     
-    //목록을 1부터 100까지 만듬
-    let data = AwardFavoriteData.favoriteDummy
+    @Environment(User.self) var user: User
+    
+    @Query private var boasts: [Boast]
     
     //화면을 그리드형식으로 꽉채워줌
     let columns = [
@@ -21,13 +23,17 @@ struct FavoriteAwardListView: View {
     ]
     
     var body: some View {
-        
+        let favoriteBoasts = boasts.filter {
+            guard let award = $0.award else { return false }
+            return $0.writer != user.name && award.isFavorite
+        }
         VStack(alignment: .leading){
-            
             LazyVGrid(columns: columns, spacing: 20) {
                 
-                    ForEach(data) { awardFavoriteData in
-                        AwardFavoriteView(data: awardFavoriteData)
+                ForEach(favoriteBoasts, id: \.self) { boast in
+                    NavigationLink(destination: CardFlipView(boastID: boast.id)){
+                        AwardFavoriteView(boastID: boast.id)
+                    }
                 }
             }
         }
@@ -35,7 +41,3 @@ struct FavoriteAwardListView: View {
     }
 }
 
-
-#Preview {
-    FavoriteAwardListView()
-}

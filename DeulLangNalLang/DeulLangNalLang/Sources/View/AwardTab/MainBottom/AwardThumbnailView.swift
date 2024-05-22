@@ -6,21 +6,12 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct AwardData: Identifiable {
     let id: UUID = UUID()
     var category: AwardCategory
     var title: String
-    
-    static var dummy: [AwardData] = [
-        AwardData(category: .cactus, title: "짱상"),
-        AwardData(category: .octopus, title: "바보상"),
-        AwardData(category: .gem, title: "호랑이상"),
-        AwardData(category: .origami, title: "피자치킨상"),
-        AwardData(category: .gem, title: "아메리카노상"),
-        AwardData(category: .bicycle, title: "레모니와나기상"),
-        AwardData(category: .cactus, title: "바나나껍질주움상")
-    ]
 }
 
 enum AwardCategory: String {
@@ -38,19 +29,19 @@ enum AwardCategory: String {
 }
 
 struct AwardThumbnailView: View {
-    let data: AwardData
+    
+    @Query var boasts: [Boast]
+    
+    var id: UUID
     
     var body: some View {
         VStack {
-            data.category.image
+            Image(systemName: "star.fill")
                 .resizable()
                 .scaledToFit()
-            Text(data.title)
+            Text("\(boasts.first { $0.id == id }?.award?.title ?? "")")
                 .font(.headlineEmphasized)
         }
     }
 }
 
-#Preview {
-    AwardThumbnailView(data: AwardData(category: .gem, title: "이정진 최@고"))
-}
