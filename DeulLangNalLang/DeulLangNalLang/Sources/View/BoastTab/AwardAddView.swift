@@ -98,7 +98,7 @@ struct AwardAddView: View {
                     HStack {
                         Spacer()
                         Text("\(titleCharacterCount)/8")
-                            .font(.footnote)
+                            .font(.footnoteRegular)
                             .foregroundColor(.gray)
                     }
                     .padding(.horizontal, 16)
@@ -166,7 +166,7 @@ struct AwardAddView: View {
                     HStack {
                         Spacer()
                         Text("\(contentsCharacterCount)/90")
-                            .font(.footnote)
+                            .font(.footnoteRegular)
                             .foregroundColor(.gray)
                             .padding(.horizontal, 16)
                             .padding(.vertical, 8)
