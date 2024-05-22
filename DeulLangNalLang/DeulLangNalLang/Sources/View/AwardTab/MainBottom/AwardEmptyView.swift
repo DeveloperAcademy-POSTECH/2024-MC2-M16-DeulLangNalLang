@@ -16,8 +16,10 @@ struct AwardEmptyView: View {
             
             
             Image("EmptyViewimage")
-              .frame(width: 37, height: 63.6444)
+              .frame(width: 32, height: 56)
               .shadow(color: .black.opacity(0.25), radius: 4, x: 0, y: 2)
+             
+            Spacer().frame(height: 18)
             
             // Title2/KR_Emphasized
             Text("들랑날랑 시작하기")
