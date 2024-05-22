@@ -13,7 +13,7 @@
 		080072392BF6E7E3007B2956 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 080072382BF6E7E3007B2956 /* Assets.xcassets */; };
 		0800723C2BF6E7E3007B2956 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0800723B2BF6E7E3007B2956 /* Preview Assets.xcassets */; };
 		0813883C2BFB93E500B78F3C /* BoastCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0813883B2BFB93E500B78F3C /* BoastCardView.swift */; };
-		08DBEF162BF8699E007834A3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DBEF152BF8699E007834A3 /* User.swift */; };
+		08CDC94C2BFE4ECA0036CA5B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CDC94B2BFE4ECA0036CA5B /* User.swift */; };
 		08DBEF1A2BF86BD7007834A3 /* Boast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DBEF192BF86BD7007834A3 /* Boast.swift */; };
 		08DBEF1C2BF86CF1007834A3 /* Award.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DBEF1B2BF86CF1007834A3 /* Award.swift */; };
 		08DBEF1E2BF87781007834A3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DBEF1D2BF87781007834A3 /* Constants.swift */; };
@@ -48,7 +48,7 @@
 		080072382BF6E7E3007B2956 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
 		0800723B2BF6E7E3007B2956 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0813883B2BFB93E500B78F3C /* BoastCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoastCardView.swift; sourceTree = "<group>"; };
-		08DBEF152BF8699E007834A3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		08CDC94B2BFE4ECA0036CA5B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		08DBEF192BF86BD7007834A3 /* Boast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Boast.swift; sourceTree = "<group>"; };
 		08DBEF1B2BF86CF1007834A3 /* Award.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Award.swift; sourceTree = "<group>"; };
 		08DBEF1D2BF87781007834A3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -137,7 +137,6 @@
 		08DBEF0D2BF797F0007834A3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				08DBEF152BF8699E007834A3 /* User.swift */,
 				08DBEF192BF86BD7007834A3 /* Boast.swift */,
 				08DBEF1B2BF86CF1007834A3 /* Award.swift */,
 			);
@@ -147,6 +146,7 @@
 		08DBEF0E2BF797FB007834A3 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				08CDC94B2BFE4ECA0036CA5B /* User.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -341,6 +341,7 @@
 				08DBEF272BF8D102007834A3 /* CardFlipView.swift in Sources */,
 				08DBEF1C2BF86CF1007834A3 /* Award.swift in Sources */,
 				BDD8FED92BF8CAA300A1E25F /* Font.swift in Sources */,
+				08CDC94C2BFE4ECA0036CA5B /* User.swift in Sources */,
 				BDBD65582BFB727F005ECC96 /* ContentsLine.swift in Sources */,
 				08DBEF1A2BF86BD7007834A3 /* Boast.swift in Sources */,
 				07F5F6342BF9C8F4008A184B /* BoastDetailView.swift in Sources */,
@@ -357,7 +358,6 @@
 				F16525F52BF8B23A0013C2CF /* TabBarView.swift in Sources */,
 				1FE99FC62BF9F43D0043E0DB /* UserSelectView.swift in Sources */,
 				F1F47BF92BFAE0CA002F15E2 /* DeulLangNalLangApp.swift in Sources */,
-				08DBEF162BF8699E007834A3 /* User.swift in Sources */,
 				F12B05FD2BFBA22F006E2777 /* AwardThumbnailView.swift in Sources */,
 				F12B05F32BFB593F006E2777 /* AwardCarouselView.swift in Sources */,
 				08DBEF1E2BF87781007834A3 /* Constants.swift in Sources */,
