@@ -7,6 +7,7 @@
 
 import Foundation
 
+@Observable
 class Award {
     var id = UUID()
     var title: String
