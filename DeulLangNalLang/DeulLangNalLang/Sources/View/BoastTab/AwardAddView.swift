@@ -98,7 +98,7 @@ struct AwardAddView: View {
                     HStack {
                         Spacer()
                         Text("\(titleCharacterCount)/8")
-                            .font(.footnote)
+                            .font(.footnoteRegular)
                             .foregroundColor(.gray)
                     }
                     .padding(.horizontal, 16)
@@ -166,7 +166,7 @@ struct AwardAddView: View {
                     HStack {
                         Spacer()
                         Text("\(contentsCharacterCount)/90")
-                            .font(.footnote)
+                            .font(.footnoteRegular)
                             .foregroundColor(.gray)
                             .padding(.horizontal, 16)
                             .padding(.vertical, 8)
@@ -192,11 +192,7 @@ struct AwardAddView: View {
                 HStack(spacing: 8) {
                     ForEach(0..<awardImages.count, id: \.self) { index in
                         Button(action: {
-                            if selectedFrameIndex == index {
-                                selectedFrameIndex = nil
-                            } else {
-                                selectedFrameIndex = index
-                            }
+                            selectedFrameIndex = index
                         }) {
                             Image(awardImages[index])
                                 .frame(width: 72, height: 72)
@@ -206,18 +202,16 @@ struct AwardAddView: View {
                                     RoundedRectangle(cornerRadius: 8)
                                         .stroke(selectedFrameIndex == index ? Color.blue : Color.clear, lineWidth: 2)
                                 )
-                            //나중에 컬러 수정
                         }
-                        .disabled(selectedFrameIndex != nil && selectedFrameIndex != index)
                     }
-                }
-                .frame(width: .infinity, height: 72)
-                .padding(.horizontal, 16)
-                .frame(maxWidth: .infinity)
-            }
         }
-        Spacer()
+        .frame(width: .infinity, height: 72)
+        .padding(.horizontal, 16)
+        .frame(maxWidth: .infinity)
     }
+}
+Spacer()
+}
 }
 
 #Preview {
