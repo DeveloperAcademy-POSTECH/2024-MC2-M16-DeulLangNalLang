@@ -10,7 +10,7 @@ import SwiftUI
 struct BoastDetailView: View {
     @Environment(\.dismiss) var dismiss
     @State private var isFavorite: Bool = false
-    @State private var images: [Image] = [Image(.awardOctopus), Image(.awardGem)]
+    @State private var images: [Image] = [.awardOctopus, .awardGem]
     
     
     
