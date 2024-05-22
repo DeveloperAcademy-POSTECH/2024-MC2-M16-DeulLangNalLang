@@ -3,15 +3,15 @@ import UIKit
 
 struct BoastAddView: View {
     @State private var text = ""
+    @State private var isShowingImagePicker = false
     @State private var isShowingCamera = false
-    @State private var isShowingGallery = false
     @State private var selectedImages: [UIImage?] = [nil, nil]
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
-                CustomTextView(text: $text, isShowingImagePicker: $isShowingCamera, isShowingGallery: $isShowingGallery, placeholder: "내용을 입력하세요")
+                CustomTextView(text: $text, isShowingImagePicker: $isShowingImagePicker, isShowingCamera: $isShowingCamera, placeholder: "내용을 입력하세요")
                     .padding()
                 HStack {
                     Spacer()
@@ -37,6 +37,8 @@ struct BoastAddView: View {
                                         Spacer()
                                         Button(action: {
                                             selectedImages[index] = nil
+                                            isShowingImagePicker = false
+                                            isShowingCamera = false // 여기서 상태를 false로 초기화합니다.
                                         }) {
                                             Image(systemName: "x.circle.fill")
                                                 .font(.title1Regular)
@@ -52,14 +54,14 @@ struct BoastAddView: View {
                         }
                         else {
                             Button(action: {
-                                isShowingCamera = true
+                                isShowingImagePicker = true
                             }) {
                                 Image(systemName: "add")
                                     .font(.title)
                             }
-                            .fullScreenCover(isPresented: $isShowingCamera) {
+                            .fullScreenCover(isPresented: $isShowingImagePicker) {
                                 ImagePicker(selectedImage: $selectedImages[index],
-                                            isShowingGallery: $isShowingGallery)
+                                            isShowingCamera: $isShowingCamera)
                                 .ignoresSafeArea()
                             }
                         }
@@ -80,7 +82,7 @@ struct BoastAddView: View {
 struct CustomTextView: UIViewRepresentable {
     @Binding var text: String
     @Binding var isShowingImagePicker: Bool
-    @Binding var isShowingGallery: Bool
+    @Binding var isShowingCamera: Bool
     var placeholder: String
     
     func makeCoordinator() -> Coordinator {
@@ -156,13 +158,13 @@ struct CustomTextView: UIViewRepresentable {
         
         @objc func cameraButtonTapped() {
             parent.isShowingImagePicker = true
-            parent.isShowingGallery = true
+            parent.isShowingCamera = true
         }
         
         // 갤러리 버튼 tap 했을 때
         @objc func galleryButtonTapped() {
             parent.isShowingImagePicker = true
-            parent.isShowingGallery = false
+            parent.isShowingCamera = false
         }
     }
 }
@@ -170,7 +172,7 @@ struct CustomTextView: UIViewRepresentable {
 struct ImagePicker: UIViewControllerRepresentable {
     @Environment(\.presentationMode) private var presentationMode
     @Binding var selectedImage: UIImage?
-    @Binding var isShowingGallery: Bool
+    @Binding var isShowingCamera: Bool
     
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
@@ -180,7 +182,7 @@ struct ImagePicker: UIViewControllerRepresentable {
         let picker = UIImagePickerController()
         picker.delegate = context.coordinator
         // camera / gallery 설정
-        if isShowingGallery {
+        if isShowingCamera {
             picker.sourceType = .camera
         }
         return picker
