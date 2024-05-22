@@ -4,8 +4,7 @@ struct AwardEmptyView: View {
     var body: some View {
         VStack {
             Text("상장이 아직 모이지\n않았어요를레히호")
-                .font(.largeTitleRegular)
-                               .fontWeight(.heavy)
+                .font(.title1Emphasized)
               .foregroundColor(.black)
               .frame(width: 361, alignment: .topLeading)
             
@@ -33,6 +32,11 @@ struct AwardEmptyView: View {
                      .font(.bodyRegular)
                      .multilineTextAlignment(.center)
                      .foregroundColor(.black)
+
+            Text("자랑을 하고 상장을 모아보세요!")
+                .font(.bodyRegular)
+            .multilineTextAlignment(.center)
+            .foregroundColor(.black)
 
             .frame(width: 361, height: 48, alignment: .top)
 
