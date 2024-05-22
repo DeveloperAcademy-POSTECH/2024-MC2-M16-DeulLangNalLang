@@ -35,14 +35,11 @@ struct AwardEmptyView: View {
                      .multilineTextAlignment(.center)
                      .foregroundColor(.black)
 
-            Text("자랑을 하고 상장을 모아보세요!")
-                .font(.bodyRegular)
-            .multilineTextAlignment(.center)
-            .foregroundColor(.black)
+
 
             .frame(width: 361, height: 48, alignment: .top)
 
-            Spacer().frame(height: 177)
+            Spacer().frame(height: 262)
             
         
             
