@@ -198,7 +198,7 @@ struct AwardAddView: View {
                         }
                     }
                 }
-                .frame(minHeight: 72)
+                .frame(maxHeight: 85)
                 .padding(.horizontal, 16)
             }
         }
