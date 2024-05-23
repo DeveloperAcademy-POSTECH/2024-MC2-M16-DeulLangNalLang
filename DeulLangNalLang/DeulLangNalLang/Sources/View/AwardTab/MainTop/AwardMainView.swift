@@ -80,6 +80,7 @@ struct AwardMainView: View {
             }
             .animation(.easeInOut(duration: 0.2), value: awardListSelection)
         }
+        .background(.dnBackground)
     }
 }
 #Preview {
