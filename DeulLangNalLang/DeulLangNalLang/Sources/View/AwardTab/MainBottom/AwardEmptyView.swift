@@ -10,6 +10,16 @@ struct AwardEmptyView: View {
             
             Spacer().frame(height: 173)
             
+            Rectangle()
+              .foregroundColor(.clear)
+              .frame(width: 361, height: 242)
+              .background(
+                Image("EmptyViewimage")
+                  .resizable()
+                  .aspectRatio(contentMode: .fill)
+                  .frame(width: 361, height: 242)
+                  .clipped()
+              )
             
               
             
@@ -19,7 +29,7 @@ struct AwardEmptyView: View {
               .frame(width: 32, height: 56)
               .shadow(color: .black.opacity(0.25), radius: 4, x: 0, y: 2)
              
-            Spacer().frame(height: 18)
+            Spacer().frame(height: 16)
             
             // Title2/KR_Emphasized
             Text("들랑날랑 시작하기")
@@ -35,14 +45,11 @@ struct AwardEmptyView: View {
                      .multilineTextAlignment(.center)
                      .foregroundColor(.black)
 
-            Text("자랑을 하고 상장을 모아보세요!")
-                .font(.bodyRegular)
-            .multilineTextAlignment(.center)
-            .foregroundColor(.black)
+
 
             .frame(width: 361, height: 48, alignment: .top)
 
-            Spacer().frame(height: 177)
+            Spacer().frame(height: 262)
             
         
             

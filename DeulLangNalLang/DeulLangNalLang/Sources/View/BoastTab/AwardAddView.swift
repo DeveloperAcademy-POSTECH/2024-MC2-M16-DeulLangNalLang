@@ -9,13 +9,20 @@ import SwiftUI
 struct AwardAddView: View {
     
     @Environment(\.presentationMode) var presentation
+    @Environment(\.modelContext) var modelContext
+    
     @State var awardTitle: String = ""
     @State var awardContents: String = ""
     @State var titleCharacterCount: Int = 0
     @State var contentsCharacterCount: Int = 0
     @State private var selectedFrameIndex: Int? = nil
     
+    var onDelete: () -> Void
+    
+    
     let awardImages = ["awardOctopus", "awardOrigami", "awardCactus","awardBicycle", "awardGem"]
+    
+    @Binding var boast: Boast
     
     var body: some View {
         
@@ -51,6 +58,12 @@ struct AwardAddView: View {
                 
                 Button(action: {
                     presentation.wrappedValue.dismiss()
+                    boast.award = Award(title: self.awardTitle,
+                                        contents: self.awardContents,
+                                        date: Date(),
+                                        isFavorite: false,
+                                        themeName: "awardOctopus")
+                    onDelete()
                 }) {
                     Text("완료")
                         .font(.bodyRegular)
@@ -78,7 +91,7 @@ struct AwardAddView: View {
                     VStack {
                         TextField("제목을 입력하세요", text: $awardTitle)
                             .onChange(of: awardTitle) { newValue in
-                                if newValue.count <= 8 {
+                                if newValue.count <= 7 {
                                     titleCharacterCount = newValue.count
                                 } else {
                                     awardTitle = String(newValue.prefix(8))
@@ -204,18 +217,12 @@ struct AwardAddView: View {
                                 )
                         }
                     }
+                }
+                .frame(width: .infinity, height: 72)
+                .padding(.horizontal, 16)
+                .frame(maxWidth: .infinity)
+            }
         }
-        .frame(width: .infinity, height: 72)
-        .padding(.horizontal, 16)
-        .frame(maxWidth: .infinity)
+        Spacer()
     }
 }
-Spacer()
-}
-}
-
-#Preview {
-    AwardAddView()
-}
-
-

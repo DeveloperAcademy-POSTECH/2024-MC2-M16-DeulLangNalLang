@@ -6,8 +6,15 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct AwardMainView: View {
+    
+    @Environment(\.modelContext) var modelContext
+    
+    @Query(filter: #Predicate<Boast> { $0.award != nil })
+    private var allBoasts: [Boast]
+    
     @State var awardListSelection: Int = 0
     @State var weeklyAwardSelection: Int = 0
     
@@ -26,9 +33,9 @@ struct AwardMainView: View {
                     CarouselView(currentIndex: $weeklyAwardSelection)
                     Spacer()
                 }
-                .padding(.bottom, 20)
+                .padding(.bottom, 40)
                 
-                Text("상장이 n개 모였네요! \n아주 칭찬합니다람쥐")
+                Text("상장이 \(allBoasts.count)개 모였네요! \n아주 칭찬합니다람쥐")
                     .font(.largeTitleRegular)
                     .fontWeight(.heavy)
                     .padding(.horizontal)
