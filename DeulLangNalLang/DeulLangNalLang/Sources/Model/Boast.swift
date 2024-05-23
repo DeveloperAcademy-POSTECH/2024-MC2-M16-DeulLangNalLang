@@ -37,4 +37,3 @@ extension Boast: Hashable {
         hasher.combine(id)
     }
 }
-
