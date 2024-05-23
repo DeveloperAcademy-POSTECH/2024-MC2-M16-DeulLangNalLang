@@ -27,17 +27,26 @@ struct FavoriteAwardListView: View {
             guard let award = $0.award else { return false }
             return $0.writer != user.name && award.isFavorite
         }
-        VStack(alignment: .leading){
-            LazyVGrid(columns: columns, spacing: 20) {
-                
-                ForEach(favoriteBoasts, id: \.self) { boast in
-                    NavigationLink(destination: CardFlipView(boastID: boast.id)){
-                        AwardFavoriteView(boastID: boast.id)
+        if favoriteBoasts.count > 0 {
+            VStack{
+                LazyVGrid(columns: columns, spacing: 20) {
+                    
+                    ForEach(favoriteBoasts, id: \.self) { boast in
+                        NavigationLink(destination: CardFlipView(boastID: boast.id)){
+                            AwardFavoriteView(boastID: boast.id)
+                        }
                     }
                 }
             }
+            .padding(.horizontal)
+        } else {
+            VStack(alignment: .center) {
+                grayDoorImage
+                Text("소중한 상장이 없어우유...\n")
+            }
+            .padding(.vertical, 120)
+            
         }
-        .padding(.horizontal)
     }
 }
 

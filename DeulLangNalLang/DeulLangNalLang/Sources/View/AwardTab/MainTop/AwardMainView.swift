@@ -20,13 +20,16 @@ struct AwardMainView: View {
     
     var body: some View {
         ScrollView{
-            VStack (alignment: .leading) {
+            VStack (alignment: .center) {
                 
-                Text("이번 주 상장을 확인해 \n보세요구르트")
-                    .font(.largeTitleRegular)
-                    .fontWeight(.heavy)
-                    .padding(.bottom, 20)
-                    .padding(.horizontal)
+                HStack {
+                    Text("이번 주 상장을 확인해 \n보세요구르트")
+                        .font(.largeTitleRegular)
+                        .fontWeight(.heavy)
+                        .padding(.bottom, 20)
+                        .padding(.horizontal)
+                    Spacer()
+                }
                 
                 HStack {
                     Spacer()
@@ -35,11 +38,14 @@ struct AwardMainView: View {
                 }
                 .padding(.bottom, 40)
                 
-                Text("상장이 \(allBoasts.count)개 모였네요! \n아주 칭찬합니다람쥐")
-                    .font(.largeTitleRegular)
-                    .fontWeight(.heavy)
-                    .padding(.horizontal)
-                    .padding(.bottom, 20)
+                HStack{
+                    Text("상장이 \(allBoasts.count)개 모였네요! \n아주 칭찬합니다람쥐")
+                        .font(.largeTitleRegular)
+                        .fontWeight(.heavy)
+                        .padding(.bottom, 20)
+                        .padding(.horizontal)
+                    Spacer()
+                }
                 
                 SegmentedPickerView(selection: $awardListSelection)
                     .padding(.horizontal)
