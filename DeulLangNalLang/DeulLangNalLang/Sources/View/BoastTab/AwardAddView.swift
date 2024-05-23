@@ -85,11 +85,11 @@ struct AwardAddView: View {
                 ZStack {
                     VStack {
                         TextField("제목을 입력하세요", text: $awardTitle)
-                            .onChange(of: awardTitle) { newValue in
-                                if newValue.count <= 7 {
-                                    titleCharacterCount = newValue.count
+                            .onChange(of: awardTitle) {
+                                if awardTitle.count <= 7 {
+                                    titleCharacterCount = awardTitle.count
                                 } else {
-                                    awardTitle = String(newValue.prefix(8))
+                                    awardTitle = String(awardTitle.prefix(8))
                                 }
                             }
                             .padding(.horizontal, 12)
@@ -149,11 +149,11 @@ struct AwardAddView: View {
                                 .stroke(.black, lineWidth: 1)
                                 .background(.clear))
                         .frame(height: 100)
-                        .onChange(of: awardContents) { newValue in
-                            if newValue.count <= 90 {
-                                contentsCharacterCount = newValue.count
+                        .onChange(of: awardContents) {
+                            if awardContents.count <= 90 {
+                                contentsCharacterCount = awardContents.count
                             } else {
-                                awardContents = String(newValue.prefix(90))
+                                awardContents = String(awardContents.prefix(90))
                             }
                         }
                 }
