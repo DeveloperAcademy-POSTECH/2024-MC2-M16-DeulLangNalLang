@@ -6,18 +6,42 @@
 //
 
 import SwiftUI
+import SwiftData
+
 struct CarouselView: View {
+    @Environment(User.self) var user: User
     
+    @Query var boasts: [Boast]
+
     @Binding var currentIndex: Int
     @GestureState private var dragOffset: CGFloat = 0
-    private let images: [String] = ["cardOctopus", "cardGem", "cardCactus", "cardBicycle", "cardOrigami"]
+    
+    
+    var weeklyBoasts: [Boast] {
+        let calendar = Calendar.current
+        let now = Date()
+        
+        guard let startOfWeek = calendar.dateInterval(of: .weekOfYear, for: now)?.start else {
+            return []
+        }
+        
+        guard let endOfWeek = calendar.date(byAdding: .day, value: 6, to: startOfWeek) else {
+            return []
+        }
+        
+        return boasts.filter {
+            guard let award = $0.award else {
+                return false
+            }
+            
+            return $0.writer != user.name && startOfWeek <= award.date && award.date <= endOfWeek
+        }
+    }
     
     var body: some View {
-        
-        //  NavigationStack{
         VStack{
             ZStack{
-                ForEach(0..<images.count, id: \.self) { index in Image(images[index])
+                ForEach(0..<weeklyBoasts.count, id: \.self) { index in Image(weeklyBoasts[index].award!.themeName)
                         .resizable()
                         .scaledToFit()
                         .frame(width: 268, height: 390)
@@ -37,21 +61,33 @@ struct CarouselView: View {
                             }
                         } else if value.translation.width < -threshold {
                             withAnimation {
-                                currentIndex = min(images.count - 1,
+                                currentIndex = min(weeklyBoasts.count - 1,
                                                    currentIndex + 1)
                             }
                         }
                     })
                 )
             HStack(spacing: 8) {
-                ForEach(0..<5) { i in
+                ForEach(0..<weeklyBoasts.count, id: \.self) { i in
                     Circle()
                         .fill(currentIndex == i ? Color.black : Color.gray)
                         .animation(.easeInOut, value: currentIndex)
+                        .frame(width: 8, height: 8)
                 }
             }
-            .frame(width: 70, height: 70)
         }
+    }
+    
+    private func getCurrentWeekDates() -> (startOfWeek: Date, endOfWeek: Date)? {
+        let calendar = Calendar.current
+        let now = Date()
+
+        guard let startOfWeek = calendar.dateInterval(of: .weekOfYear, for: now)?.start else {
+            return nil
+        }
+
+        let endOfWeek = calendar.date(byAdding: .day, value: 6, to: startOfWeek)
+        return (startOfWeek, endOfWeek ?? startOfWeek)
     }
 }
 

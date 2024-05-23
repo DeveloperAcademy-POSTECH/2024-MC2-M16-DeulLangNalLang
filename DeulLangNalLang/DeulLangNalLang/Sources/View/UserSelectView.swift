@@ -12,6 +12,8 @@ struct Constants {
 }
 
 struct UserSelectView: View {
+    @Environment(User.self) var user: User
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -40,6 +42,9 @@ struct UserSelectView: View {
                     .frame(width: 176, height: 192, alignment: .center)
                     .background(Constants.ButtonFill)
                     .cornerRadius(16)
+                    .simultaneousGesture(TapGesture().onEnded {
+                        user.name = "류산"
+                    })
                     
                     NavigationLink(destination: TabBarView()) {
                         Text("들")
@@ -52,14 +57,13 @@ struct UserSelectView: View {
                             .background(Constants.ButtonFill)
                             .cornerRadius(16)
                     }
+                    .simultaneousGesture(TapGesture().onEnded {
+                        user.name = "류들"
+                    })
                 }
                 Spacer()
             }
         }
     }
-}
-
-#Preview {
-    UserSelectView()
 }
 

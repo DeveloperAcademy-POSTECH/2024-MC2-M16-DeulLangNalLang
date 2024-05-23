@@ -10,6 +10,16 @@ struct AwardEmptyView: View {
             
             Spacer().frame(height: 173)
             
+            Rectangle()
+              .foregroundColor(.clear)
+              .frame(width: 361, height: 242)
+              .background(
+                Image("EmptyViewimage")
+                  .resizable()
+                  .aspectRatio(contentMode: .fill)
+                  .frame(width: 361, height: 242)
+                  .clipped()
+              )
             
               
             

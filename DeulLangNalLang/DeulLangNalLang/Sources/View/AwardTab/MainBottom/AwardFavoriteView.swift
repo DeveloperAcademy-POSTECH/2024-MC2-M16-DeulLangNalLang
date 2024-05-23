@@ -6,21 +6,12 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct AwardFavoriteData: Identifiable {
     let id: UUID = UUID()
     var favoriteCategory: AwardFavoriteCategory
     var title: String
-    
-    static var favoriteDummy: [AwardFavoriteData] = [
-        AwardFavoriteData(favoriteCategory: .cactus, title: "짱상"),
-        AwardFavoriteData(favoriteCategory: .octopus, title: "바보상"),
-        AwardFavoriteData(favoriteCategory: .gem, title: "호랑이상"),
-        AwardFavoriteData(favoriteCategory: .origami, title: "피자치킨상"),
-        AwardFavoriteData(favoriteCategory: .gem, title: "아메리카노상"),
-        AwardFavoriteData(favoriteCategory: .bicycle, title: "레모니와나기상"),
-        AwardFavoriteData(favoriteCategory: .cactus, title: "바나나껍질주움상")
-    ]
 }
 
 enum AwardFavoriteCategory: String {
@@ -38,21 +29,19 @@ enum AwardFavoriteCategory: String {
 }
 
 struct AwardFavoriteView: View {
+    
+    @Query var boasts: [Boast]
         
-        let data: AwardFavoriteData
+    var boastID: UUID
         
         var body: some View {
             VStack {
-                data.favoriteCategory.image
+                Image(systemName: "star.fill")
                     .resizable()
                     .scaledToFit()
-//                    .frame(width: 176, height: 267)
-                Text(data.title)
+                    .frame(width: 176, height: 267)
+                Text("\(boasts.first{ $0.id == boastID }?.award?.title ?? "")")
                     .font(.headlineEmphasized)
             }
         }
-}
-
-#Preview {
-    AwardFavoriteView(data: AwardFavoriteData(favoriteCategory: .gem, title: "장왕소최고"))
 }

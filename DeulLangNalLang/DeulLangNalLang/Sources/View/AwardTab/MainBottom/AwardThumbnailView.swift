@@ -6,22 +6,12 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct AwardData: Identifiable {
     let id: UUID = UUID()
     var category: AwardCategory
     var title: String
-    var isFavorit: Bool
-    
-    static var dummy: [AwardData] = [
-        AwardData(category: .cactus, title: "짱상", isFavorit: true),
-        AwardData(category: .octopus, title: "바보상", isFavorit: true),
-        AwardData(category: .gem, title: "호랑이상", isFavorit: false),
-        AwardData(category: .origami, title: "피자치킨상", isFavorit: true),
-        AwardData(category: .gem, title: "아메리카노상", isFavorit: true),
-        AwardData(category: .bicycle, title: "레모니와나기상", isFavorit: true),
-        AwardData(category: .cactus, title: "바나나껍질주움상", isFavorit: false)
-    ]
 }
 
 enum AwardCategory: String {
@@ -39,27 +29,31 @@ enum AwardCategory: String {
 }
 
 struct AwardThumbnailView: View {
-    let data: AwardData
+    
+    @Query var boasts: [Boast]
+    
+    var id: UUID
+    
+    var boast: Boast {
+        return boasts.first { $0.id == id }!
+    }
     
     var body: some View {
         VStack {
-            data.category.image
+            Image(systemName: "star.fill")
                 .resizable()
                 .scaledToFit()
                 .overlay(alignment: .topTrailing){
-                    if data.isFavorit {
+                    if boast.award?.isFavorite ?? false {
                         Image(systemName: "heart.fill")
                             .foregroundColor(.DNDarkBlue)
                             .padding(4)
                     }
             }
-            Text(data.title)
+            Text("\(boasts.first { $0.id == id }?.award?.title ?? "")")
                 .font(.headlineEmphasized)
                 .fixedSize()
         }
     }
 }
 
-#Preview {
-    AwardThumbnailView(data: AwardData(category: .gem, title: "장왕소최고", isFavorit: true))
-}
