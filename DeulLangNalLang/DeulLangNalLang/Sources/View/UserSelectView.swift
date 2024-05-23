@@ -17,20 +17,12 @@ struct UserSelectView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                Rectangle()
-                    .frame(width: .infinity, height: 68)
-                    .foregroundColor(.clear)
-                
                 Text("당신은 누구새우깡?")
                     .font(.largeTitleRegular)
                     .fontWeight(.heavy)
                     .foregroundColor(.black)
                     .frame(width: 361, height: 44, alignment: .topLeading)
-                
-                Rectangle()
-                    .frame(width: .infinity, height: 164)
-                    .foregroundColor(.clear)
-                
+                    .padding(.top, 68)
                 HStack(alignment: .top, spacing: 9){
                     NavigationLink(destination: TabBarView()) {
                         Text("산")
@@ -61,6 +53,7 @@ struct UserSelectView: View {
                         user.name = "류들"
                     })
                 }
+                .padding(.top, 164)
                 Spacer()
             }
         }
