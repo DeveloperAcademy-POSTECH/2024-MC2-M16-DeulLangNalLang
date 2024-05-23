@@ -15,22 +15,16 @@ struct UserSwitchView: View {
     
     var body: some View {
         
-        @State var selectedOption: String = {
-            if user.name == "류산" {
-                return "산이"
-            } else {
-                return "들이"
-            }
-        }()
+        @State var selectedOption = user.name
         
         Menu {
             Button("류산") {
-                selectedOption = "산이"
                 user.name = "류산"
+                selectedOption = user.name
             }
             Button("류들") {
-                selectedOption = "들이"
                 user.name = "류들"
+                selectedOption = user.name
             }
         } label: {
             Text("나는 \(selectedOption) \(Image(systemName: "chevron.down")) ")
