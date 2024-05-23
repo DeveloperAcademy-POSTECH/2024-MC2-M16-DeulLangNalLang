@@ -44,9 +44,6 @@ struct AwardEmptyView: View {
                      .font(.bodyRegular)
                      .multilineTextAlignment(.center)
                      .foregroundColor(.black)
-
-
-
             .frame(width: 361, height: 48, alignment: .top)
 
             Spacer().frame(height: 262)
