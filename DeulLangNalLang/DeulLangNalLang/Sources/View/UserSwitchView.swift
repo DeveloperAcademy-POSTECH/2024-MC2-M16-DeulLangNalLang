@@ -31,7 +31,7 @@ struct UserSwitchView: View {
             } .font(.title3Emphasized)
                 .accentColor(.black)
         }
-        .background(.dnBackground)
+        .background(Color.DNBackground)
     }
 }
 

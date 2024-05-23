@@ -25,7 +25,7 @@ struct CardFlipView: View {
     
     var body: some View {
         ZStack {
-            Color.dnBackground.ignoresSafeArea()
+            Color.DNBackground.ignoresSafeArea()
             VStack(spacing: 0){
                 ZStack {
                     if isFlipped {
