@@ -22,7 +22,9 @@ struct CarouselView: View {
     var body: some View {
         VStack{
             ZStack{
-                ForEach(0..<weeklyBoasts.count, id: \.self) { index in Image(weeklyBoasts[index].award!.themeName)
+                ForEach(0..<weeklyBoasts.count, id: \.self) { index in
+                    let themeName = weeklyBoasts[index].award?.themeName ?? "Octopus"
+                    cardImage(themeName: themeName)
                         .resizable()
                         .scaledToFit()
                         .frame(width: 268, height: 390)

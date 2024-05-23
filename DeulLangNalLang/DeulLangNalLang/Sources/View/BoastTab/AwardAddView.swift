@@ -61,7 +61,7 @@ struct AwardAddView: View {
                                         contents: self.awardContents,
                                         date: Date(),
                                         isFavorite: false,
-                                        themeName: "Octopus")
+                                        themeName: awardImages[selectedFrameIndex ?? 0])
                     onDelete()
                 }) {
                     Text("완료")
