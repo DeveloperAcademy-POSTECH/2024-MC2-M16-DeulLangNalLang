@@ -9,6 +9,7 @@ struct BoastCardView: View {
     
     @State private var showSheet: Bool = false
     @State private var showActionSheet: Bool = false
+    @State private var showEditSheet = false
     
     @Binding var boast: Boast
     var onDelete: () -> Void
@@ -45,7 +46,9 @@ struct BoastCardView: View {
                     /// 본인일 때 (내가 쓴 글) 수정하기 버튼
                     if boast.writer == user.name {
                         Menu {
-                            Button("수정하기", action:{})
+                            Button("수정하기", action:{
+                                showEditSheet.toggle()
+                            })
                             Button(role: .destructive, action:{
                                 showActionSheet.toggle()
                             }) {
@@ -57,6 +60,9 @@ struct BoastCardView: View {
                                 .foregroundStyle(.black)
                         }
                         .actionSheet(isPresented: $showActionSheet, content: getActionSheet)
+                        .sheet(isPresented: $showEditSheet) {
+                            BoastEditView(boastId: $boast.id)
+                        }
                     }
                     
                     /// 상대일 때 상장주기 버튼
