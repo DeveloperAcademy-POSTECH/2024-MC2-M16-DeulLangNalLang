@@ -13,3 +13,6 @@ func awardImage(themeName: String) -> Image {
 func cardImage(themeName: String) -> Image {
     return Image("card"+themeName)
 }
+
+let grayDoorImage: Image = Image("GrayDoor")
+
