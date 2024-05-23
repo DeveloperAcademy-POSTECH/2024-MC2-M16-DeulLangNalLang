@@ -9,18 +9,29 @@ import SwiftUI
 
 struct TabBarView: View {
     
+    init() {
+        let appearance = UITabBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = UIColor.white  // Set background color to clear
+        
+        UITabBar.appearance().standardAppearance = appearance
+        UITabBar.appearance().scrollEdgeAppearance = appearance
+    }
+    
     var body: some View {
         VStack(alignment: .leading) {
             UserSwitchView()
                 .padding(.leading, 16)
                 .padding(.bottom, 8)
                 .padding(.top, 16)
+            
             TabView {
                 AwardMainView() // 첫 번째 탭 화면
                     .tabItem { // 탭바 버튼으로 등록
                         Image(systemName: "rectangle.portrait.inset.filled")
                         Text("상장 박물관")
                     }
+                
                 
                 BoastMainView() // 두 번째 탭 화면
                     .tabItem { // 탭바 버튼으로 등록
@@ -31,12 +42,13 @@ struct TabBarView: View {
             .accentColor(.DNTabBarBlue)
         }
         .navigationBarBackButtonHidden()
+        .background(.dnBackground)
     }
 }
 
 //struct TabSub1View: View { // 첫 번째 탭 화면
 //    var body: some View {
-//        
+//
 //        AwardMainView()
 //
 //        }
