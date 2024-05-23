@@ -6,28 +6,32 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct CardFlipView: View {
     
     
     @Environment(\.dismiss) var dismiss
+    
+    @Query var boasts: [Boast]
+    
     @State var isFlipped = false
     
-    @State var boast = Boast(contents: "오늘 들이가 배고프다고 해서 새로운 메뉴 파스타에 도전해봤다. 생각보다 쉽고 맛있었다. 다행히 들이도 맛있게 먹어준 것 같아서 좋았다. 오늘 들이가 배고프다고 해서 새로운 메뉴이다.", 
-                             date: Date(),
-                             award: Award(title: "우리집 요리왕",
-                                          contents: "산이는 부모님이 집에 안계실 때 부모님을 대신하여 들이가 배고픈지 물어보고 맛있는 밥을 만들어 주었기에 이 상을 수여합니다.",
-                                          date: Date(),
-                                          isFavorite: false,
-                                          receiver: User(name: .San)))
+    var boastID: UUID
+    
+    var boast: Boast {
+        return boasts.first { $0.id == boastID }!
+    }
     
     var body: some View {
-        VStack(spacing: 0) {
-            ZStack {
-                if isFlipped {
-                    BoastDetailView(boast: boast)
+        VStack {
+            Group{
+                if !isFlipped {
+                    // scaleEffect를 적용하여 CardView를 반대로 뒤집어 둠.
+                    // rotation3DEffect로 앞 -> 뒤로 뒤집으려 할 때 뒤에 있던 View가 뒤집어진 채로 보이기 때문.
+                    BoastDetailView(boastID: boastID)
                 } else {
-                    AwardDetailView(award: boast.award!)
+                    AwardDetailView(boastID: boastID)
                 }
             }
             .scaleEffect(x: isFlipped ? -1 : 1)
@@ -65,7 +69,7 @@ struct CardFlipView: View {
                     HStack(spacing: 0){
                         Spacer()
                         Button(action: {
-                            boast.award?.isFavorite.toggle()
+                            boasts.first { $0.id == boastID }!.award?.isFavorite.toggle()
                         }) {
                             Image(systemName: boast.award?.isFavorite ?? false ? "heart.fill" : "heart")
                         }
@@ -78,6 +82,6 @@ struct CardFlipView: View {
 }
 
 
-#Preview {
-    CardFlipView()
-}
+//#Preview {
+//    CardFlipView()
+//}

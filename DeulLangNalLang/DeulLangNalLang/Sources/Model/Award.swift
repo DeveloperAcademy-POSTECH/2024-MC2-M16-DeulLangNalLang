@@ -6,22 +6,23 @@
 //
 
 import Foundation
+import SwiftData
 
-@Observable
+@Model
 class Award {
-    var id = UUID()
+    @Attribute(.unique) var id = UUID()
     var title: String
     var contents: String
     var date: Date
     var isFavorite: Bool
-    var receiver: User
+    var themeName: String
     
-    init(title: String, contents: String, date: Date, isFavorite: Bool, receiver: User) {
+    init(title: String, contents: String, date: Date, isFavorite: Bool, themeName: String) {
         self.title = title
         self.contents = contents
         self.date = date
         self.isFavorite = isFavorite
-        self.receiver = receiver
+        self.themeName = themeName
     }
 }
 
