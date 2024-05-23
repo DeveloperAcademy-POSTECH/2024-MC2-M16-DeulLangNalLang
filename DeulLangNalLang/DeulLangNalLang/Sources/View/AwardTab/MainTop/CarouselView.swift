@@ -51,6 +51,7 @@ struct CarouselView: View {
                         .offset(x: CGFloat(index - currentIndex) * 270 + dragOffset, y: 0)
                 }
             }
+            .padding(.bottom, 24)
             .gesture(
                 DragGesture()
                     .onEnded({ value in
@@ -76,6 +77,7 @@ struct CarouselView: View {
                 }
             }
         }
+        .padding(.bottom, 30)
     }
     
     private func getCurrentWeekDates() -> (startOfWeek: Date, endOfWeek: Date)? {
