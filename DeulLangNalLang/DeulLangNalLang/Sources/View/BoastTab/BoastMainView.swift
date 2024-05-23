@@ -58,7 +58,7 @@ struct BoastMainView: View {
                         BoastAddView()
                     }
                 }
-                .background(.dnBackground)
+                .background(Color.DNBackground)
                 .padding(.trailing, 12)
             }
             .padding()
@@ -77,7 +77,7 @@ struct BoastMainView: View {
                 updateShowingBoasts()
             }
         })
-        .background(.dnBackground)
+        .backgroundStyle(Color.DNBackground)
     }
     
     struct TrackableScrollView<Header: View, Content: View>: View {
