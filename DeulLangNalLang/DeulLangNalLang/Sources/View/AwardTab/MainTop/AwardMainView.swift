@@ -40,6 +40,9 @@ struct AwardMainView: View {
     }
     
     var body: some View {
+        let myBoasts = allBoasts.filter{
+            $0.writer != user.name
+        }
         ScrollView{
             VStack (alignment: .center) {
                 HStack {
@@ -54,7 +57,7 @@ struct AwardMainView: View {
                     .padding(.bottom, 40)
                 
                 HStack{
-                    Text("상장이 \(allBoasts.count)개 모였네요! \n아주 칭찬합니다람쥐")
+                    Text("상장이 \(myBoasts.count)개 모였네요! \n아주 칭찬합니다람쥐")
                         .font(.largeTitleRegular)
                         .fontWeight(.heavy)
                         .padding(.bottom, 20)
