@@ -91,7 +91,7 @@ struct AwardAddView: View {
                     VStack {
                         TextField("제목을 입력하세요", text: $awardTitle)
                             .onChange(of: awardTitle) { newValue in
-                                if newValue.count <= 8 {
+                                if newValue.count <= 7 {
                                     titleCharacterCount = newValue.count
                                 } else {
                                     awardTitle = String(newValue.prefix(8))
@@ -217,12 +217,12 @@ struct AwardAddView: View {
                                 )
                         }
                     }
+                }
+                .frame(width: .infinity, height: 72)
+                .padding(.horizontal, 16)
+                .frame(maxWidth: .infinity)
+            }
         }
-        .frame(width: .infinity, height: 72)
-        .padding(.horizontal, 16)
-        .frame(maxWidth: .infinity)
+        Spacer()
     }
-}
-Spacer()
-}
 }
