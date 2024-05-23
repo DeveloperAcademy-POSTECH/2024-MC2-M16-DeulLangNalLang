@@ -43,7 +43,6 @@ struct BoastDetailView: View {
                                     .padding(.horizontal, 5)
                             }
                         }
-                        
                     }
                     
                     Text("\(boast.contents)")
