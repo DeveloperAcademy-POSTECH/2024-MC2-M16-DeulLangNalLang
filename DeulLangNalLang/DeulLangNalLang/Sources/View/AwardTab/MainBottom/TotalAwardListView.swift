@@ -35,11 +35,11 @@ struct TotalAwardListView: View {
                     NavigationLink(destination: CardFlipView(boastID: boast.id)){
                         AwardThumbnailView(id: boast.id)
                     }
-                    
                 }
             }
         }
         .padding(.horizontal)
+        .padding(.bottom, 200)
     }
 }
 

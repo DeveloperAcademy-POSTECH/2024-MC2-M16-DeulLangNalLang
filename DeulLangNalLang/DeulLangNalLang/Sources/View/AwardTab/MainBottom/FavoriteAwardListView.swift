@@ -14,6 +14,8 @@ struct FavoriteAwardListView: View {
     
     @Query private var boasts: [Boast]
     
+    var isWeeklyBoastExist: Bool
+    
     //화면을 그리드형식으로 꽉채워줌
     let columns = [
         GridItem(.flexible()),
@@ -44,7 +46,7 @@ struct FavoriteAwardListView: View {
                 grayDoorImage
                 Text("소중한 상장이 없어우유...\n")
             }
-            .padding(.vertical, 120)
+            .padding(.vertical, favoriteBoasts.count > 0 ? 200 : 120)
             
         }
     }

@@ -17,26 +17,7 @@ struct CarouselView: View {
     @GestureState private var dragOffset: CGFloat = 0
     
     
-    var weeklyBoasts: [Boast] {
-        let calendar = Calendar.current
-        let now = Date()
-        
-        guard let startOfWeek = calendar.dateInterval(of: .weekOfYear, for: now)?.start else {
-            return []
-        }
-        
-        guard let endOfWeek = calendar.date(byAdding: .day, value: 6, to: startOfWeek) else {
-            return []
-        }
-        
-        return boasts.filter {
-            guard let award = $0.award else {
-                return false
-            }
-            
-            return $0.writer != user.name && startOfWeek <= award.date && award.date <= endOfWeek
-        }
-    }
+    var weeklyBoasts: [Boast]
     
     var body: some View {
         VStack{
@@ -92,8 +73,8 @@ struct CarouselView: View {
         return (startOfWeek, endOfWeek ?? startOfWeek)
     }
 }
-
-#Preview {
-    CarouselView(currentIndex: .constant(1))
-}
+//
+//#Preview {
+//    CarouselView(currentIndex: .constant(1))
+//}
 
