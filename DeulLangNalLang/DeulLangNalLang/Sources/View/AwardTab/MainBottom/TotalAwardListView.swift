@@ -27,7 +27,7 @@ struct TotalAwardListView: View {
     
     var body: some View {
         let myTotalAwardBoasts = boasts.filter {
-            $0.writer != user.name
+            $0.writer == user.name
         }
         VStack(alignment: .leading){
             LazyVGrid(columns: columns, spacing: 20) {

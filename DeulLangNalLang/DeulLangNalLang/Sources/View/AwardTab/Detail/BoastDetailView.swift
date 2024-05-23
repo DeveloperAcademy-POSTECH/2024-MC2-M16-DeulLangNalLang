@@ -26,7 +26,7 @@ struct BoastDetailView: View {
             ZStack{
                 RoundedRectangle(cornerRadius: 20)
                     .frame(width: 329, height: 480)
-                    .foregroundColor(.DNBlue)
+                    .foregroundColor(boast.writer == "류산" ? .DNBlue : .DNGreen)
                     .shadow(radius: 5, x: 3, y: 3)
                 
                 VStack(spacing: 0){

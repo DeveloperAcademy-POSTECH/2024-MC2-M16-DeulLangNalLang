@@ -12,7 +12,7 @@ struct CarouselView: View {
     @Environment(User.self) var user: User
     
     @Query var boasts: [Boast]
-
+    
     @Binding var currentIndex: Int
     @GestureState private var dragOffset: CGFloat = 0
     
@@ -50,13 +50,18 @@ struct CarouselView: View {
                             }
                         }
                     })
-                )
+            )
             HStack(spacing: 8) {
-                ForEach(0..<weeklyBoasts.count, id: \.self) { i in
+                ForEach(0..<weeklyBoasts.count, id: \.self) { index in
                     Circle()
-                        .fill(currentIndex == i ? Color.black : Color.gray)
+                        .fill(currentIndex == index ? Color.black : Color.gray)
                         .animation(.easeInOut, value: currentIndex)
                         .frame(width: 8, height: 8)
+                        .onTapGesture {
+                            withAnimation {
+                                self.currentIndex = index
+                            }
+                        }
                 }
             }
         }
@@ -66,11 +71,11 @@ struct CarouselView: View {
     private func getCurrentWeekDates() -> (startOfWeek: Date, endOfWeek: Date)? {
         let calendar = Calendar.current
         let now = Date()
-
+        
         guard let startOfWeek = calendar.dateInterval(of: .weekOfYear, for: now)?.start else {
             return nil
         }
-
+        
         let endOfWeek = calendar.date(byAdding: .day, value: 6, to: startOfWeek)
         return (startOfWeek, endOfWeek ?? startOfWeek)
     }
