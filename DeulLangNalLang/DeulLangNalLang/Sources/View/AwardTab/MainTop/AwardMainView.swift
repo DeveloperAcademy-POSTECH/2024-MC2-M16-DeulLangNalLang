@@ -35,13 +35,13 @@ struct AwardMainView: View {
                 return false
             }
             
-            return $0.writer != user.name && startOfWeek <= award.date && award.date <= endOfWeek
+            return $0.writer == user.name && startOfWeek <= award.date && award.date <= endOfWeek
         }
     }
     
     var body: some View {
         let myBoasts = allBoasts.filter{
-            $0.writer != user.name
+            $0.writer == user.name
         }
         ScrollView{
             VStack (alignment: .center) {

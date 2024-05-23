@@ -27,7 +27,7 @@ struct FavoriteAwardListView: View {
     var body: some View {
         let favoriteBoasts = boasts.filter {
             guard let award = $0.award else { return false }
-            return $0.writer != user.name && award.isFavorite
+            return $0.writer == user.name && award.isFavorite
         }
         if favoriteBoasts.count > 0 {
             VStack{
