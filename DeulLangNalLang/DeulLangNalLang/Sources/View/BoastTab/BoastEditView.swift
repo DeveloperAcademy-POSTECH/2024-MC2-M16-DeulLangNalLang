@@ -2,24 +2,29 @@ import SwiftUI
 import UIKit
 import SwiftData
 
-struct BoastAddView: View {
+struct BoastEditView: View {
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.modelContext) var modelContext
     @Environment(User.self) var user: User
     
-    @State private var text = ""
+    @Binding var boastId: UUID
+    
+    @Query var boasts: [Boast]
+    
+    @State private var selectedText = ""
     @State private var isShowingImagePicker = false
+    @State private var isShowingCamera = false
+    
     @State private var selectedImageDatas: [Data] = []
     
-    @State private var isShowingCamera = false
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
-                CustomTextView(text: $text, isShowingImagePicker: $isShowingImagePicker, isShowingCamera: $isShowingCamera, placeholder: "내용을 입력하세요")
+                EditCustomTextView(text: $selectedText, isShowingImagePicker: $isShowingImagePicker, isShowingCamera: $isShowingCamera)
                     .padding()
                 HStack {
                     Spacer()
-                    Text("\(text.count)/100")
+                    Text("\(selectedText.count)/100")
                         .font(.footnoteRegular)
                         .foregroundColor(.gray)
                         .padding(.horizontal, 16)
@@ -77,23 +82,36 @@ struct BoastAddView: View {
             .navigationBarTitle("자랑쓰기")
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(trailing: Button("완료") {
-                if text != "" {
-                    let newBoast = Boast(contents: text, 
-                                         date: Date(),
-                                         writer: user.name)
-                    modelContext.insert(newBoast)
+                //MARK: 완료버튼 눌렀을 때 새로운 내용을 swiftData에 넣어줌
+                if let index = boasts.firstIndex(where: { $0.id == boastId }) {
+                    
+                    let boast = boasts[index]
+                    
+                    boast.contents = selectedText
+                    boast.imageDatas = selectedImageDatas
                 }
                 presentationMode.wrappedValue.dismiss()
             })
+            
+        }
+        .onAppear {
+            loadBoast()
+            print(selectedText)
+        }
+    }
+    //MARK: load할 때 기존 내용 넣어주기
+    private func loadBoast() {
+        if let index = boasts.firstIndex(where: { $0.id == boastId }) {
+            selectedText = boasts[index].contents
+            selectedImageDatas = boasts[index].imageDatas
         }
     }
 }
 
-struct CustomTextView: UIViewRepresentable {
+struct EditCustomTextView: UIViewRepresentable {
     @Binding var text: String
     @Binding var isShowingImagePicker: Bool
     @Binding var isShowingCamera: Bool
-    var placeholder: String
     
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
@@ -104,9 +122,9 @@ struct CustomTextView: UIViewRepresentable {
         textView.delegate = context.coordinator
         textView.font = .bodyRegular(ofSize: 16.5)
 
-        // Placeholder 설정
-        textView.text = placeholder
-        textView.textColor = .lightGray
+        // 초기 text 설정
+        textView.text = text
+        textView.textColor = .black
         
         //MARK: 툴바 설정
         let toolbar = UIToolbar()
@@ -132,26 +150,23 @@ struct CustomTextView: UIViewRepresentable {
     }
     
     class Coordinator: NSObject, UITextViewDelegate {
-        var parent: CustomTextView
-        var isPlaceholderVisible = true
+        var parent: EditCustomTextView
         
-        init(_ parent: CustomTextView) {
+        init(_ parent: EditCustomTextView) {
             self.parent = parent
         }
         
         func textViewDidBeginEditing(_ textView: UITextView) {
-            if isPlaceholderVisible {
-                textView.text = ""
+            if textView.textColor == .lightGray {
+                textView.text = nil
                 textView.textColor = .black
-                isPlaceholderVisible = false
             }
         }
         
         func textViewDidEndEditing(_ textView: UITextView) {
             if textView.text.isEmpty {
-                textView.text = parent.placeholder
+                textView.text = "내용을 입력하세요" // 플레이스홀더
                 textView.textColor = .lightGray
-                isPlaceholderVisible = true
             }
         }
         
@@ -179,7 +194,7 @@ struct CustomTextView: UIViewRepresentable {
     }
 }
 
-struct ImagePicker: UIViewControllerRepresentable {
+struct EditImagePicker: UIViewControllerRepresentable {
     @Environment(\.presentationMode) private var presentationMode
     @Binding var isShowingCamera: Bool
     @Binding var selectedImageData: Data
@@ -201,9 +216,9 @@ struct ImagePicker: UIViewControllerRepresentable {
     func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {}
     
     class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-        var parent: ImagePicker
+        var parent: EditImagePicker
         
-        init(_ parent: ImagePicker) {
+        init(_ parent: EditImagePicker) {
             self.parent = parent
         }
         
@@ -219,11 +234,5 @@ struct ImagePicker: UIViewControllerRepresentable {
         func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
             parent.presentationMode.wrappedValue.dismiss()
         }
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        BoastAddView()
     }
 }
