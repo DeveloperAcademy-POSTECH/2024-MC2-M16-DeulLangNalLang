@@ -78,16 +78,23 @@ struct BoastMainView: View {
             }
         })
         .backgroundStyle(Color.DNBackground)
+        
     }
+    
+    
+    
     
     struct TrackableScrollView<Header: View, Content: View>: View {
         @State private var showHeader = true
+        @Query var boasts: [Boast]
         
         let header: () -> Header
         let content: () -> Content
         
         var body: some View {
+            
             VStack(spacing :0){
+                
                 if showHeader {
                     VStack(spacing :0){
                         header()
@@ -126,21 +133,26 @@ struct BoastMainView: View {
                     .padding(.horizontal)
                 }
                 .padding(.top, 1)
+                
+                
+                if boasts.isEmpty {
+                    BoastEmptyView()
+                }
             }
             .animation(.easeInOut, value: showHeader)
         }
     }
     
     private func updateShowingBoasts() {
-            switch mode {
-            case .both:
-                showingBoasts = bothBoasts
-            case .onlyDeul:
-                showingBoasts = onlyDeulBoasts
-            case .onlySan:
-                showingBoasts = onlySanBoasts
-            }
+        switch mode {
+        case .both:
+            showingBoasts = bothBoasts
+        case .onlyDeul:
+            showingBoasts = onlyDeulBoasts
+        case .onlySan:
+            showingBoasts = onlySanBoasts
         }
+    }
 }
 
 enum BoastCategory {
