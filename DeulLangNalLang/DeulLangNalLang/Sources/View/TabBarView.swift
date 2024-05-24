@@ -42,7 +42,7 @@ struct TabBarView: View {
             .accentColor(.DNTabBarBlue)
         }
         .navigationBarBackButtonHidden()
-        .background(.dnBackground)
+        .background(Color.DNBackground)
     }
 }
 
