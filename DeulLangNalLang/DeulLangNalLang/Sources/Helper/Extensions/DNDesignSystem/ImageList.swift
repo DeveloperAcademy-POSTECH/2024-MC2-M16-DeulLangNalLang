@@ -7,19 +7,12 @@
 
 import SwiftUI
 
-extension Image{
-    
-    //awardImage
-    static let awardBicycle: Image = Image("awardBicycle")
-    static let awardCactus: Image = Image("awardCactus")
-    static let awardGem: Image = Image("awardGem")
-    static let awardOctopus: Image = Image("awardOctopus")
-    
-    //cardImage
-    static let cardBicycle: Image = Image("cardBicycle")
-    static let cardCactus: Image = Image("cardCactus")
-    static let cardGem: Image = Image("cardGem")
-    static let cardOctopus: Image = Image("cardOctopus")
-    static let cardOrigami: Image = Image("cardOrigami")
-    
+func awardImage(themeName: String) -> Image {
+    return Image("award"+themeName)
 }
+func cardImage(themeName: String) -> Image {
+    return Image("card"+themeName)
+}
+
+let grayDoorImage: Image = Image("GrayDoor")
+

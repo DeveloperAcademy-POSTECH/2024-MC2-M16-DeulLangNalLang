@@ -6,27 +6,37 @@
 //
 
 import SwiftUI
+import SwiftData
+
 struct CarouselView: View {
+    @Environment(User.self) var user: User
+    
+    @Query var boasts: [Boast]
     
     @Binding var currentIndex: Int
     @GestureState private var dragOffset: CGFloat = 0
-    private let images: [String] = ["cardOctopus", "cardGem", "cardCactus", "cardBicycle", "cardOrigami"]
+    
+    
+    var weeklyBoasts: [Boast]
     
     var body: some View {
-        
-        //  NavigationStack{
         VStack{
             ZStack{
-                ForEach(0..<images.count, id: \.self) { index in Image(images[index])
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 268, height: 390)
+                ForEach(0..<weeklyBoasts.count) { index in
+//                    let themeName = weeklyBoasts[index].award?.themeName ?? "Octopus"
+//                    cardImage(themeName: themeName)
+//                        .resizable()
+//                        .scaledToFit()
+//                        .frame(width: 268, height: 390)
+                    let boast = weeklyBoasts[index]
+                    AwardCarouselView(boast: boast)
                         .cornerRadius(20)
                         .opacity(currentIndex == index ? 1.0 : 0.5)
                         .scaleEffect(currentIndex == index ? 1.0 : 0.9)
                         .offset(x: CGFloat(index - currentIndex) * 270 + dragOffset, y: 0)
                 }
             }
+            .padding(.bottom, 24)
             .gesture(
                 DragGesture()
                     .onEnded({ value in
@@ -37,25 +47,43 @@ struct CarouselView: View {
                             }
                         } else if value.translation.width < -threshold {
                             withAnimation {
-                                currentIndex = min(images.count - 1,
+                                currentIndex = min(weeklyBoasts.count - 1,
                                                    currentIndex + 1)
                             }
                         }
                     })
-                )
+            )
             HStack(spacing: 8) {
-                ForEach(0..<5) { i in
+                ForEach(0..<weeklyBoasts.count, id: \.self) { index in
                     Circle()
-                        .fill(currentIndex == i ? Color.black : Color.gray)
+                        .fill(currentIndex == index ? Color.black : Color.gray)
                         .animation(.easeInOut, value: currentIndex)
+                        .frame(width: 8, height: 8)
+                        .onTapGesture {
+                            withAnimation {
+                                self.currentIndex = index
+                            }
+                        }
                 }
             }
-            .frame(width: 70, height: 70)
         }
+        .padding(.bottom, 30)
+    }
+    
+    private func getCurrentWeekDates() -> (startOfWeek: Date, endOfWeek: Date)? {
+        let calendar = Calendar.current
+        let now = Date()
+        
+        guard let startOfWeek = calendar.dateInterval(of: .weekOfYear, for: now)?.start else {
+            return nil
+        }
+        
+        let endOfWeek = calendar.date(byAdding: .day, value: 6, to: startOfWeek)
+        return (startOfWeek, endOfWeek ?? startOfWeek)
     }
 }
-
-#Preview {
-    CarouselView(currentIndex: .constant(1))
-}
+//
+//#Preview {
+//    CarouselView(currentIndex: .constant(1))
+//}
 

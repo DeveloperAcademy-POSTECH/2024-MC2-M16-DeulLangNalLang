@@ -8,19 +8,30 @@
 import SwiftUI
 
 struct UserSwitchView: View {
+    @Environment(User.self) var user: User
     
-    @State var selectedOption: String = "산이"
+    
     let options = ["류산", "류들"]
     
     var body: some View {
+        @State var selectedOption = user.name
         
-        Menu {
-            Button("류산", action: {selectedOption = "산이"})
-            Button("류들", action: {selectedOption = "들이"})
-        } label: {
-            Text("나는 \(selectedOption) \(Image(systemName: "chevron.down")) ")
-        } .font(.title3Emphasized)
-            .accentColor(.black)
+        VStack {
+            Menu {
+                Button("류산") {
+                    user.name = "류산"
+                    selectedOption = user.name
+                }
+                Button("류들") {
+                    user.name = "류들"
+                    selectedOption = user.name
+                }
+            } label: {
+                Text("나는 \(selectedOption) \(Image(systemName: "chevron.down")) ")
+            } .font(.title3Emphasized)
+                .accentColor(.black)
+        }
+        .background(Color.DNBackground)
     }
 }
 
