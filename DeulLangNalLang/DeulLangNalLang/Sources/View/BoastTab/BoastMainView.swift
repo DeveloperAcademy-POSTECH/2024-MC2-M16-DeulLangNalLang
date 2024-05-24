@@ -25,48 +25,45 @@ struct BoastMainView: View {
             BoastEmptyView()
         }
         else {
-            TrackableScrollView(header: {
-                ScrollView{
-                    HStack {
-                        Spacer()
-                        Menu {
-                            Button("산이만 보기", action:{
-                                self.mode = .onlySan
-                                updateShowingBoasts()
-                            })
-                            Button("들이만 보기", action:{
-                                self.mode = .onlyDeul
-                                updateShowingBoasts()
-                            })
-                            Button("전체보기", action:{
-                                self.mode = .both
-                                updateShowingBoasts()
-                            })
-                        } label: {
-                            Image(systemName: "line.3.horizontal.decrease.circle")
-                                .foregroundStyle(.black)
-                                .font(.title1Regular)
-                        }
-                        .padding(.trailing, 12)
-                        
-                        Button(action: {
-                            showSheet.toggle()
-                        }) {
-                            Image(systemName: "plus")
-                                .foregroundStyle(.black)
-                                .font(.title1Regular)
-                        }
-                        .sheet(isPresented: $showSheet, onDismiss: {
+            ScrollView{
+                HStack{
+                    Spacer()
+                    Menu {
+                        Button("산이만 보기", action:{
+                            self.mode = .onlySan
                             updateShowingBoasts()
-                        }) {
-                            BoastAddView()
-                        }
+                        })
+                        Button("들이만 보기", action:{
+                            self.mode = .onlyDeul
+                            updateShowingBoasts()
+                        })
+                        Button("전체보기", action:{
+                            self.mode = .both
+                            updateShowingBoasts()
+                        })
+                    } label: {
+                        Image(systemName: "line.3.horizontal.decrease.circle")
+                            .foregroundStyle(.black)
+                            .font(.title1Regular)
                     }
-                    .background(Color.DNBackground)
                     .padding(.trailing, 12)
+                    
+                    Button(action: {
+                        showSheet.toggle()
+                    }) {
+                        Image(systemName: "plus")
+                            .foregroundStyle(.black)
+                            .font(.title1Regular)
+                    }
+                    .sheet(isPresented: $showSheet, onDismiss: {
+                        updateShowingBoasts()
+                    }) {
+                        BoastAddView()
+                    }
                 }
-                .padding()
-            }, content: {
+                .padding(.trailing, 2)
+                .padding(.bottom, 20)
+
                 VStack(spacing: 0) {
                     ForEach($showingBoasts) { boast in
                         BoastCardView(boast: boast, onDelete: {
@@ -80,68 +77,134 @@ struct BoastMainView: View {
                 .onAppear {
                     updateShowingBoasts()
                 }
-            })
-            .backgroundStyle(Color.DNBackground)
-        }
-        
-    }
-    
-    
-    
-    
-    struct TrackableScrollView<Header: View, Content: View>: View {
-        @State private var showHeader = true
-        @Query var boasts: [Boast]
-        
-        let header: () -> Header
-        let content: () -> Content
-        
-        var body: some View {
-            
-            VStack(spacing :0){
-                
-                if showHeader {
-                    VStack(spacing :0){
-                        header()
-                            .frame(height: 60)
-                    }
-                    .transition(
-                        .asymmetric(
-                            insertion: .push(from: .top),
-                            removal: .push(from: .bottom)
-                        )
-                    )
-                    .padding(.top, -12)
-                }
-                
-                GeometryReader { outerGeo in
-                    let outerHeight = outerGeo.size.height
-                    ScrollView(.vertical) {
-                        content()
-                            .background {
-                                GeometryReader { innnerGeo in
-                                    let contentHeight = innnerGeo.size.height
-                                    let minY = max(
-                                        min(0, innnerGeo.frame(in: .named("ScrollView")).minY),
-                                        outerHeight - contentHeight
-                                    )
-                                    Color.clear
-                                        .onChange(of: minY) { oldVal, newVal in
-                                            if (showHeader && newVal < oldVal) || !showHeader && newVal > oldVal {
-                                                showHeader = newVal > oldVal
-                                            }
-                                        }
-                                }
-                            }
-                    }
-                    .coordinateSpace(name: "ScrollView")
-                    .padding(.horizontal)
-                }
-                .padding(.top, 1)
             }
-            .animation(.easeInOut, value: showHeader)
-        }
+            .background(Color.DNBackground)
+            .padding(.horizontal, 12)
+            }
     }
+    
+//    var body: some View {
+//        if boasts.isEmpty {
+//            BoastEmptyView()
+//        }
+//        else {
+//            TrackableScrollView(header: {
+//                ScrollView{
+//                    HStack {
+//                        Spacer()
+//                        Menu {
+//                            Button("산이만 보기", action:{
+//                                self.mode = .onlySan
+//                                updateShowingBoasts()
+//                            })
+//                            Button("들이만 보기", action:{
+//                                self.mode = .onlyDeul
+//                                updateShowingBoasts()
+//                            })
+//                            Button("전체보기", action:{
+//                                self.mode = .both
+//                                updateShowingBoasts()
+//                            })
+//                        } label: {
+//                            Image(systemName: "line.3.horizontal.decrease.circle")
+//                                .foregroundStyle(.black)
+//                                .font(.title1Regular)
+//                        }
+//                        .padding(.trailing, 12)
+//                        
+//                        Button(action: {
+//                            showSheet.toggle()
+//                        }) {
+//                            Image(systemName: "plus")
+//                                .foregroundStyle(.black)
+//                                .font(.title1Regular)
+//                        }
+//                        .sheet(isPresented: $showSheet, onDismiss: {
+//                            updateShowingBoasts()
+//                        }) {
+//                            BoastAddView()
+//                        }
+//                    }
+//                    .background(Color.DNBackground)
+//                    .padding(.trailing, 12)
+//                }
+//                .padding()
+//            }, content: {
+//                VStack(spacing: 0) {
+//                    ForEach($showingBoasts) { boast in
+//                        BoastCardView(boast: boast, onDelete: {
+//                            if let index = showingBoasts.firstIndex(of: boast.wrappedValue) {
+//                                showingBoasts.remove(at: index)
+//                            }
+//                        })
+//                        .padding(.bottom, 16)
+//                    }
+//                }
+//                .onAppear {
+//                    updateShowingBoasts()
+//                }
+//            })
+//            .backgroundStyle(Color.DNBackground)
+//        }
+//        
+//    }
+//    
+//    
+//    
+//    
+//    struct TrackableScrollView<Header: View, Content: View>: View {
+//        @State private var showHeader = true
+//        @Query var boasts: [Boast]
+//        
+//        let header: () -> Header
+//        let content: () -> Content
+//        
+//        var body: some View {
+//            
+//            VStack(spacing :0){
+//                
+//                if showHeader {
+//                    VStack(spacing :0){
+//                        header()
+//                            .frame(height: 60)
+//                    }
+//                    .transition(
+//                        .asymmetric(
+//                            insertion: .push(from: .top),
+//                            removal: .push(from: .bottom)
+//                        )
+//                    )
+//                    .padding(.top, -12)
+//                }
+//                
+//                GeometryReader { outerGeo in
+//                    let outerHeight = outerGeo.size.height
+//                    ScrollView(.vertical) {
+//                        content()
+//                            .background {
+//                                GeometryReader { innnerGeo in
+//                                    let contentHeight = innnerGeo.size.height
+//                                    let minY = max(
+//                                        min(0, innnerGeo.frame(in: .named("ScrollView")).minY),
+//                                        outerHeight - contentHeight
+//                                    )
+//                                    Color.clear
+//                                        .onChange(of: minY) { oldVal, newVal in
+//                                            if (showHeader && newVal < oldVal) || !showHeader && newVal > oldVal {
+//                                                showHeader = newVal > oldVal
+//                                            }
+//                                        }
+//                                }
+//                            }
+//                    }
+//                    .coordinateSpace(name: "ScrollView")
+//                    .padding(.horizontal)
+//                }
+//                .padding(.top, 1)
+//            }
+//            .animation(.easeInOut, value: showHeader)
+//        }
+//    }
     
     private func updateShowingBoasts() {
         switch mode {
