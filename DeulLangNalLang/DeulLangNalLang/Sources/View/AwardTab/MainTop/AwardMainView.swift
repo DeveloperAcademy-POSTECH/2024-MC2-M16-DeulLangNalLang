@@ -80,7 +80,9 @@ struct AwardMainView: View {
                         FavoriteAwardListView(isWeeklyBoastExist: weeklyBoasts.count > 0)
                     }
                 }
-                else { AwardEmptyView()}
+                else { 
+                    AwardEmptyView()
+                }
             }
             .animation(.easeInOut(duration: 0.2), value: awardListSelection)
         }

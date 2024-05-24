@@ -10,25 +10,18 @@ import SwiftData
 
 
 struct AwardCarouselView: View {
+    var boast: Boast
     
-    @Query var boasts: [Boast]
-    
-    var boastID: UUID
-    
-    var boast: Boast {
-        return boasts.first { $0.id == boastID }!
-    }
-    
-    let awardCategory: AwardCategory
     var body: some View {
-//        awardCategory.image
         VStack(spacing: 0){
             ZStack{
-                Image("cardCactus")
+                cardImage(themeName: boast.award?.themeName ?? "Octopus")
+                    .resizable()
+                    .scaledToFit()
                     .shadow(radius: 5, x: 3, y: 3)
                 
                 VStack(spacing: 0){
-                    Spacer(minLength: 120)
+                    Spacer(minLength: 112)
                     Text("\(boast.award?.title ?? "") 상")
                         .font(.largeTitleRegular)
                         .fontWeight(.heavy)
