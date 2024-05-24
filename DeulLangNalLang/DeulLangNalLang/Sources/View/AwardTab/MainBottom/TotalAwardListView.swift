@@ -6,11 +6,15 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct TotalAwardListView: View {
+    @Environment(\.modelContext) var modelContext
+    @Environment(User.self) var user: User
     
-    //목록을 1부터 100까지 만듬
-    let data = AwardData.dummy
+    @Query(filter: #Predicate<Boast> { $0.award != nil })
+    private var boasts: [Boast]
+    
     
     //화면을 그리드형식으로 꽉채워줌
     let columns = [
@@ -22,17 +26,22 @@ struct TotalAwardListView: View {
     ]
     
     var body: some View {
-   
-            VStack(alignment: .leading){
-                LazyVGrid(columns: columns, spacing: 20) {
-                    ForEach(data) { awardData in
-                        AwardThumbnailView(data: awardData)
+        let myTotalAwardBoasts = boasts.filter {
+            $0.writer == user.name
+        }
+        VStack(alignment: .leading){
+            LazyVGrid(columns: columns, spacing: 20) {
+                ForEach(myTotalAwardBoasts) { boast in
+                    NavigationLink(destination: CardFlipView(boastID: boast.id)){
+                        AwardThumbnailView(id: boast.id)
                     }
                 }
             }
-            .padding(.horizontal)
         }
+        .padding(.horizontal)
+        .padding(.bottom, 200)
     }
+}
 
 #Preview {
     TotalAwardListView()

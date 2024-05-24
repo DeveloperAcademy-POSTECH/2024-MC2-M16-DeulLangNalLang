@@ -6,46 +6,22 @@
 //
 
 import SwiftUI
+import SwiftData
 
-@Observable
+@Model
 class Boast {
-    var id = UUID()
+    @Attribute(.unique) var id = UUID()
     var contents: String
     /// 이미지 개수: 0~2개
-    private var images: [Image] = []
+    var imageDatas: [Data] = []
     var date: Date
-    var award: Award?
+    @Relationship(deleteRule: .cascade) var award: Award?
+    var writer: String
     
-    init(contents: String, date: Date, award: Award? = nil) {
+    init(contents: String, date: Date, writer: String) {
         self.contents = contents
         self.date = date
-        self.award = award
-    }
-}
-
-// MARK: - Functions
-
-extension Boast {
-    
-    /// Boast에 Award 등록
-    func registerAward(award: Award) {
-        self.award = award
-    }
-    
-    /// Boast에 Image 추가
-    /// - image 개수가 가득찼을 경우 가장 먼저 추가한 사진부터 제거 후 추가
-    func addImage(with image: Image) {
-        if self.images.count >= BoastImageCapacity {
-            self.images.remove(at: 0)
-        }
-        self.images.append(image)
-    }
-    
-    /// Boast images에서 매개변수 image 제거
-    func removeImage(with image: Image){
-        if let index = self.images.firstIndex(of: image) {
-            self.images.remove(at: index)
-        }
+        self.writer = writer
     }
 }
 
@@ -61,4 +37,3 @@ extension Boast: Hashable {
         hasher.combine(id)
     }
 }
-
