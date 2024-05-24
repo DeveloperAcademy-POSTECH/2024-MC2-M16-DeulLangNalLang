@@ -8,7 +8,7 @@ struct AwardEmptyView: View {
                 .foregroundColor(.black)
                 .frame(width: 361, alignment: .topLeading)
             
-            Spacer().frame(height: 173)
+            Spacer().frame(height: 200)
             
             Image("EmptyViewimage")
                 .frame(width: 32, height: 56)
