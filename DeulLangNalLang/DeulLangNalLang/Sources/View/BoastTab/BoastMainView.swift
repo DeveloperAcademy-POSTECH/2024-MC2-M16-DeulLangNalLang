@@ -18,6 +18,8 @@ struct BoastMainView: View {
     @Query(filter: #Predicate<Boast> { $0.award == nil && $0.writer == "류들" })
     var onlyDeulBoasts: [Boast]
     
+    @State var mode: BoastCategory = .both
+    
     var body: some View {
         TrackableScrollView(header: {
             ScrollView{
@@ -25,13 +27,16 @@ struct BoastMainView: View {
                     Spacer()
                     Menu {
                         Button("산이만 보기", action:{
-                            self.showingBoasts = onlySanBoasts
+                            self.mode = .onlySan
+                            updateShowingBoasts()
                         })
                         Button("들이만 보기", action:{
-                            self.showingBoasts = onlyDeulBoasts
+                            self.mode = .onlyDeul
+                            updateShowingBoasts()
                         })
                         Button("전체보기", action:{
-                            self.showingBoasts = bothBoasts
+                            self.mode = .both
+                            updateShowingBoasts()
                         })
                     } label: {
                         Image(systemName: "line.3.horizontal.decrease.circle")
@@ -47,16 +52,18 @@ struct BoastMainView: View {
                             .foregroundStyle(.black)
                             .font(.title1Regular)
                     }
-                    .sheet(isPresented: $showSheet) {
+                    .sheet(isPresented: $showSheet, onDismiss: {
+                        updateShowingBoasts()
+                    }) {
                         BoastAddView()
                     }
                 }
-                .background(.white)
+                .background(Color.DNBackground)
                 .padding(.trailing, 12)
             }
             .padding()
         }, content: {
-            VStack(spacing: 0){
+            VStack(spacing: 0) {
                 ForEach($showingBoasts) { boast in
                     BoastCardView(boast: boast, onDelete: {
                         if let index = showingBoasts.firstIndex(of: boast.wrappedValue) {
@@ -66,7 +73,11 @@ struct BoastMainView: View {
                     .padding(.bottom, 16)
                 }
             }
+            .onAppear {
+                updateShowingBoasts()
+            }
         })
+        .backgroundStyle(Color.DNBackground)
     }
     
     struct TrackableScrollView<Header: View, Content: View>: View {
@@ -119,6 +130,23 @@ struct BoastMainView: View {
             .animation(.easeInOut, value: showHeader)
         }
     }
+    
+    private func updateShowingBoasts() {
+            switch mode {
+            case .both:
+                showingBoasts = bothBoasts
+            case .onlyDeul:
+                showingBoasts = onlyDeulBoasts
+            case .onlySan:
+                showingBoasts = onlySanBoasts
+            }
+        }
+}
+
+enum BoastCategory {
+    case both
+    case onlyDeul
+    case onlySan
 }
 
 #Preview {

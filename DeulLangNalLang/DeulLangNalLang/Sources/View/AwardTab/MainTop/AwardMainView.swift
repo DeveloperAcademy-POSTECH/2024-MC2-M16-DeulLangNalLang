@@ -45,16 +45,19 @@ struct AwardMainView: View {
         }
         ScrollView{
             VStack (alignment: .center) {
-                HStack {
-                    Text("이번 주 상장을 확인해 \n보세요구르트")
-                        .font(.largeTitleRegular)
-                        .fontWeight(.heavy)
-                        .padding(.bottom, 20)
-                        .padding(.horizontal)
-                    Spacer()
+                
+                if !weeklyBoasts.isEmpty {
+                    HStack {
+                        Text("이번 주 상장을 확인해 \n보세요구르트")
+                            .font(.largeTitleRegular)
+                            .fontWeight(.heavy)
+                            .padding(.bottom, 20)
+                            .padding(.horizontal)
+                        Spacer()
+                    }
+                    CarouselView(currentIndex: $weeklyAwardSelection, weeklyBoasts: weeklyBoasts)
+                        .padding(.bottom, 40)
                 }
-                CarouselView(currentIndex: $weeklyAwardSelection, weeklyBoasts: weeklyBoasts)
-                    .padding(.bottom, 40)
                 
                 HStack{
                     Text("상장이 \(myBoasts.count)개 모였네요! \n아주 칭찬합니다람쥐")
@@ -77,6 +80,7 @@ struct AwardMainView: View {
             }
             .animation(.easeInOut(duration: 0.2), value: awardListSelection)
         }
+        .background(Color.DNBackground)
     }
 }
 #Preview {

@@ -24,57 +24,60 @@ struct CardFlipView: View {
     }
     
     var body: some View {
-        VStack {
-            Group{
-                if !isFlipped {
-                    // scaleEffect를 적용하여 CardView를 반대로 뒤집어 둠.
-                    // rotation3DEffect로 앞 -> 뒤로 뒤집으려 할 때 뒤에 있던 View가 뒤집어진 채로 보이기 때문.
-                    BoastDetailView(boastID: boastID)
-                } else {
-                    AwardDetailView(boastID: boastID)
-                }
-            }
-            .scaleEffect(x: isFlipped ? -1 : 1)
-            .frame(width: 200, height: 300)
-            .rotation3DEffect(.degrees(isFlipped ? 180 : 0), axis: (x: 0, y: -1, z: 0))
-            .animation(.easeInOut(duration: 0.6), value: isFlipped)
-            .onTapGesture {
-                isFlipped.toggle()
-            }
-            .frame(width: 329, height: 480)
-            
-            Text("터치해서 뒷면의 자랑을 확인해바라기!")
-                .font(.caption1Regular)
-                .foregroundColor(.gray)
-                .padding(.top, 32)
-        }
-        .navigationBarBackButtonHidden()
-        .navigationTitle("상장과 자랑 보기")
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button(action: {
-                    dismiss()
-                }) {
-                    HStack(spacing: 3) {
-                        Image(systemName: "chevron.left")
-                        Text("상장 박물관")
+        ZStack {
+            Color.DNBackground.ignoresSafeArea()
+            VStack(spacing: 0){
+                ZStack {
+                    if isFlipped {
+                        // scaleEffect를 적용하여 CardView를 반대로 뒤집어 둠.
+                        // rotation3DEffect로 앞 -> 뒤로 뒤집으려 할 때 뒤에 있던 View가 뒤집어진 채로 보이기 때문.
+                        BoastDetailView(boastID: boastID)
+                    } else {
+                        AwardDetailView(boastID: boastID)
                     }
                 }
+                .scaleEffect(x: isFlipped ? -1 : 1)
+                .frame(width: 200, height: 300)
+                .rotation3DEffect(.degrees(isFlipped ? 180 : 0), axis: (x: 0, y: -1, z: 0))
+                .animation(.easeInOut(duration: 0.6), value: isFlipped)
+                .onTapGesture {
+                    isFlipped.toggle()
+                }
+                .frame(width: 329, height: 480)
+                
+                Text("터치해서 뒷면의 자랑을 확인해바라기!")
+                    .font(.caption1Regular)
+                    .foregroundColor(.gray)
+                    .padding(.top, 32)
             }
-            
-            ToolbarItem(placement: .bottomBar) {
-                VStack(spacing: 0){
-                    Divider()
-                    
-                    HStack(spacing: 0){
-                        Spacer()
-                        Button(action: {
-                            boasts.first { $0.id == boastID }!.award?.isFavorite.toggle()
-                        }) {
-                            Image(systemName: boast.award?.isFavorite ?? false ? "heart.fill" : "heart")
+            .navigationBarBackButtonHidden()
+            .navigationTitle("상장과 자랑 보기")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: {
+                        dismiss()
+                    }) {
+                        HStack(spacing: 3) {
+                            Image(systemName: "chevron.left")
+                            Text("상장 박물관")
                         }
                     }
-                    .padding(.vertical, 13)
+                }
+                
+                ToolbarItem(placement: .bottomBar) {
+                    VStack(spacing: 0){
+                        Divider()
+                        
+                        HStack(spacing: 0){
+                            Spacer()
+                            Button(action: {
+                                boasts.first { $0.id == boastID }!.award?.isFavorite.toggle()
+                            }) {
+                                Image(systemName: boast.award?.isFavorite ?? false ? "heart.fill" : "heart")
+                            }
+                        }
+                        .padding(.vertical, 13)
+                    }
                 }
             }
         }
