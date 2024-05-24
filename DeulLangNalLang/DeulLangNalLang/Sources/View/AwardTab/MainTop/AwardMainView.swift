@@ -59,24 +59,28 @@ struct AwardMainView: View {
                         .padding(.bottom, 40)
                 }
                 
-                HStack{
-                    Text("상장이 \(myBoasts.count)개 모였네요! \n아주 칭찬합니다람쥐")
-                        .font(.largeTitleRegular)
-                        .fontWeight(.heavy)
-                        .padding(.bottom, 20)
+                if !myBoasts.isEmpty {
+                    
+                    HStack{
+                        Text("상장이 \(myBoasts.count)개 모였네요! \n아주 칭찬합니다람쥐")
+                            .font(.largeTitleRegular)
+                            .fontWeight(.heavy)
+                            .padding(.bottom, 20)
+                            .padding(.horizontal)
+                        Spacer()
+                    }
+                    
+                    SegmentedPickerView(selection: $awardListSelection)
                         .padding(.horizontal)
-                    Spacer()
+                        .padding(.bottom, 8)
+                    
+                    if awardListSelection == 0 {
+                        TotalAwardListView()
+                    } else {
+                        FavoriteAwardListView(isWeeklyBoastExist: weeklyBoasts.count > 0)
+                    }
                 }
-                
-                SegmentedPickerView(selection: $awardListSelection)
-                    .padding(.horizontal)
-                    .padding(.bottom, 8)
-                
-                if awardListSelection == 0 {
-                    TotalAwardListView()
-                } else {
-                    FavoriteAwardListView(isWeeklyBoastExist: weeklyBoasts.count > 0)
-                }
+                else { AwardEmptyView()}
             }
             .animation(.easeInOut(duration: 0.2), value: awardListSelection)
         }
