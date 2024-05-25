@@ -2,11 +2,11 @@ import SwiftUI
 struct AwardEmptyView: View {
     
     var body: some View {
-        VStack {
-            Text("상장이 아직 모이지\n않았어요를레히호")
-                .font(.title1Emphasized)
-                .foregroundColor(.black)
-                .frame(width: 361, alignment: .topLeading)
+        
+        ZStack {
+            // 배경 색상 설정
+            Color.DNBackground
+                .edgesIgnoringSafeArea(.all)
             
             Spacer().frame(height: 200)
             

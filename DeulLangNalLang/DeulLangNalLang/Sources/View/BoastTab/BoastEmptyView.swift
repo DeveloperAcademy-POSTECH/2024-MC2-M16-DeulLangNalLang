@@ -4,7 +4,11 @@ struct BoastEmptyView: View {
     var onDismiss: () -> Void
     @State private var showSheet: Bool = false
     var body: some View {
-        VStack {
+        
+        ZStack {
+            // 배경 색상 설정
+            Color.DNBackground
+                .edgesIgnoringSafeArea(.all)
             
             Spacer().frame(height: 130)
             
