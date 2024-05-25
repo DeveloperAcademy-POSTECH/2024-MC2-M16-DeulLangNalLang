@@ -13,15 +13,16 @@ class Boast {
     @Attribute(.unique) var id = UUID()
     var contents: String
     /// 이미지 개수: 0~2개
-    var imageDatas: [Data] = []
+    @Attribute(.externalStorage) var imageDatas: [Data]
     var date: Date
     @Relationship(deleteRule: .cascade) var award: Award?
     var writer: String
     
-    init(contents: String, date: Date, writer: String) {
+    init(contents: String, date: Date, writer: String, imageDatas: [Data] = []) {
         self.contents = contents
         self.date = date
         self.writer = writer
+        self.imageDatas = imageDatas
     }
 }
 
