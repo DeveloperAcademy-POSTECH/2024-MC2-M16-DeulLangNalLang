@@ -25,7 +25,7 @@ struct AwardDetailView: View {
     var body: some View {
         VStack(spacing: 0){
             ZStack{
-                Image("cardCactus")
+                cardImage(themeName: boast.award?.themeName ?? "cactus")
                     .shadow(radius: 5, x: 3, y: 3)
                 
                 VStack(spacing: 0){

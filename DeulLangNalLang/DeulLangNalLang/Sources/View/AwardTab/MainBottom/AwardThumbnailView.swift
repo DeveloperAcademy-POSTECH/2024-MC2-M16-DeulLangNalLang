@@ -40,7 +40,7 @@ struct AwardThumbnailView: View {
     
     var body: some View {
         VStack {
-            Image(systemName: "star.fill")
+            awardImage(themeName: boast.award?.themeName ?? "octopus")
                 .resizable()
                 .scaledToFit()
                 .overlay(alignment: .topTrailing){
