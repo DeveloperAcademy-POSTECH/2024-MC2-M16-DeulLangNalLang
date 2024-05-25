@@ -6,7 +6,7 @@ struct BoastEmptyView: View {
             
             Spacer().frame(height: 130)
             
-            Image("EmptyViewimage")
+            Image("EmptyViewImage")
               .frame(width: 32, height: 64)
               .shadow(color: .black.opacity(0.25), radius: 4, x: 0, y: 2)
              
