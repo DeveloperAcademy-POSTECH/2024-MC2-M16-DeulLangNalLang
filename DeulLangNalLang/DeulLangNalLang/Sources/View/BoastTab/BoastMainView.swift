@@ -21,8 +21,8 @@ struct BoastMainView: View {
     @State var mode: BoastCategory = .both
     
     var body: some View {
-        if boasts.isEmpty {
-            BoastEmptyView()
+        if showingBoasts.isEmpty {
+            BoastEmptyView(onDismiss: updateShowingBoasts)
         }
         else {
             ScrollView{
