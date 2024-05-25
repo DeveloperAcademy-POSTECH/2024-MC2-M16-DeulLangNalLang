@@ -45,6 +45,7 @@ struct FavoriteAwardListView: View {
             VStack(alignment: .center) {
                 grayDoorImage
                 Text("소중한 상장이 없어우유...\n")
+                    .opacity(0.3)
             }
             .padding(.vertical, favoriteBoasts.count > 0 ? 200 : 120)
             
