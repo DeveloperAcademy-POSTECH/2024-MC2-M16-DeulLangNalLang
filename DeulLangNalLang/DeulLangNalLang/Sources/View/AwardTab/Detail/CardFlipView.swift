@@ -29,8 +29,6 @@ struct CardFlipView: View {
             VStack(spacing: 0){
                 ZStack {
                     if isFlipped {
-                        // scaleEffect를 적용하여 CardView를 반대로 뒤집어 둠.
-                        // rotation3DEffect로 앞 -> 뒤로 뒤집으려 할 때 뒤에 있던 View가 뒤집어진 채로 보이기 때문.
                         BoastDetailView(boastID: boastID)
                     } else {
                         AwardDetailView(boastID: boastID)
@@ -74,6 +72,7 @@ struct CardFlipView: View {
                                 boasts.first { $0.id == boastID }!.award?.isFavorite.toggle()
                             }) {
                                 Image(systemName: boast.award?.isFavorite ?? false ? "heart.fill" : "heart")
+                                    .foregroundColor(.DNFavoriteRed)
                             }
                         }
                         .padding(.vertical, 13)

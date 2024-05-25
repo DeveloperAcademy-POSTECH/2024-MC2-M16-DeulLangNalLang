@@ -46,7 +46,7 @@ struct AwardThumbnailView: View {
                 .overlay(alignment: .topTrailing){
                     if boast.award?.isFavorite ?? false {
                         Image(systemName: "heart.fill")
-                            .foregroundColor(.DNDarkBlue)
+                            .foregroundColor(.DNFavoriteRed)
                             .padding(4)
                     }
             }
