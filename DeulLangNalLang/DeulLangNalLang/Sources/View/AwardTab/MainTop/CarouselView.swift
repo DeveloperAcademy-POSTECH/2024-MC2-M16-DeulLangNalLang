@@ -23,11 +23,6 @@ struct CarouselView: View {
         VStack{
             ZStack{
                 ForEach(0..<weeklyBoasts.count, id: \.self) { index in
-//                    let themeName = weeklyBoasts[index].award?.themeName ?? "Octopus"
-//                    cardImage(themeName: themeName)
-//                        .resizable()
-//                        .scaledToFit()
-//                        .frame(width: 268, height: 390)
                     let boast = weeklyBoasts[index]
                     AwardCarouselView(boast: boast)
                         .cornerRadius(20)

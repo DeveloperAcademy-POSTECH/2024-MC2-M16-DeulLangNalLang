@@ -9,7 +9,7 @@ struct BoastEmptyView: View {
             Color.DNBackground
                 .edgesIgnoringSafeArea(.all)
             VStack {
-                Spacer().frame(height: 130)
+                Spacer().frame(height: 200)
                 
                 Image("EmptyViewImage")
                     .frame(width: 32, height: 64)
@@ -58,6 +58,7 @@ struct BoastEmptyView: View {
                 }) {
                     BoastAddView(isBoastAddViewShown: $isBoastAddViewShown)
                 }
+                Spacer()
             }
         }
     }

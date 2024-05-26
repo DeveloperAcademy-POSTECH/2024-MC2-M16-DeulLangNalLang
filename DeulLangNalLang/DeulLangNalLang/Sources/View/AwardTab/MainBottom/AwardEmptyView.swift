@@ -1,4 +1,5 @@
 import SwiftUI
+
 struct AwardEmptyView: View {
     
     var body: some View {
@@ -29,6 +30,7 @@ struct AwardEmptyView: View {
                     .multilineTextAlignment(.center)
                     .foregroundColor(.black)
                     .frame(width: 361, height: 48, alignment: .top)
+                Spacer()
             }
         }
     }
