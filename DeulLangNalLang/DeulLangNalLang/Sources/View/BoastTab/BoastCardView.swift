@@ -1,3 +1,10 @@
+//
+//  BoastCardView.swift
+//  DeulLangNalLang
+//
+//  Created by 윤동주 on 5/21/24.
+//
+
 import SwiftUI
 import SwiftData
 

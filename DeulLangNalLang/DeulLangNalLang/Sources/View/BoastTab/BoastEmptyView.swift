@@ -1,4 +1,12 @@
+//
+//  BoastEmptyView.swift
+//  DeulLangNalLang
+//
+//  Created by hyeji on 5/20/24.
+//
+
 import SwiftUI
+
 struct BoastEmptyView: View {
     var onDismiss: () -> Void
     @State private var isBoastAddViewShown: Bool = false

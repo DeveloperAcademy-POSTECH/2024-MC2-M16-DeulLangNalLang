@@ -1,3 +1,10 @@
+//
+//  AwardEmptyView.swift
+//  DeulLangNalLang
+//
+//  Created by hyeji on 5/20/24.
+//
+
 import SwiftUI
 
 struct AwardEmptyView: View {
