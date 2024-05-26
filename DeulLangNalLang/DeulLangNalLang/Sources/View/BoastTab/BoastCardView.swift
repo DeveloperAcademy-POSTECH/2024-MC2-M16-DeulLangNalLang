@@ -7,12 +7,13 @@ struct BoastCardView: View {
     
     @Query var boasts: [Boast]
     
-    @State private var showSheet: Bool = false
+    @State private var isBoastEditViewShown: Bool = false
     @State private var showActionSheet: Bool = false
-    @State private var showEditSheet = false
     
     @Binding var boast: Boast
+    
     var onDelete: () -> Void
+    var onUpdate: () -> Void
     
     var body: some View {
         VStack {
@@ -20,6 +21,7 @@ struct BoastCardView: View {
             ForEach(boast.imageDatas, id: \.self) { data in
                 if let image = UIImage(data: data){
                     Image(uiImage: image)
+                        .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(height: 180, alignment: .center)
                         .clipShape(RoundedRectangle(cornerRadius: 8))
@@ -47,7 +49,7 @@ struct BoastCardView: View {
                     if boast.writer == user.name {
                         Menu {
                             Button("수정하기", action:{
-                                showEditSheet.toggle()
+                                isBoastEditViewShown.toggle()
                             })
                             Button(role: .destructive, action:{
                                 showActionSheet.toggle()
@@ -64,15 +66,17 @@ struct BoastCardView: View {
                             .frame(maxHeight: .infinity)
                         }
                         .actionSheet(isPresented: $showActionSheet, content: getActionSheet)
-                        .sheet(isPresented: $showEditSheet) {
-                            BoastEditView(boastId: $boast.id)
+                        .sheet(isPresented: $isBoastEditViewShown, onDismiss: {
+                            onUpdate()
+                        }) {
+                            BoastEditView(isBoastEditViewShown: $isBoastEditViewShown, boastID: $boast.id)
                         }
                     }
                     
                     /// 상대일 때 상장주기 버튼
                     if boast.writer != user.name  {
                         Button(action: {
-                            showSheet.toggle()
+                            isBoastEditViewShown.toggle()
                         }) {
                             Text("상장주기")
                                 .font(.subheadlineEmphasized)
@@ -82,7 +86,7 @@ struct BoastCardView: View {
                         .frame(width: 72, height: 28)
                         .background(Color.black)
                         .cornerRadius(14)
-                        .sheet(isPresented: $showSheet) {
+                        .sheet(isPresented: $isBoastEditViewShown) {
                             AwardAddView(onDelete: onDelete, boast: $boast)
                         }
                     }
@@ -103,6 +107,7 @@ struct BoastCardView: View {
         
         let deleteButton: ActionSheet.Button = .destructive(Text("삭제")) {
             modelContext.delete(boast)
+            try? modelContext.save()
             self.onDelete()
         }
         let cancelButton: ActionSheet.Button = .cancel(Text("취소"))
