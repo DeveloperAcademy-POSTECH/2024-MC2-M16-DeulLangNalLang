@@ -10,6 +10,7 @@ import SwiftData
 
 @main
 struct DeulLangNalLangApp: App {
+    @State var permissionManager = PermissionManager()
     var modelContainer: ModelContainer = {
         let schema = Schema([Boast.self, Award.self])
         let modelConfiguration = ModelConfiguration(schema: schema,
@@ -27,6 +28,9 @@ struct DeulLangNalLangApp: App {
         WindowGroup {
             NavigationStack {
                 UserSelectView()
+                    .onAppear {
+                        permissionManager.requestCameraPermission()
+                    }
             }
             .environment(User(name: ""))
             .modelContainer(modelContainer)
