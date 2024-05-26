@@ -91,7 +91,7 @@ struct BoastDetailView: View {
                         .frame(width: 281, height: 152, alignment: .topLeading)
                         .padding(.top, 20)
                     Spacer()
-                    Text("\(getDateFormat(date: boast.date))")
+                    Text(boast.date.getFormattedString())
                         .font(.bodyEmphasized)
                         .frame(width: 281, alignment: .leading)
                         .padding(.bottom, 22)
@@ -112,7 +112,7 @@ struct BoastDetailView: View {
                         .frame(width: 281, height: 152, alignment: .topLeading)
                         .padding(.vertical, 22)
                     
-                    Text("\(getDateFormat(date: boast.date))")
+                    Text(boast.date.getFormattedString())
                         .font(.bodyEmphasized)
                         .frame(width: 281, alignment: .leading)
                     Spacer()
@@ -137,7 +137,7 @@ struct BoastDetailView: View {
                         .font(.bodyRegular)
                         .frame(width: 281, height: 152, alignment: .topLeading)
                         .padding(.vertical, 22)
-                    Text("\(getDateFormat(date: boast.date))")
+                    Text(boast.date.getFormattedString())
                         .font(.bodyEmphasized)
                         .frame(width: 281, alignment: .leading)
                 }

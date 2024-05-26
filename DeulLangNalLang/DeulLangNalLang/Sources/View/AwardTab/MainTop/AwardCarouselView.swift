@@ -31,7 +31,7 @@ struct AwardCarouselView: View {
                         .font(.title3Emphasized)
                         .multilineTextAlignment(.center)
                     
-                    Text("\(getDateFormat(date: boast.date))")
+                    Text(boast.date.getFormattedString())
                         .font(.bodyEmphasized)
                         .padding(.bottom, 4)
                     
