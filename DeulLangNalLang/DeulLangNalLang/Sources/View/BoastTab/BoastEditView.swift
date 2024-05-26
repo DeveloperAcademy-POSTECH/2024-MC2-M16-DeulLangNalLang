@@ -59,7 +59,7 @@ struct BoastEditView: View {
                                         Button {
                                             selectedImageDatas.remove(at: index)
                                         } label: {
-                                            Image(systemName: "xmark.circle.fill")
+                                            Image.xButton
                                                 .foregroundColor(.white)
                                                 .background(Color.black.opacity(0.6))
                                                 .clipShape(Circle())
@@ -74,7 +74,7 @@ struct BoastEditView: View {
                 Button {
                     isShowingCamera = true
                 } label: {
-                    Image(systemName: "camera")
+                    Image.camera
                         .font(.title)
                         .padding()
                 }

@@ -40,12 +40,12 @@ struct AwardThumbnailView: View {
     
     var body: some View {
         VStack {
-            awardImage(themeName: boast.award?.themeName ?? "octopus")
+            Image.award(themeName: boast.award?.themeName ?? "octopus")
                 .resizable()
                 .scaledToFit()
                 .overlay(alignment: .topTrailing){
                     if boast.award?.isFavorite ?? false {
-                        Image(systemName: "heart.fill")
+                        Image.filledHeart
                             .foregroundColor(.DNFavoriteRed)
                             .padding(4)
                     }

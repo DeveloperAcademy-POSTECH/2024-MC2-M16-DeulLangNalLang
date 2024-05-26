@@ -43,7 +43,7 @@ struct FavoriteAwardListView: View {
             .padding(.horizontal)
         } else {
             VStack(alignment: .center) {
-                grayDoorImage
+                Image.grayDoor
                 Text("소중한 상장이 없어우유...\n")
                     .opacity(0.3)
             }

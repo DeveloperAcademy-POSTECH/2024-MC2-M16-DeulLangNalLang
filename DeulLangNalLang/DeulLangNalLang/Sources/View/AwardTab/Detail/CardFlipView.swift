@@ -52,11 +52,11 @@ struct CardFlipView: View {
             .navigationTitle("상장과 자랑 보기")
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: {
+                    Button{
                         dismiss()
-                    }) {
+                    } label: {
                         HStack(spacing: 3) {
-                            Image(systemName: "chevron.left")
+                            Image.chevronLeft
                             Text("상장 박물관")
                         }
                     }
@@ -71,7 +71,7 @@ struct CardFlipView: View {
                             Button(action: {
                                 boasts.first { $0.id == boastID }!.award?.isFavorite.toggle()
                             }) {
-                                Image(systemName: boast.award?.isFavorite ?? false ? "heart.fill" : "heart")
+                                (boast.award?.isFavorite ?? false ? Image.filledHeart : Image.unfilledHeart)
                                     .foregroundColor(.DNFavoriteRed)
                             }
                         }

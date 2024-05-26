@@ -58,12 +58,9 @@ struct BoastCardView: View {
                             }
                             .foregroundColor(.red)
                         } label: {
-                            VStack{
-                                Image(systemName: "ellipsis")
-                                    .foregroundStyle(.black)
-                            }
-                            .frame(width: 30)
-                            .frame(maxHeight: .infinity)
+                            Image.threeDot
+                                .foregroundStyle(.black)
+                                .frame(width: 30, height: 30)
                         }
                         .actionSheet(isPresented: $showActionSheet, content: getActionSheet)
                         .sheet(isPresented: $isBoastEditViewShown, onDismiss: {

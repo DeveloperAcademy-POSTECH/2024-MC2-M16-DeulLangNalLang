@@ -187,7 +187,7 @@ struct AwardAddView: View {
                         Button(action: {
                             selectedFrameIndex = index
                         }) {
-                            awardImage(themeName: awardImages[index])
+                            Image.award(themeName: awardImages[index])
                                 .frame(width: 72, height: 72)
                                 .scaledToFill()
                                 .cornerRadius(8.0)

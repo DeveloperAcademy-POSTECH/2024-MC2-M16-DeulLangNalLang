@@ -44,7 +44,7 @@ struct AwardFavoriteView: View {
                 .padding(.bottom, 16)
                 .frame(width: 176, height: 257, alignment: .top)
                 .background(
-                    cardImage(themeName: award.themeName)
+                    Image.card(themeName: award.themeName)
                         .resizable()
                         .scaledToFit()
                 )

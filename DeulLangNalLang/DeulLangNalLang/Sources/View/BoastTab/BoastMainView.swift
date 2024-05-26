@@ -1,3 +1,10 @@
+//
+//  BoastMainView.swift
+//  DeulLangNalLang
+//
+//  Created by 윤동주 on 5/21/24.
+//
+
 import SwiftUI
 import SwiftData
 
@@ -43,7 +50,7 @@ struct BoastMainView: View {
                                 updateShowingBoasts()
                             }
                         } label: {
-                            Image(systemName: "line.3.horizontal.decrease.circle")
+                            Image.filteringButton
                                 .foregroundStyle(.black)
                                 .font(.title1Regular)
                         }
@@ -52,7 +59,7 @@ struct BoastMainView: View {
                         Button(action: {
                             isBoastAddViewShown.toggle()
                         }) {
-                            Image(systemName: "plus")
+                            Image.plusButton
                                 .foregroundStyle(.black)
                                 .font(.title1Regular)
                         }
