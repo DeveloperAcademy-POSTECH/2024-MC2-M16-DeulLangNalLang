@@ -13,11 +13,11 @@ struct CarouselView: View {
     
     @Query var boasts: [Boast]
     
-    @Binding var currentIndex: Int
+    @State var currentIndex: Int = 0
     @GestureState private var dragOffset: CGFloat = 0
     
     
-    var weeklyBoasts: [Boast]
+    let weeklyBoasts: [Boast]
     
     var body: some View {
         VStack{
@@ -63,6 +63,9 @@ struct CarouselView: View {
             }
         }
         .padding(.bottom, 30)
+        .onChange(of: weeklyBoasts, {
+            self.currentIndex = 0
+        })
     }
     
     private func getCurrentWeekDates() -> (startOfWeek: Date, endOfWeek: Date)? {
