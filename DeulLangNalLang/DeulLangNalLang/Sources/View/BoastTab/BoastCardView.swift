@@ -24,6 +24,7 @@ struct BoastCardView: View {
                         .frame(height: 180, alignment: .center)
                         .clipShape(RoundedRectangle(cornerRadius: 8))
                         .clipped()
+                        .allowsHitTesting(false)
                 }
             }
             
