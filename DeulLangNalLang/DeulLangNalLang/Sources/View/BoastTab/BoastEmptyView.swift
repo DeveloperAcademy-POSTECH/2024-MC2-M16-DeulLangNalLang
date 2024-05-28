@@ -35,7 +35,7 @@ struct BoastEmptyView: View {
                 
                 Spacer().frame(height: 2)
                 
-                Text("나의 첫 번째 자랑을\n작성해보세요.")
+                Text("즐거웠던 일을\n마음껏 자랑해보세요.")
                     .font(.bodyRegular)
                     .multilineTextAlignment(.center)
                     .foregroundColor(.black)
