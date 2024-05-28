@@ -12,12 +12,13 @@ struct CameraView: UIViewControllerRepresentable {
     
     @Binding var selectedImageData: Data?
     @Environment(\.presentationMode) var isPresented
+    var mode: UIImagePickerController.SourceType
     
     var onDismiss: () -> Void
     
     func makeUIViewController(context: Context) -> UIImagePickerController {
         let imagePicker = UIImagePickerController()
-        imagePicker.sourceType = .camera
+        imagePicker.sourceType = mode
         imagePicker.allowsEditing = true
         imagePicker.delegate = context.coordinator
         return imagePicker

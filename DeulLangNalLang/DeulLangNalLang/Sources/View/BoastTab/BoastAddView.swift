@@ -20,6 +20,7 @@ struct BoastAddView: View {
     @State private var selectedImageData: Data?
     
     @State private var isShowingCamera = false
+    @State private var isShowingLibrary = false
     
     var body: some View {
         NavigationView {
@@ -74,19 +75,35 @@ struct BoastAddView: View {
                         }
                     }
                 }
-                Button {
-                    isShowingCamera = true
-                } label: {
-                    Image.camera
-                        .font(.title)
-                        .padding()
+                HStack(alignment: .center, spacing: 10) {
+                    Button {
+                        isShowingCamera = true
+                    } label: {
+                        Image.camera
+                            .font(.title)
+                            .padding()
+                    }
+                    .sheet(isPresented: $isShowingCamera) {
+                        CameraView(selectedImageData: $selectedImageData,
+                                   mode: .camera,
+                                   onDismiss: { addImageData() })
+                    }
+                    
+                    Button {
+                        isShowingLibrary = true
+                    } label: {
+                        Image.library
+                            .font(.title)
+                            .padding()
+                    }
+                    .sheet(isPresented: $isShowingLibrary) {
+                        CameraView(selectedImageData: $selectedImageData,
+                                   mode: .photoLibrary,
+                                   onDismiss: { addImageData() })
+                    }
+                    
+                    Spacer()
                 }
-                .sheet(isPresented: $isShowingCamera) {
-                    CameraView(selectedImageData: $selectedImageData, onDismiss: {
-                        addImageData()
-                    })
-                }
-                
             }
             .navigationBarTitle("자랑쓰기", displayMode: .inline)
             .navigationBarItems(trailing: Button("완료") {
