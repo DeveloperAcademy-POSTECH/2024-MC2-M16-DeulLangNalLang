@@ -14,8 +14,6 @@ struct BoastMainView: View {
     @State private var isBoastAddViewShown: Bool = false
     @State var showingBoasts: [Boast] = []
     
-    @Query var boasts: [Boast]
-    
     @Query(filter: #Predicate<Boast> { $0.award == nil })
     var bothBoasts: [Boast]
     
