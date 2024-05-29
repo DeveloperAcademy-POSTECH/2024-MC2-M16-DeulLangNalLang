@@ -88,6 +88,7 @@ struct AwardMainView: View {
             }
             .animation(.easeInOut(duration: 0.2), value: awardListSelection)
         }
+        .scrollIndicators(.hidden)
         .background(Color.DNBackground)
     }
 }
