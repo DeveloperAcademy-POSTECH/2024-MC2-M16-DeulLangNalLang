@@ -54,24 +54,24 @@ struct CarouselView: View {
                 }
                 .scrollTargetLayout()
             }
-            .contentMargins(.leading, (UIScreen.main.bounds.width - 267) / 2, for: .scrollContent)
+            .contentMargins([.leading, .trailing], (UIScreen.main.bounds.width - 267) / 2, for: .scrollContent)
             .scrollTargetBehavior(.viewAligned)
             .scrollIndicators(.hidden)
             .padding(.bottom, 24)
             
-            HStack(spacing: 8) {
-                ForEach(0..<weeklyBoasts.count, id: \.self) { index in
-                    Circle()
-                        .fill(currentIndex == index ? Color.black : Color.gray)
-                        .animation(.easeInOut, value: currentIndex)
-                        .frame(width: 8, height: 8)
-                        .onTapGesture {
-                            withAnimation {
-                                self.currentIndex = index
-                            }
-                        }
-                }
-            }
+//            HStack(spacing: 8) {
+//                ForEach(0..<weeklyBoasts.count, id: \.self) { index in
+//                    Circle()
+//                        .fill(currentIndex == index ? Color.black : Color.gray)
+//                        .animation(.easeInOut, value: currentIndex)
+//                        .frame(width: 8, height: 8)
+//                        .onTapGesture {
+//                            withAnimation {
+//                                self.currentIndex = index
+//                            }
+//                        }
+//                }
+//            }
         }
         .onChange(of: weeklyBoasts, {
             self.currentIndex = 0
@@ -88,5 +88,13 @@ struct CarouselView: View {
         
         let endOfWeek = calendar.date(byAdding: .day, value: 6, to: startOfWeek)
         return (startOfWeek, endOfWeek ?? startOfWeek)
+    }
+}
+
+struct ScrollOffsetKey: PreferenceKey {
+    typealias Value = CGFloat
+    static var defaultValue: CGFloat = 0
+    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+        value = nextValue()
     }
 }
