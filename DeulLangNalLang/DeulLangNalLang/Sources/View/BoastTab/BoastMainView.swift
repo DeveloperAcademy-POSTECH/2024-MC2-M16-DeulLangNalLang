@@ -86,6 +86,7 @@ struct BoastMainView: View {
                         }
                         .padding(.horizontal, 12)
                     }
+                    .scrollIndicators(.hidden)
                 }
                 .background(Color.DNBackground)
             }
