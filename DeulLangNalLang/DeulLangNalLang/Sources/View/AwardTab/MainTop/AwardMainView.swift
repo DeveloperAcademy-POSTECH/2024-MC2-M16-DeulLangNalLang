@@ -19,6 +19,7 @@ struct AwardMainView: View {
     @State var awardListSelection: Int = 0
     
     var body: some View {
+        
         let myBoasts = allBoasts.filter{
             $0.writer == user.name
         }
@@ -56,7 +57,7 @@ struct AwardMainView: View {
                             .padding(.horizontal)
                         Spacer()
                     }
-                    CarouselView(weeklyBoasts: weeklyBoasts)
+                    CarouselView()
                         .padding(.bottom, 40)
                 }
                 
