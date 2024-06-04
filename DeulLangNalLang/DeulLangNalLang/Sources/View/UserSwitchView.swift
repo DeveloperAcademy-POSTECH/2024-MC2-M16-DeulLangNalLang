@@ -27,7 +27,7 @@ struct UserSwitchView: View {
                     selectedOption = user.name
                 }
             } label: {
-                Text("나는 \(selectedOption) \(Image(systemName: "chevron.down")) ")
+                Text("나는 \(selectedOption) \(Image.chevronDown)")
             } .font(.title3Emphasized)
                 .accentColor(.black)
         }
