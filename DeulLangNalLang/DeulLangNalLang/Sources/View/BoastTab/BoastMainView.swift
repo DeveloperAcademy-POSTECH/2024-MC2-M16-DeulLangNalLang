@@ -27,49 +27,49 @@ struct BoastMainView: View {
     
     var body: some View {
         VStack {
+            HStack{
+                Spacer()
+                Menu {
+                    Button("산이만 보기") {
+                        self.mode = .onlySan
+                        updateShowingBoasts()
+                    }
+                    Button("들이만 보기") {
+                        self.mode = .onlyDeul
+                        updateShowingBoasts()
+                    }
+                    Button("전체보기") {
+                        self.mode = .both
+                        updateShowingBoasts()
+                    }
+                } label: {
+                    Image.filteringButton
+                        .foregroundStyle(.black)
+                        .font(.title1Regular)
+                }
+                .padding(.trailing, 12)
+                
+                Button(action: {
+                    isBoastAddViewShown.toggle()
+                }) {
+                    Image.plusButton
+                        .foregroundStyle(.black)
+                        .font(.title1Regular)
+                }
+                .fullScreenCover(isPresented: $isBoastAddViewShown, onDismiss: {
+                    updateShowingBoasts()
+                }) {
+                    BoastAddView(isBoastAddViewShown: $isBoastAddViewShown)
+                }
+            }
+            .padding(.trailing, 14)
+            .padding(.bottom, 10)
+            
             if showingBoasts.isEmpty {
                 BoastEmptyView(onDismiss: updateShowingBoasts)
             }
             else {
                 VStack {
-                    HStack{
-                        Spacer()
-                        Menu {
-                            Button("산이만 보기") {
-                                self.mode = .onlySan
-                                updateShowingBoasts()
-                            }
-                            Button("들이만 보기") {
-                                self.mode = .onlyDeul
-                                updateShowingBoasts()
-                            }
-                            Button("전체보기") {
-                                self.mode = .both
-                                updateShowingBoasts()
-                            }
-                        } label: {
-                            Image.filteringButton
-                                .foregroundStyle(.black)
-                                .font(.title1Regular)
-                        }
-                        .padding(.trailing, 12)
-                        
-                        Button(action: {
-                            isBoastAddViewShown.toggle()
-                        }) {
-                            Image.plusButton
-                                .foregroundStyle(.black)
-                                .font(.title1Regular)
-                        }
-                        .fullScreenCover(isPresented: $isBoastAddViewShown, onDismiss: {
-                            updateShowingBoasts()
-                        }) {
-                            BoastAddView(isBoastAddViewShown: $isBoastAddViewShown)
-                        }
-                    }
-                    .padding(.trailing, 14)
-                    .padding(.bottom, 10)
-                    
                     ScrollView{
                         Spacer().frame(height: 10)
                         VStack(spacing: 0) {
