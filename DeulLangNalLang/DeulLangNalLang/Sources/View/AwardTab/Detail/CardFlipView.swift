@@ -43,8 +43,8 @@ struct CardFlipView: View {
                 }
                 .frame(width: 329, height: 480)
                 
-                Text("터치해서 뒷면을 확인해바라기!")
-                    .font(.caption1Regular)
+                Text("카드를 터치해서 뒷면을 확인해바라기!")
+                    .font(.headlineEmphasized)
                     .foregroundColor(.gray)
                     .padding(.top, 32)
             }
