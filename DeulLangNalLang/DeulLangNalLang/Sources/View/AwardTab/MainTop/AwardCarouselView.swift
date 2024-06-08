@@ -15,7 +15,7 @@ struct AwardCarouselView: View {
     var body: some View {
         VStack(spacing: 0){
             ZStack{
-                cardImage(themeName: boast.award?.themeName ?? "Octopus")
+                Image.card(themeName: boast.award?.themeName ?? "Octopus")
                     .resizable()
                     .scaledToFit()
                     .shadow(radius: 5, x: 3, y: 3)
@@ -31,7 +31,7 @@ struct AwardCarouselView: View {
                         .font(.title3Emphasized)
                         .multilineTextAlignment(.center)
                     
-                    Text("\(getDateFormat(date: boast.date))")
+                    Text(boast.date.getFormattedString())
                         .font(.bodyEmphasized)
                         .padding(.bottom, 4)
                     

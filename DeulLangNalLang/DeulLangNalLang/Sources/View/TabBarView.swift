@@ -12,7 +12,7 @@ struct TabBarView: View {
     init() {
         let appearance = UITabBarAppearance()
         appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = UIColor.white  // Set background color to clear
+        appearance.backgroundColor = UIColor.white
         
         UITabBar.appearance().standardAppearance = appearance
         UITabBar.appearance().scrollEdgeAppearance = appearance
@@ -28,14 +28,14 @@ struct TabBarView: View {
             TabView {
                 AwardMainView() // 첫 번째 탭 화면
                     .tabItem { // 탭바 버튼으로 등록
-                        Image(systemName: "rectangle.portrait.inset.filled")
+                        Image.awardMuseum
                         Text("상장 박물관")
                     }
                 
                 
                 BoastMainView() // 두 번째 탭 화면
                     .tabItem { // 탭바 버튼으로 등록
-                        Image(systemName: "envelope.fill")
+                        Image.boastPostOffice
                         Text("자랑 우체국")
                     }
             }
@@ -45,26 +45,6 @@ struct TabBarView: View {
         .background(Color.DNBackground)
     }
 }
-
-//struct TabSub1View: View { // 첫 번째 탭 화면
-//    var body: some View {
-//
-//        AwardMainView()
-//
-//        }
-//    }
-//
-//struct TabSub2View: View { // 두 번째 탭 화면
-//    var body: some View {
-//        VStack {
-//            Image(systemName: "2.circle")
-//                .resizable()
-//                .frame(width: 100, height: 100)
-//                .padding()
-//            Text("두 번째 탭")
-//        }
-//    }
-//}
 
 #Preview {
     TabBarView()
