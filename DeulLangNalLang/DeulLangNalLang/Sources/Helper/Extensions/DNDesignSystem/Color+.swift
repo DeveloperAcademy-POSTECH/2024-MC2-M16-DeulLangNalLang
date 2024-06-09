@@ -46,6 +46,7 @@ extension Color {
     static let DNGreen = Color("DNGreen")
     static let DNBackground = Color("DNBackground")
     static let DNTabBarBlue = Color("DNTabBarBlue")
+    static let DNFavoriteRed = Color("DNFavoriteRed")
     
 }
 

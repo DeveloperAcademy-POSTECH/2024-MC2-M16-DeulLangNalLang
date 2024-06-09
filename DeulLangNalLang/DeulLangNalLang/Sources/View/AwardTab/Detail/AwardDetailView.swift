@@ -25,7 +25,7 @@ struct AwardDetailView: View {
     var body: some View {
         VStack(spacing: 0){
             ZStack{
-                Image("cardCactus")
+                Image.card(themeName: boast.award?.themeName ?? "cactus")
                     .shadow(radius: 5, x: 3, y: 3)
                 
                 VStack(spacing: 0){
@@ -39,7 +39,7 @@ struct AwardDetailView: View {
                         .font(.title3Emphasized)
                         .multilineTextAlignment(.center)
                     
-                    Text("\(getDateFormat(date: boast.date))")
+                    Text(boast.date.getFormattedString())
                         .font(.bodyEmphasized)
                         .padding(.bottom, 4)
                     

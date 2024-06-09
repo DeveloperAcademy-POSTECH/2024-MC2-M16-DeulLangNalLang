@@ -1,5 +1,5 @@
 //
-//  LikedAwardsListView.swift
+//  FavoriteAwardListView.swift
 //  DeulLangNalLang
 //
 //  Created by JIN LEE on 5/18/24.
@@ -43,8 +43,9 @@ struct FavoriteAwardListView: View {
             .padding(.horizontal)
         } else {
             VStack(alignment: .center) {
-                grayDoorImage
+                Image.grayDoor
                 Text("소중한 상장이 없어우유...\n")
+                    .opacity(0.3)
             }
             .padding(.vertical, favoriteBoasts.count > 0 ? 200 : 120)
             

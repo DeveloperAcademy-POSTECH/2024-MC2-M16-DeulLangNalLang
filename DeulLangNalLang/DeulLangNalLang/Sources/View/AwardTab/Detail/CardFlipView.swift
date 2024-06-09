@@ -29,8 +29,6 @@ struct CardFlipView: View {
             VStack(spacing: 0){
                 ZStack {
                     if isFlipped {
-                        // scaleEffect를 적용하여 CardView를 반대로 뒤집어 둠.
-                        // rotation3DEffect로 앞 -> 뒤로 뒤집으려 할 때 뒤에 있던 View가 뒤집어진 채로 보이기 때문.
                         BoastDetailView(boastID: boastID)
                     } else {
                         AwardDetailView(boastID: boastID)
@@ -45,7 +43,7 @@ struct CardFlipView: View {
                 }
                 .frame(width: 329, height: 480)
                 
-                Text("터치해서 뒷면의 자랑을 확인해바라기!")
+                Text("터치해서 뒷면을 확인해바라기!")
                     .font(.caption1Regular)
                     .foregroundColor(.gray)
                     .padding(.top, 32)
@@ -54,11 +52,11 @@ struct CardFlipView: View {
             .navigationTitle("상장과 자랑 보기")
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: {
+                    Button{
                         dismiss()
-                    }) {
+                    } label: {
                         HStack(spacing: 3) {
-                            Image(systemName: "chevron.left")
+                            Image.chevronLeft
                             Text("상장 박물관")
                         }
                     }
@@ -73,7 +71,8 @@ struct CardFlipView: View {
                             Button(action: {
                                 boasts.first { $0.id == boastID }!.award?.isFavorite.toggle()
                             }) {
-                                Image(systemName: boast.award?.isFavorite ?? false ? "heart.fill" : "heart")
+                                (boast.award?.isFavorite ?? false ? Image.filledHeart : Image.unfilledHeart)
+                                    .foregroundColor(.DNFavoriteRed)
                             }
                         }
                         .padding(.vertical, 13)
