@@ -28,26 +28,19 @@ struct BoastMainView: View {
     var body: some View {
         VStack {
             HStack{
-                Spacer()
-                Menu {
-                    Button("산이만 보기") {
-                        self.mode = .onlySan
-                        updateShowingBoasts()
-                    }
-                    Button("들이만 보기") {
-                        self.mode = .onlyDeul
-                        updateShowingBoasts()
-                    }
-                    Button("전체보기") {
-                        self.mode = .both
-                        updateShowingBoasts()
-                    }
-                } label: {
-                    Image.filteringButton
-                        .foregroundStyle(.black)
+                Picker(selection: $mode, label: Text("Picker")) {
+                    Text("전체보기").tag(BoastCategory.both)
+                        .font(.title1Regular)
+                    Text("산 자랑").tag(BoastCategory.onlySan)
+                        .font(.title1Regular)
+                    Text("들 자랑").tag(BoastCategory.onlyDeul)
                         .font(.title1Regular)
                 }
-                .padding(.trailing, 12)
+                .pickerStyle(.segmented)
+                .onChange(of: mode) {
+                    updateShowingBoasts()
+                }
+                .ignoresSafeArea()
                 
                 Button(action: {
                     isBoastAddViewShown.toggle()
@@ -88,9 +81,9 @@ struct BoastMainView: View {
                     }
                     .scrollIndicators(.hidden)
                 }
-                .background(Color.DNBackground)
             }
         }
+        .background(Color.DNBackground)
         .onAppear {
             updateShowingBoasts()
         }
