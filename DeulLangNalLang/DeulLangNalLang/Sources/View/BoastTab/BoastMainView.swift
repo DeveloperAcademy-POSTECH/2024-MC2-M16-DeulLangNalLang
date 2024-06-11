@@ -26,22 +26,8 @@ struct BoastMainView: View {
     @State var mode: BoastCategory = .both
     
     var body: some View {
-        VStack {
-            HStack{
-                Picker(selection: $mode, label: Text("Picker")) {
-                    Text("전체보기").tag(BoastCategory.both)
-                        .font(.title1Regular)
-                    Text("산 자랑").tag(BoastCategory.onlySan)
-                        .font(.title1Regular)
-                    Text("들 자랑").tag(BoastCategory.onlyDeul)
-                        .font(.title1Regular)
-                }
-                .pickerStyle(.segmented)
-                .onChange(of: mode) {
-                    updateShowingBoasts()
-                }
-                .ignoresSafeArea()
-                
+        VStack{
+            HStack{                
                 Button(action: {
                     isBoastAddViewShown.toggle()
                 }) {
@@ -58,11 +44,24 @@ struct BoastMainView: View {
             .padding(.trailing, 14)
             .padding(.bottom, 10)
             
-            if showingBoasts.isEmpty {
+            if bothBoasts.isEmpty{
                 BoastEmptyView(onDismiss: updateShowingBoasts)
             }
             else {
                 VStack {
+                    Picker(selection: $mode, label: Text("Picker")) {
+                        Text("전체보기").tag(BoastCategory.both)
+                            .font(.title1Regular)
+                        Text("산 자랑").tag(BoastCategory.onlySan)
+                            .font(.title1Regular)
+                        Text("들 자랑").tag(BoastCategory.onlyDeul)
+                            .font(.title1Regular)
+                    }
+                    .pickerStyle(.segmented)
+                    .onChange(of: mode) {
+                        updateShowingBoasts()
+                    }
+                    
                     ScrollView{
                         Spacer().frame(height: 10)
                         VStack(spacing: 0) {
