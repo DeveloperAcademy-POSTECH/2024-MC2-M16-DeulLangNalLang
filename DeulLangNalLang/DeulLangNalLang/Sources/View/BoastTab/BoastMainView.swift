@@ -26,65 +26,74 @@ struct BoastMainView: View {
     @State var mode: BoastCategory = .both
     
     var body: some View {
-        VStack{
-            HStack{                
-                Button(action: {
-                    isBoastAddViewShown.toggle()
-                }) {
-                    Image.plusButton
-                        .foregroundStyle(.black)
-                        .font(.title1Regular)
+        ZStack(alignment: .bottomTrailing){
+            VStack{
+                if bothBoasts.isEmpty{
+                    BoastEmptyView(onDismiss: updateShowingBoasts)
                 }
-                .fullScreenCover(isPresented: $isBoastAddViewShown, onDismiss: {
-                    updateShowingBoasts()
-                }) {
-                    BoastAddView(isBoastAddViewShown: $isBoastAddViewShown)
-                }
-            }
-            .padding(.trailing, 14)
-            .padding(.bottom, 10)
-            
-            if bothBoasts.isEmpty{
-                BoastEmptyView(onDismiss: updateShowingBoasts)
-            }
-            else {
-                VStack {
-                    Picker(selection: $mode, label: Text("Picker")) {
-                        Text("전체보기").tag(BoastCategory.both)
-                            .font(.title1Regular)
-                        Text("산 자랑").tag(BoastCategory.onlySan)
-                            .font(.title1Regular)
-                        Text("들 자랑").tag(BoastCategory.onlyDeul)
-                            .font(.title1Regular)
-                    }
-                    .pickerStyle(.segmented)
-                    .onChange(of: mode) {
-                        updateShowingBoasts()
-                    }
-                    
-                    ScrollView{
-                        Spacer().frame(height: 10)
-                        VStack(spacing: 0) {
-                            ForEach($showingBoasts) { boast in
-                                BoastCardView(boast: boast, onDelete: {
-                                    if let index = showingBoasts.firstIndex(of: boast.wrappedValue) {
-                                        showingBoasts.remove(at: index)
-                                    }
-                                }, onUpdate: {
-                                    updateShowingBoasts()
-                                })
-                                .padding(.bottom, 16)
-                            }
+                else {
+                    VStack {
+                        Picker(selection: $mode, label: Text("Picker")) {
+                            Text("전체보기").tag(BoastCategory.both)
+                                .font(.title1Regular)
+                            Text("산 자랑").tag(BoastCategory.onlySan)
+                                .font(.title1Regular)
+                            Text("들 자랑").tag(BoastCategory.onlyDeul)
+                                .font(.title1Regular)
                         }
-                        .padding(.horizontal, 12)
+                        .pickerStyle(.segmented)
+                        .onChange(of: mode) {
+                            updateShowingBoasts()
+                        }
+                        .padding()
+                        
+                        ScrollView{
+                            Spacer().frame(height: 10)
+                            VStack(spacing: 0) {
+                                ForEach($showingBoasts) { boast in
+                                    BoastCardView(boast: boast, onDelete: {
+                                        if let index = showingBoasts.firstIndex(of: boast.wrappedValue) {
+                                            showingBoasts.remove(at: index)
+                                        }
+                                    }, onUpdate: {
+                                        updateShowingBoasts()
+                                    })
+                                    .padding(.bottom, 16)
+                                }
+                            }
+                            .padding(.horizontal, 12)
+                        }
+                        .scrollIndicators(.hidden)
                     }
-                    .scrollIndicators(.hidden)
                 }
             }
-        }
-        .background(Color.DNBackground)
-        .onAppear {
-            updateShowingBoasts()
+            .background(Color.DNBackground)
+            .onAppear {
+                updateShowingBoasts()
+            }
+            
+            //MARK: 자랑 작성 버튼
+            Button(action: {
+                self.isBoastAddViewShown.toggle()
+            }, label: {
+                HStack(spacing: 0){
+                    Image(systemName: "pencil.line")
+                        .padding(.trailing, 10)
+                    Text("자랑작성")
+                }
+                .font(.title3Regular).fontWeight(.semibold)
+                .frame(width: 148, height: 58)
+                .background(Color.yellow)
+                .foregroundColor(Color(hex: "#472200"))
+                .clipShape(Capsule())
+            })
+            .fullScreenCover(isPresented: $isBoastAddViewShown, onDismiss: {
+                updateShowingBoasts()
+            }) {
+                BoastAddView(isBoastAddViewShown: $isBoastAddViewShown)
+            }
+            .padding(.bottom, 22)
+            .padding(.trailing, 16)
         }
     }
     
