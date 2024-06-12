@@ -19,6 +19,8 @@ struct AwardAddView: View {
     @State var contentsCharacterCount: Int = 0
     @State private var selectedFrameIndex: Int? = nil
     
+    @Binding var isBoastEditViewShown: Bool
+    
     var onDelete: () -> Void
     
     let awardImages = ["Octopus", "Origami", "Cactus","Bicycle", "Gem"]
@@ -172,6 +174,9 @@ struct AwardAddView: View {
                 Spacer()
             }
             .navigationBarTitle("상장쓰기", displayMode: .inline)
+            .navigationBarItems(leading: Button("취소") {
+                isBoastEditViewShown.toggle()
+            })
             .navigationBarItems(trailing: Button("완료") {
                 if !title.isEmpty && !contentsText.isEmpty && selectedFrameIndex != nil {
                     boast.award = Award(title: self.title,

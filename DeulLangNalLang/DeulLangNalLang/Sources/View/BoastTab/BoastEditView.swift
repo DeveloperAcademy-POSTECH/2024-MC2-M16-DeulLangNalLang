@@ -110,6 +110,9 @@ struct BoastEditView: View {
                 }
             }
             .navigationBarTitle("자랑수정", displayMode: .inline)
+            .navigationBarItems(leading: Button("취소") {
+                isBoastEditViewShown.toggle()
+            })
             .navigationBarItems(trailing: Button("완료") {
                 if contentsText != "" {
                     if let index = boasts.firstIndex(where: { $0.id == boastID }) {
