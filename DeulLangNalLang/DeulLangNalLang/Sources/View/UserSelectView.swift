@@ -13,7 +13,6 @@ struct Constants {
 
 struct UserSelectView: View {
     @Environment(User.self) var user: User
-    
     var body: some View {
         NavigationStack {
             

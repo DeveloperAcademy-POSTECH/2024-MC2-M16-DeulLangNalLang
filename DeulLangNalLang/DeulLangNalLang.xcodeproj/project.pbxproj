@@ -34,6 +34,10 @@
 		F12B05F32BFB593F006E2777 /* AwardCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12B05F22BFB593F006E2777 /* AwardCarouselView.swift */; };
 		F12B05F52BFB5A19006E2777 /* AwardFavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12B05F42BFB5A19006E2777 /* AwardFavoriteView.swift */; };
 		F12B05FD2BFBA22F006E2777 /* AwardThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12B05FC2BFBA22F006E2777 /* AwardThumbnailView.swift */; };
+		F1592FD32C15450900C23142 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = F1592FD22C15450900C23142 /* Lottie */; };
+		F1592FD92C1557E200C23142 /* DNLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = F1592FD82C1557E200C23142 /* DNLottie.json */; };
+		F1592FDB2C1557FC00C23142 /* DNLaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1592FDA2C1557FC00C23142 /* DNLaunchScreen.swift */; };
+		F1592FE12C155D4200C23142 /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1592FE02C155D4200C23142 /* LaunchScreenView.swift */; };
 		F16525F52BF8B23A0013C2CF /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16525F42BF8B23A0013C2CF /* TabBarView.swift */; };
 		F16525F72BF8E2CD0013C2CF /* UserSwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16525F62BF8E2CD0013C2CF /* UserSwitchView.swift */; };
 		F16525FC2BF8E4E20013C2CF /* SegmentedPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16525FB2BF8E4E20013C2CF /* SegmentedPickerView.swift */; };
@@ -74,6 +78,9 @@
 		F12B05F22BFB593F006E2777 /* AwardCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardCarouselView.swift; sourceTree = "<group>"; };
 		F12B05F42BFB5A19006E2777 /* AwardFavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardFavoriteView.swift; sourceTree = "<group>"; };
 		F12B05FC2BFBA22F006E2777 /* AwardThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardThumbnailView.swift; sourceTree = "<group>"; };
+		F1592FD82C1557E200C23142 /* DNLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DNLottie.json; sourceTree = "<group>"; };
+		F1592FDA2C1557FC00C23142 /* DNLaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNLaunchScreen.swift; sourceTree = "<group>"; };
+		F1592FE02C155D4200C23142 /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
 		F16525F42BF8B23A0013C2CF /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		F16525F62BF8E2CD0013C2CF /* UserSwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSwitchView.swift; sourceTree = "<group>"; };
 		F16525FB2BF8E4E20013C2CF /* SegmentedPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedPickerView.swift; sourceTree = "<group>"; };
@@ -89,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1592FD32C15450900C23142 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,6 +144,7 @@
 				1FE99FC52BF9F43D0043E0DB /* UserSelectView.swift */,
 				F16525F42BF8B23A0013C2CF /* TabBarView.swift */,
 				F16525F62BF8E2CD0013C2CF /* UserSwitchView.swift */,
+				F1592FE02C155D4200C23142 /* LaunchScreenView.swift */,
 				08E7B2B82BFB2C2E00668FC2 /* AwardTab */,
 				08E7B2B72BFB2BF000668FC2 /* BoastTab */,
 			);
@@ -186,6 +195,8 @@
 				08DBEF132BF85983007834A3 /* Extensions */,
 				08DBEF1D2BF87781007834A3 /* Constants.swift */,
 				08EA35262BFFB931003FF05C /* PermissionManager.swift */,
+				F1592FDA2C1557FC00C23142 /* DNLaunchScreen.swift */,
+				F1592FD82C1557E200C23142 /* DNLottie.json */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -290,6 +301,9 @@
 			dependencies = (
 			);
 			name = DeulLangNalLang;
+			packageProductDependencies = (
+				F1592FD22C15450900C23142 /* Lottie */,
+			);
 			productName = DeulLangNalLang;
 			productReference = 080072312BF6E7E2007B2956 /* DeulLangNalLang.app */;
 			productType = "com.apple.product-type.application";
@@ -318,6 +332,9 @@
 				Base,
 			);
 			mainGroup = 080072282BF6E7E1007B2956;
+			packageReferences = (
+				F1592FD12C15450900C23142 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+			);
 			productRefGroup = 080072322BF6E7E2007B2956 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -332,6 +349,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1592FD92C1557E200C23142 /* DNLottie.json in Resources */,
 				BD8665FF2BF89DAB0039F460 /* DNFont.xcassets in Resources */,
 				0800723C2BF6E7E3007B2956 /* Preview Assets.xcassets in Resources */,
 				080072392BF6E7E3007B2956 /* Assets.xcassets in Resources */,
@@ -366,7 +384,9 @@
 				F16525F72BF8E2CD0013C2CF /* UserSwitchView.swift in Sources */,
 				0813883C2BFB93E500B78F3C /* BoastCardView.swift in Sources */,
 				8CCC8BEB2BFB8BCC009DBEE0 /* AwardEmptyView.swift in Sources */,
+				F1592FE12C155D4200C23142 /* LaunchScreenView.swift in Sources */,
 				F16525FE2BF8E52C0013C2CF /* TotalAwardListView.swift in Sources */,
+				F1592FDB2C1557FC00C23142 /* DNLaunchScreen.swift in Sources */,
 				F1DFB5562BF7D6ED00AE18AC /* CarouselView.swift in Sources */,
 				F12B05F52BFB5A19006E2777 /* AwardFavoriteView.swift in Sources */,
 				F16525F52BF8B23A0013C2CF /* TabBarView.swift in Sources */,
@@ -517,7 +537,7 @@
 				INFOPLIST_FILE = DeulLangNalLang/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "들랑날랑";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
-				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to your camera to take photos";
+				INFOPLIST_KEY_NSCameraUsageDescription = "앱 내 자랑 등록 시 카메라를 통해 사진을 첨부하기 위해 카메라 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -553,7 +573,7 @@
 				INFOPLIST_FILE = DeulLangNalLang/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "들랑날랑";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
-				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to your camera to take photos";
+				INFOPLIST_KEY_NSCameraUsageDescription = "앱 내 자랑 등록 시 카메라를 통해 사진을 첨부하기 위해 카메라 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -596,6 +616,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F1592FD12C15450900C23142 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.4.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F1592FD22C15450900C23142 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F1592FD12C15450900C23142 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 080072292BF6E7E1007B2956 /* Project object */;
 }
