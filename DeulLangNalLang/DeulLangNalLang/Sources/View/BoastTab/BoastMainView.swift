@@ -27,12 +27,12 @@ struct BoastMainView: View {
     
     var body: some View {
         ZStack(alignment: .bottomTrailing){
-            VStack{
+            VStack(spacing: 0){
                 if bothBoasts.isEmpty{
                     BoastEmptyView(onDismiss: updateShowingBoasts)
                 }
                 else {
-                    VStack {
+                    VStack(spacing: 0){
                         Picker(selection: $mode, label: Text("Picker")) {
                             Text("전체보기").tag(BoastCategory.both)
                                 .font(.title1Regular)
@@ -45,7 +45,8 @@ struct BoastMainView: View {
                         .onChange(of: mode) {
                             updateShowingBoasts()
                         }
-                        .padding()
+                        .frame(height: 46)
+                        .padding(.bottom, 10)
                         
                         ScrollView{
                             Spacer().frame(height: 10)
@@ -61,12 +62,12 @@ struct BoastMainView: View {
                                     .padding(.bottom, 16)
                                 }
                             }
-                            .padding(.horizontal, 12)
                         }
                         .scrollIndicators(.hidden)
                     }
                 }
             }
+            .padding(.horizontal, 16)
             .background(Color.DNBackground)
             .onAppear {
                 updateShowingBoasts()
