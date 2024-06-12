@@ -18,14 +18,15 @@ struct SegmentedPickerView: View {
     
     var body: some View {
         
-        Picker(selection: $selection,
-               label: Text("picker"),
+        Picker(selection: $selection, label: Text("picker"),
                content: {
             ForEach(filterOptions.indices, id: \.self) { index in
                 Text(filterOptions[index])
-                    .font(.headlineEmphasized)
+                    .font(.title1Regular)
             }
         })
+        .frame(height: 46)
+        .padding(.bottom, 10)
         .pickerStyle(SegmentedPickerStyle())
         .onAppear {
             UISegmentedControl.appearance().selectedSegmentTintColor = UIColor.white
