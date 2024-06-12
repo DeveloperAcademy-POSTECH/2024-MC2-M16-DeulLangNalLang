@@ -25,6 +25,11 @@ struct BoastMainView: View {
     
     @State var mode: BoastCategory = .both
     
+    // segmented control 폰트 크기 조정
+     init() {
+         UISegmentedControl.appearance().setTitleTextAttributes([.font : UIFont.preferredFont(forTextStyle: .callout)], for: .normal)
+     }
+    
     var body: some View {
         ZStack(alignment: .bottomTrailing){
             VStack(spacing: 0){
@@ -114,6 +119,14 @@ enum BoastCategory {
     case both
     case onlyDeul
     case onlySan
+}
+
+// segmented control height 조정
+extension UISegmentedControl {
+    override open func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        self.setContentHuggingPriority(.defaultLow, for: .vertical)
+    }
 }
 
 #Preview {
