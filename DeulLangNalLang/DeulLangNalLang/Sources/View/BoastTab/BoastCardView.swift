@@ -67,11 +67,12 @@ struct BoastCardView: View {
                             .foregroundColor(.red)
                         } label: {
                             Image.threeDot
+                                .font(.title2Emphasized)
                                 .foregroundStyle(.black)
                                 .frame(width: 30, height: 30)
                         }
                         .actionSheet(isPresented: $showActionSheet, content: getActionSheet)
-                        .sheet(isPresented: $isBoastEditViewShown, onDismiss: {
+                        .fullScreenCover(isPresented: $isBoastEditViewShown, onDismiss: {
                             onUpdate()
                         }) {
                             BoastEditView(isBoastEditViewShown: $isBoastEditViewShown, boastID: $boast.id)
@@ -91,8 +92,8 @@ struct BoastCardView: View {
                         .frame(width: 72, height: 28)
                         .background(Color.black)
                         .cornerRadius(14)
-                        .sheet(isPresented: $isBoastEditViewShown) {
-                            AwardAddView(onDelete: onDelete, boast: $boast)
+                        .fullScreenCover(isPresented: $isBoastEditViewShown) {
+                            AwardAddView(isBoastEditViewShown: $isBoastEditViewShown, onDelete: onDelete, boast: $boast)
                         }
                     }
                 }
