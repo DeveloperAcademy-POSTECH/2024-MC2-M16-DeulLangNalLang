@@ -44,8 +44,9 @@ struct CardFlipView: View {
                 .frame(width: 329, height: 480)
                 
                 Text("카드를 터치해서 뒷면을 확인해바라기!")
-                    .font(.headlineEmphasized)
-                    .foregroundColor(.gray)
+                    .font(.bodyRegular)
+                    .foregroundColor(.black)
+                    .opacity(0.6)
                     .padding(.top, 32)
             }
             .navigationBarBackButtonHidden()
@@ -71,8 +72,10 @@ struct CardFlipView: View {
                             Button(action: {
                                 boasts.first { $0.id == boastID }!.award?.isFavorite.toggle()
                             }) {
-                                (boast.award?.isFavorite ?? false ? Image.filledHeart : Image.unfilledHeart)
-                                    .foregroundColor(.DNFavoriteRed)
+                                (boast.award?.isFavorite ?? false ? (Image.filledHeart)
+                                    .foregroundColor(.DNFavoriteRed) : (Image.filledHeart)
+                                    .foregroundColor(.gray))
+                                    
                             }
                         }
                         .padding(.vertical, 13)
