@@ -106,6 +106,9 @@ struct BoastAddView: View {
                 }
             }
             .navigationBarTitle("자랑쓰기", displayMode: .inline)
+            .navigationBarItems(leading: Button("취소") {
+                isBoastAddViewShown.toggle()
+            })
             .navigationBarItems(trailing: Button("완료") {
                 if contentsText != "" {
                     let newBoast = Boast(contents: contentsText,
