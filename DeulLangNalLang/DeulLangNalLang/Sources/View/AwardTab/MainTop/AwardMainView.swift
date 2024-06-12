@@ -58,76 +58,80 @@ struct AwardMainView: View {
                 return $0.writer == user.name && startOfWeek <= award.date && award.date <= endOfWeek
             }
         }
-        
-        ScrollView{
+        ZStack (alignment: .bottomTrailing) {
+            Color.DNBackground
+                .edgesIgnoringSafeArea(.all)
+            
             VStack (alignment: .center) {
-                
-                if !weeklyBoasts.isEmpty {
-                    HStack {
-                        Text("이번 주 상장을 확인해 \n보세요구르트")
-                            .font(.largeTitleRegular)
-                            .fontWeight(.heavy)
-                            .padding(.bottom, 20)
+                ScrollView{
+                    if !weeklyBoasts.isEmpty {
+                        HStack {
+                            Text("\(user.name)님, 이번 주 상장을\n확인해보세요구르트")
+                                .font(.largeTitleRegular)
+                                .fontWeight(.heavy)
+                                .padding(.bottom, 54)
+                                .padding(.horizontal)
+                                .padding(.top, 35)
+                            Spacer()
+                        }
+                        CarouselView()
+                            .padding(.bottom, 60)
+                    }
+                    
+                    if !myBoasts.isEmpty {
+                        
+                        HStack{
+                            Text("\(user.name)님, 상장이 \(myBoasts.count)개 모였네요! \n아주 칭찬합니다람쥐")
+                                .font(.largeTitleRegular)
+                                .fontWeight(.heavy)
+                                .padding(.bottom, 58)
+                                .padding(.horizontal)
+                            Spacer()
+                        }
+                        
+                        SegmentedPickerView(selection: $awardListSelection)
                             .padding(.horizontal)
-                        Spacer()
+                            .padding(.bottom, 8)
+                        
+                        if awardListSelection == 0 {
+                            TotalAwardListView()
+                        } else {
+                            FavoriteAwardListView(isWeeklyBoastExist: weeklyBoasts.count > 0)
+                        }
                     }
-                    CarouselView()
-                        .padding(.bottom, 40)
-                }
-                
-                if !myBoasts.isEmpty {
-                    
-                    HStack{
-                        Text("상장이 \(myBoasts.count)개 모였네요! \n아주 칭찬합니다람쥐")
-                            .font(.largeTitleRegular)
-                            .fontWeight(.heavy)
-                            .padding(.bottom, 20)
-                            .padding(.horizontal)
-                        Spacer()
-                    }
-                    
-                    SegmentedPickerView(selection: $awardListSelection)
-                        .padding(.horizontal)
-                        .padding(.bottom, 8)
-                    
-                    if awardListSelection == 0 {
-                        TotalAwardListView()
-                    } else {
-                        FavoriteAwardListView(isWeeklyBoastExist: weeklyBoasts.count > 0)
+                    else {
+                        AwardEmptyView()
                     }
                 }
-                else {
-                    AwardEmptyView()
-                }
+                .scrollIndicators(.hidden)
+                .background(Color.DNBackground)
             }
             .animation(.easeInOut(duration: 0.2), value: awardListSelection)
-            
-            Button(action: {
-                self.isBoastAddViewShown.toggle()
-            }, label: {
-                HStack(spacing: 0){
-                    Image(systemName: "pencil.line")
-                        .padding(.trailing, 10)
-                    Text("자랑작성")
+                
+                Button(action: {
+                    self.isBoastAddViewShown.toggle()
+                }, label: {
+                    HStack(spacing: 0){
+                        Image(systemName: "pencil.line")
+                            .padding(.trailing, 10)
+                        Text("자랑작성")
+                    }
+                    .font(.title3Regular).fontWeight(.semibold)
+                    .frame(width: 148, height: 58)
+                    .background(Color.yellow)
+                    .foregroundColor(Color(hex: "#472200"))
+                    .clipShape(Capsule())
+                })
+                .fullScreenCover(isPresented: $isBoastAddViewShown, onDismiss: {
+                    updateShowingBoasts()
+                }) {
+                    BoastAddView(isBoastAddViewShown: $isBoastAddViewShown)
                 }
-                .font(.title3Regular).fontWeight(.semibold)
-                .frame(width: 148, height: 58)
-                .background(Color.yellow)
-                .foregroundColor(Color(hex: "#472200"))
-                .clipShape(Capsule())
-            })
-            .fullScreenCover(isPresented: $isBoastAddViewShown, onDismiss: {
-                updateShowingBoasts()
-            }) {
-                BoastAddView(isBoastAddViewShown: $isBoastAddViewShown)
-            }
-            .padding(.bottom, 22)
-            .padding(.trailing, 16)
+                .padding(.bottom, 22)
+                .padding(.trailing, 16)
+        
         }
-        .scrollIndicators(.hidden)
-        .background(Color.DNBackground)
     }
-    
     private func updateShowingBoasts() {
         switch mode {
         case .both:
@@ -138,6 +142,11 @@ struct AwardMainView: View {
             showingBoasts = onlySanBoasts
         }
     }
+}
+// segmented control height 조정
+
+extension UISegmentedControl {
+    
 }
 
 #Preview {
