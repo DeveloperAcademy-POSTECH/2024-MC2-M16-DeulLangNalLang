@@ -18,6 +18,20 @@ struct AwardMainView: View {
     
     @State var awardListSelection: Int = 0
     
+    @State private var isBoastAddViewShown: Bool = false
+    @State var showingBoasts: [Boast] = []
+    
+    @Query(filter: #Predicate<Boast> { $0.award == nil })
+    var bothBoasts: [Boast]
+    
+    @Query(filter: #Predicate<Boast> { $0.award == nil && $0.writer == "류산" })
+    var onlySanBoasts: [Boast]
+    
+    @Query(filter: #Predicate<Boast> { $0.award == nil && $0.writer == "류들" })
+    var onlyDeulBoasts: [Boast]
+    
+    @State var mode: BoastCategory = .both
+    
     var body: some View {
         
         let myBoasts = allBoasts.filter{
@@ -82,16 +96,50 @@ struct AwardMainView: View {
                         FavoriteAwardListView(isWeeklyBoastExist: weeklyBoasts.count > 0)
                     }
                 }
-                else { 
+                else {
                     AwardEmptyView()
                 }
             }
             .animation(.easeInOut(duration: 0.2), value: awardListSelection)
+            
+            Button(action: {
+                self.isBoastAddViewShown.toggle()
+            }, label: {
+                HStack(spacing: 0){
+                    Image(systemName: "pencil.line")
+                        .padding(.trailing, 10)
+                    Text("자랑작성")
+                }
+                .font(.title3Regular).fontWeight(.semibold)
+                .frame(width: 148, height: 58)
+                .background(Color.yellow)
+                .foregroundColor(Color(hex: "#472200"))
+                .clipShape(Capsule())
+            })
+            .fullScreenCover(isPresented: $isBoastAddViewShown, onDismiss: {
+                updateShowingBoasts()
+            }) {
+                BoastAddView(isBoastAddViewShown: $isBoastAddViewShown)
+            }
+            .padding(.bottom, 22)
+            .padding(.trailing, 16)
         }
         .scrollIndicators(.hidden)
         .background(Color.DNBackground)
     }
+    
+    private func updateShowingBoasts() {
+        switch mode {
+        case .both:
+            showingBoasts = bothBoasts
+        case .onlyDeul:
+            showingBoasts = onlyDeulBoasts
+        case .onlySan:
+            showingBoasts = onlySanBoasts
+        }
+    }
 }
+
 #Preview {
     AwardMainView()
 }
