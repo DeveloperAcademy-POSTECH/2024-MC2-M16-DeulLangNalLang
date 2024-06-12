@@ -25,6 +25,7 @@ struct AwardEmptyView: View {
                         .fontWeight(.heavy)
                         .padding(.bottom, 20)
                         .padding(.horizontal)
+                        .padding(.top, 35)
                  Spacer()
                 }
                 Spacer().frame(height: 172)
