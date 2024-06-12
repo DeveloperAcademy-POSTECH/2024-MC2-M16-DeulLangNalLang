@@ -9,6 +9,8 @@ import SwiftUI
 
 struct AwardEmptyView: View {
     
+    @Environment(User.self) var user: User
+    
     var body: some View {
     
         ZStack {
@@ -18,7 +20,7 @@ struct AwardEmptyView: View {
             
             VStack (spacing: 0) {
                 HStack{
-                    Text("류들님 상장이 아직\n모이지 않았어요를레히호")
+                    Text("\(user.name)님, 상장이 아직\n모이지 않았어요를레히호")
                         .font(.title1Emphasized)
                         .fontWeight(.heavy)
                         .padding(.bottom, 20)
