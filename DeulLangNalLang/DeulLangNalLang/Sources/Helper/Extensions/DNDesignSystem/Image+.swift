@@ -28,5 +28,6 @@ extension Image {
     static let camera: Image = Image(systemName: "camera")
     static let library: Image = Image(systemName: "photo.on.rectangle")
     static let xButton: Image = Image(systemName: "xmark.circle.fill")
-    static let threeDot: Image = Image(systemName: "ellipsis")    
+    static let threeDot: Image = Image(systemName: "ellipsis")
+    static let profile: Image = Image(systemName: "person.circle")
 }

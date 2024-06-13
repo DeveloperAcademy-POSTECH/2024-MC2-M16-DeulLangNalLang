@@ -11,6 +11,7 @@ import SwiftData
 @main
 struct DeulLangNalLangApp: App {
     @State var permissionManager = PermissionManager()
+    @State var isLaunching: Bool = true
     var modelContainer: ModelContainer = {
         let schema = Schema([Boast.self, Award.self])
         let modelConfiguration = ModelConfiguration(schema: schema,
@@ -25,15 +26,31 @@ struct DeulLangNalLangApp: App {
     }()
     
     var body: some Scene {
+        
         WindowGroup {
+            
             NavigationStack {
-                UserSelectView()
-                    .onAppear {
-                        permissionManager.requestCameraPermission()
+                
+                if isLaunching {
+                    ZStack{
+                        LaunchScreenView()
+                            .onAppear {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+                                    isLaunching = false
+                                }
+                            }
                     }
+                } else {
+                    UserSelectView()
+                        .onAppear {
+                            permissionManager.requestCameraPermission()
+                        }
+                    
+                }
             }
             .environment(User(name: ""))
             .modelContainer(modelContainer)
         }
     }
 }
+

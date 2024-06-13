@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "EmptyFavoriteAwardList@1x.png",
+      "filename" : "GrayDoor.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "EmptyFavoriteAwardList@2x.png",
+      "filename" : "GrayDoor@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "EmptyFavoriteAwardList@3x.png",
+      "filename" : "GrayDoor@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
