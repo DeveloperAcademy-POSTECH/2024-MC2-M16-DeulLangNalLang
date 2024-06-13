@@ -107,29 +107,29 @@ struct AwardMainView: View {
                 .background(Color.DNBackground)
             }
             .animation(.easeInOut(duration: 0.2), value: awardListSelection)
-                
-                Button(action: {
-                    self.isBoastAddViewShown.toggle()
-                }, label: {
-                    HStack(spacing: 0){
-                        Image(systemName: "pencil.line")
-                            .padding(.trailing, 10)
-                        Text("자랑작성")
-                    }
-                    .font(.title3Regular).fontWeight(.semibold)
-                    .frame(width: 148, height: 58)
-                    .background(Color.yellow)
-                    .foregroundColor(Color(hex: "#472200"))
-                    .clipShape(Capsule())
-                })
-                .fullScreenCover(isPresented: $isBoastAddViewShown, onDismiss: {
-                    updateShowingBoasts()
-                }) {
-                    BoastAddView(isBoastAddViewShown: $isBoastAddViewShown)
+            
+            Button(action: {
+                self.isBoastAddViewShown.toggle()
+            }, label: {
+                HStack(spacing: 0){
+                    Image(systemName: "pencil.line")
+                        .padding(.trailing, 10)
+                    Text("자랑작성")
                 }
-                .padding(.bottom, 22)
-                .padding(.trailing, 16)
-        
+                .font(.title3Regular).fontWeight(.semibold)
+                .frame(width: 148, height: 58)
+                .background(Color.yellow)
+                .foregroundColor(Color(hex: "#472200"))
+                .clipShape(Capsule())
+            })
+            .fullScreenCover(isPresented: $isBoastAddViewShown, onDismiss: {
+                updateShowingBoasts()
+            }) {
+                BoastAddView(isBoastAddViewShown: $isBoastAddViewShown)
+            }
+            .padding(.bottom, 22)
+            .padding(.trailing, 16)
+            
         }
     }
     private func updateShowingBoasts() {
