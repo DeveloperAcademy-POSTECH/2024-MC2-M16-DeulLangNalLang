@@ -75,7 +75,6 @@ struct CardFlipView: View {
                                 (boast.award?.isFavorite ?? false ? (Image.filledHeart)
                                     .foregroundColor(.DNFavoriteRed) : (Image.filledHeart)
                                     .foregroundColor(.gray))
-                                    
                             }
                         }
                         .padding(.vertical, 13)
