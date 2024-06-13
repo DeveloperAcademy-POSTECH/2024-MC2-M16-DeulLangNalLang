@@ -37,6 +37,14 @@ struct TabBarView: View {
                     .tabItem { // 탭바 버튼으로 등록
                         Image.boastPostOffice
                         Text("자랑 우체국")
+                    
+                    }
+                
+                ProfileView() // 두 번째 탭 화면
+                    .tabItem { // 탭바 버튼으로 등록
+                        Image.profile
+                        Text("프로필")
+                    
                     }
             }
             .accentColor(.DNTabBarBlue)
